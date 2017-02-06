@@ -97,12 +97,12 @@ public class MyUI extends UI {
         button1.addClickListener(e -> {
             grid.removeAllColumns();
             table = 1;
-       //     grid.setContainerDataSource(new BeanItemContainer<>(Employee.class, employeeDAO.getAllEmployees()));
+            grid.setContainerDataSource(new BeanItemContainer<>(entities.Employee.class, employeeDAO.getAllEmployees()));
         });
         button2.addClickListener(e -> {
             grid.removeAllColumns();
             table = 2;
-        //    grid.setContainerDataSource(new BeanItemContainer<>(Employee.class, employeeDAO.getAllEmployees()));
+            grid.setContainerDataSource(new BeanItemContainer<>(entities.Event.class, eventDAO.getAllEvents()));
         });
         button3.addClickListener(e -> {
             grid.removeAllColumns();
