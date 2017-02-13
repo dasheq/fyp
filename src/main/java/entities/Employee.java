@@ -1,7 +1,7 @@
 package entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * A entity object, like in any other Java application. In a typical real world
@@ -48,7 +48,7 @@ public class Employee implements Serializable {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(java.sql.Date dob) {
 		this.dob = dob;
 	}
 

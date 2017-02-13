@@ -1,2 +1,2 @@
-org\test\MyUI$MyUIServlet.class
-org\test\MyUI.class
+ui\MyUI.class
+ui\MyUI$MyUIServlet.class

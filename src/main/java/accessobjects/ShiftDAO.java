@@ -32,7 +32,6 @@ public class ShiftDAO {
                 shift.setUsername(rs.getString(8));
 
                 shifts.add(shift);
-
             }
 
             con.close();

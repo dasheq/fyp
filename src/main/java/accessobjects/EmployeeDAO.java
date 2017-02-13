@@ -17,7 +17,55 @@ public class EmployeeDAO {
 
     private EmployeeDAO() {
     }
-*/
+*/  public void addEmployee(Employee employee) {
+       try {
+           Class.forName("com.mysql.jdbc.Driver");
+           Connection con = DriverManager.getConnection(
+                   "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+           String query = " insert into employee (name, Address, ContractType, Username, Position, Phone, SalaryPh, Password)"
+                   + " values (?, ?, ?, ?, ?, ?, ?, ?)";
+
+           // create the mysql insert preparedstatement
+           PreparedStatement preparedStmt = con.prepareStatement(query);
+           preparedStmt.setString (1, employee.getName());
+           preparedStmt.setString (2, employee.getAddress());
+           preparedStmt.setString(3, employee.getContractType());
+         //  preparedStmt.setDate   (4, employee.getDob());
+           preparedStmt.setString(4, employee.getUsername());
+           preparedStmt.setString(5, employee.getPosition());
+           preparedStmt.setInt    (6, employee.getPhone());
+           preparedStmt.setFloat(7, employee.getSalaryPh());
+           preparedStmt.setString(8, employee.getPassword());
+
+           // execute the preparedstatement
+           preparedStmt.execute();
+
+           con.close();
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+
+    }
+
+    public void deleteEmployee(Employee toBeDeleted) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            String query = " DELETE from employee WHERE Username = ?";
+
+            // create the mysql delete preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setString (1, toBeDeleted.getUsername());
+            preparedStmt.execute();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
 
     public ArrayList<Employee> getAllEmployees(){
         ArrayList<Employee> employees = new ArrayList<>();

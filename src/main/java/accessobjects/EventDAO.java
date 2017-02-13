@@ -9,6 +9,42 @@ import java.util.ArrayList;
  * Created by damo k on 02/02/2017.
  */
 public class EventDAO {
+    public void addEvent(Event event) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            String query = " insert into event (ActName, ActType, Area, EndTime, Price, StartingTime, EventID)"
+                    + " values (?, ?, ?, ?, ?, ?, ?)";
+            Statement highestValueStmt = con.createStatement();
+            ResultSet rs = highestValueStmt.executeQuery("SELECT max(eventID) FROM event");
+            int highestValue = 0;
+            if (rs.first()) {
+                highestValue = rs.getInt(1);
+            }
+            rs.close();
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setString (1, event.getActName());
+            preparedStmt.setString (2, event.getActType());
+            preparedStmt.setString(3, event.getArea());
+            //  preparedStmt.setDate   (4, event.getDate());
+            preparedStmt.setFloat(4, event.getEndTime());
+            preparedStmt.setFloat(5, event.getPrice());
+            preparedStmt.setFloat    (6, event.getStartingTime());
+            preparedStmt.setInt(7, highestValue+1);
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public ArrayList<Event> getAllEvents(){
         ArrayList<Event> events = new ArrayList<>();
 
