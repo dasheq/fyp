@@ -1,7 +1,7 @@
 package ui;
 
 import javax.servlet.annotation.WebServlet;
-import javax.swing.text.html.CSS;
+import javax.xml.soap.Text;
 
 import accessobjects.*;
 import com.vaadin.annotations.Theme;
@@ -13,10 +13,6 @@ import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import entities.*;
-
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Collection;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -48,6 +44,8 @@ public class MyUI extends UI {
     private int table = 0;
     private Label showTitle = new Label();
     private Label insertLabel = new Label();
+
+
     //Variables for Insert Employee Window
     private TextField employeeName = new TextField();
     private TextField employeeAddress = new TextField();
@@ -67,20 +65,55 @@ public class MyUI extends UI {
     private Label employeeUsernameLabel = new Label("Username");
 
     //Variables for Insert Event Window
-    private TextField actName = new TextField();
-    private TextField actType = new TextField();
-    private TextField price = new TextField();
-    private TextField startingTime = new TextField();
-    private TextField endingTime = new TextField();
-    private PopupDateField dateOfEvent = new PopupDateField("Date");
-    private TextField areaOfEvent = new TextField();
-    private Label actNameLabel = new Label("Act Name");
-    private Label actTypeLabel = new Label("Act Type");
-    private Label priceLabel = new Label("Price");
-    private Label startingTimeLabel = new Label("Starting Time");
-    private Label endingTimeLabel = new Label("Ending Time");
-    private Label areaOfEventLabel = new Label("Area");
+    private TextField eventActName = new TextField();
+    private TextField eventActType = new TextField();
+    private TextField eventPrice = new TextField();
+    private TextField eventStartingTime = new TextField();
+    private TextField eventEndingTime = new TextField();
+    private PopupDateField eventDate = new PopupDateField("Date");
+    private TextField eventArea = new TextField();
+    private Label eventActNameLabel = new Label("Act Name");
+    private Label eventActTypeLabel = new Label("Act Type");
+    private Label eventPriceLabel = new Label("Price");
+    private Label eventStartingTimeLabel = new Label("Starting Time");
+    private Label eventEndingTimeLabel = new Label("Ending Time");
+    private Label eventAreaLabel = new Label("Area");
 
+    //Variables for Insert Shift Window
+    private TextField shiftUsername = new TextField();
+    private TextField shiftStartTime = new TextField();
+    private TextField shiftEndTime = new TextField();
+    private PopupDateField shiftDate = new PopupDateField("Date");
+    private TextField shiftOvertimeHours = new TextField();
+    private Label shiftUsernameLabel = new Label("Username");
+    private Label shiftStartTimeLabel = new Label("Starting Time");
+    private Label shiftEndTimeLabel = new Label("Ending Time");
+    private Label shiftOvertimeHoursLabel = new Label("Overtime Hours");
+
+    //Variables for Insert Supplier Window
+    private TextField supplierName = new TextField();
+    private TextField supplierAddress = new TextField();
+    private TextField supplierContactNo = new TextField();
+    private TextField supplierEmail = new TextField();
+    private TextField supplierWebsite = new TextField();
+    private Label supplierNameLabel = new Label("Name");
+    private Label supplierAddressLabel = new Label("Address");
+    private Label supplierContactNoLabel = new Label("Contact Number");
+    private Label supplierEmailLabel = new Label("Email");
+    private Label supplierWebsiteLabel = new Label("Website");
+
+    //Variables for Insert Invoice Window
+    private PopupDateField invoiceDate = new PopupDateField("Date");
+    private TextField invoiceTotalValue = new TextField();
+    private TextField invoiceSupplierID = new TextField();
+    private Label invoiceTotalValueLabel = new Label("Total Value");
+    private Label invoiceSupplierIDLabel = new Label("Supplier ID");
+
+
+
+    //Variables for Insert Table Window
+    private TextField tableNoOfSeats = new TextField();
+    private Label tableNoOfSeatsLabel = new Label("Number of Seats");
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -151,7 +184,6 @@ public class MyUI extends UI {
             // Otherwise out of sync with container
             grid.getSelectionModel().reset();
 
-            updateGrid(table);
             // Disable after deleting
            // e.getButton().setEnabled(false);
         });
@@ -207,24 +239,25 @@ public class MyUI extends UI {
                     employeePosition.clear();
                     employeePassword.clear();
                     employeeUsername.clear();
+                    Notification.show("Added");
                     break;
                 case 2:
                     entities.Event event = new entities.Event();
-                    event.setActName(actName.getValue());
-                    event.setActType(actType.getValue());
-                    event.setArea(areaOfEvent.getValue());
-                    event.setEndTime(Float.valueOf(endingTime.getValue()));
-                    event.setPrice(Float.valueOf(price.getValue()));
-                    event.setStartingTime(Float.valueOf(startingTime.getValue()));
+                    event.setActName(eventActName.getValue());
+                    event.setActType(eventActType.getValue());
+                    event.setArea(eventArea.getValue());
+                    event.setEndTime(Float.valueOf(eventEndingTime.getValue()));
+                    event.setPrice(Float.valueOf(eventPrice.getValue()));
+                    event.setStartingTime(Float.valueOf(eventStartingTime.getValue()));
                     eventDAO.addEvent(event);
                     updateGrid(table);
-                    actName.clear();
-                    actType.clear();
-                    areaOfEvent.clear();
-                    dateOfEvent.clear();
-                    startingTime.clear();
-                    endingTime.clear();
-                    price.clear();
+                    eventActName.clear();
+                    eventActType.clear();
+                    eventArea.clear();
+                    eventDate.clear();
+                    eventStartingTime.clear();
+                    eventEndingTime.clear();
+                    eventPrice.clear();
                     break;
                 case 3:
                     //reservationsDAO.addReservation(reservation);
@@ -256,23 +289,37 @@ public class MyUI extends UI {
                     employeeUsername.clear();
                     break;
                 case 2:
-                    actName.clear();
-                    actType.clear();
-                    areaOfEvent.clear();
-                    dateOfEvent.clear();
-                    startingTime.clear();
-                    endingTime.clear();
-                    price.clear();
+                    eventActName.clear();
+                    eventActType.clear();
+                    eventArea.clear();
+                    eventDate.clear();
+                    eventStartingTime.clear();
+                    eventEndingTime.clear();
+                    eventPrice.clear();
                     break;
                 case 3:
                     break;
                 case 4:
+                    shiftUsername.clear();
+                    shiftStartTime.clear();
+                    shiftEndTime.clear();
+                    shiftDate.clear();
+                    shiftOvertimeHours.clear();
                     break;
                 case 5:
+                    supplierName.clear();
+                    supplierAddress.clear();
+                    supplierContactNo.clear();
+                    supplierEmail.clear();
+                    supplierWebsite.clear();
                     break;
                 case 6:
+                    invoiceDate.clear();
+                    invoiceTotalValue.clear();
+                    invoiceSupplierID.clear();
                     break;
                 case 7:
+                    tableNoOfSeats.clear();
                     break;
             }
         });
@@ -296,33 +343,57 @@ public class MyUI extends UI {
             updateGrid(table);
             updateInsertArea(table);
             insertWindow.removeAllComponents();
-            insertWindow.addComponents(insertLabel, actNameLabel, actName, actTypeLabel, actType);
-            insertWindow.addComponents(priceLabel, price, startingTimeLabel, startingTime, endingTimeLabel, endingTime);
-            insertWindow.addComponents(dateOfEvent, areaOfEventLabel, areaOfEvent);
+            insertWindow.addComponents(insertLabel, eventActNameLabel, eventActName, eventActTypeLabel, eventActType);
+            insertWindow.addComponents(eventPriceLabel, eventPrice, eventStartingTimeLabel, eventStartingTime, eventEndingTimeLabel, eventEndingTime);
+            insertWindow.addComponents(eventDate, eventAreaLabel, eventArea);
             insertButtons.addComponents(addButton, clearButton);
             insertWindow.addComponents(insertButtons);
         });
         button3.addClickListener(e -> {
             table = 3;
             updateGrid(table);
+            updateInsertArea(table);
+            insertWindow.removeAllComponents();
         });
         button4.addClickListener(e -> {
             table = 4;
             updateGrid(table);
+            updateInsertArea(table);
+            insertWindow.removeAllComponents();
+            insertWindow.addComponents(insertLabel, shiftUsernameLabel, shiftUsername, shiftStartTimeLabel, shiftStartTime);
+            insertWindow.addComponents(shiftEndTimeLabel, shiftEndTime, shiftDate, shiftOvertimeHoursLabel, shiftOvertimeHours);
+            insertButtons.addComponents(addButton, clearButton);
+            insertWindow.addComponents(insertButtons);
         });
         button5.addClickListener(e -> {
             table = 5;
             updateGrid(table);
+            updateInsertArea(table);
+            insertWindow.removeAllComponents();
+            insertWindow.addComponents(insertLabel, supplierNameLabel, supplierName, supplierAddressLabel, supplierAddress);
+            insertWindow.addComponents(supplierContactNoLabel, supplierContactNo, supplierEmailLabel, supplierEmail);
+            insertWindow.addComponents(supplierWebsiteLabel, supplierWebsite);
+            insertButtons.addComponents(addButton, clearButton);
+            insertWindow.addComponents(insertButtons);
         });
         button6.addClickListener(e -> {
             table = 6;
             updateGrid(table);
+            updateInsertArea(table);
+            insertWindow.removeAllComponents();
+            insertWindow.addComponents(insertLabel, invoiceDate, invoiceTotalValueLabel, invoiceTotalValue, invoiceSupplierIDLabel, invoiceSupplierID);
+            insertButtons.addComponents(addButton, clearButton);
+            insertWindow.addComponents(insertButtons);
         });
         button7.addClickListener(e -> {
             table = 7;
             updateGrid(table);
+            updateInsertArea(table);
+            insertWindow.removeAllComponents();
+            insertWindow.addComponents(insertLabel, tableNoOfSeatsLabel, tableNoOfSeats);
+            insertButtons.addComponents(addButton, clearButton);
+            insertWindow.addComponents(insertButtons);
         });
-
 
 
 
@@ -405,7 +476,27 @@ public class MyUI extends UI {
         switch (tableNo) {
             case 1:
                 employeeDAO.deleteEmployee((entities.Employee)toBeDeleted);
+                break;
+            case 2:
+                eventDAO.deleteEvent((entities.Event)toBeDeleted);
+                break;
+            case 3:
+                reservationsDAO.deleteReservation((Reservations)toBeDeleted);
+                break;
+            case 4:
+                shiftDAO.deleteShift((Shift)toBeDeleted);
+                break;
+            case 5:
+                supplierDAO.deleteSupplier((Supplier)toBeDeleted);
+                break;
+            case 6:
+                invoiceDAO.deleteInvoice((Invoice)toBeDeleted);
+                break;
+            case 7:
+                tablesDAO.deleteTable((Tables)toBeDeleted);
+                break;
         }
+        updateGrid(table);
     }
 
     public void updateInsertArea(int tableNo) {
@@ -452,33 +543,51 @@ public class MyUI extends UI {
             case 2:
                 insertLabel.setValue("Add Event");
 
-                actName.setWidth(screenWidth);
-                actType.setWidth(screenWidth);
-                price.setWidth(screenWidth);
-                startingTime.setWidth(screenWidth);
-                endingTime.setWidth(screenWidth);
+                eventActName.setWidth(screenWidth);
+                eventActType.setWidth(screenWidth);
+                eventPrice.setWidth(screenWidth);
+                eventStartingTime.setWidth(screenWidth);
+                eventEndingTime.setWidth(screenWidth);
 
-                dateOfEvent.setCaption("Date");
-                //dateOfEvent.setValue(new Date());
-                //dateOfEvent.setRequired(true);
-                startingTime.setRequired(true);
-                endingTime.setRequired(true);
-                areaOfEvent.setRequired(true);
-                actName.setRequired(true);
-                actType.setRequired(true);
-                price.setRequired(true);
-
+                eventDate.setCaption("Date");
+                //eventDate.setValue(new Date());
+                //eventDate.setRequired(true);
+                eventStartingTime.setRequired(true);
+                eventEndingTime.setRequired(true);
+                eventArea.setRequired(true);
+                eventActName.setRequired(true);
+                eventActType.setRequired(true);
+                eventPrice.setRequired(true);
 
                 break;
             case 3:
+                insertLabel.setValue("Add Reservation");
                 break;
             case 4:
+                insertLabel.setValue("Add Shift");
+                shiftDate.setWidth(screenWidth);
+                shiftEndTime.setWidth(screenWidth);
+                shiftOvertimeHours.setWidth(screenWidth);
+                shiftStartTime.setWidth(screenWidth);
+                shiftUsername.setWidth(screenWidth);
                 break;
             case 5:
+                insertLabel.setValue("Add Supplier");
+                supplierAddress.setWidth(screenWidth);
+                supplierContactNo.setWidth(screenWidth);
+                supplierEmail.setWidth(screenWidth);
+                supplierName.setWidth(screenWidth);
+                supplierWebsite.setWidth(screenWidth);
                 break;
             case 6:
+                insertLabel.setValue("Add Invoice");
+                invoiceDate.setWidth(screenWidth);
+                invoiceSupplierID.setWidth(screenWidth);
+                invoiceTotalValue.setWidth(screenWidth);
                 break;
             case 7:
+                insertLabel.setValue("Add Table");
+                tableNoOfSeats.setWidth(screenWidth);
                 break;
         }
     }

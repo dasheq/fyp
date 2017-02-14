@@ -47,6 +47,26 @@ public class ReservationsDAO {
         return reservations;
     }
 
+    public void deleteReservation(Reservations toBeDeleted) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            String query = " DELETE from reservations WHERE ReservationID = ?";
+
+            // create the mysql delete preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setInt (1, toBeDeleted.getReservationID());
+            preparedStmt.execute();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
     public ArrayList<Reservations> getReservationsByName(String filter){
         ArrayList<Reservations> reservations = new ArrayList<>();
 

@@ -9,6 +9,26 @@ import java.util.ArrayList;
  * Created by damo k on 02/02/2017.
  */
 public class ShiftDAO {
+    public void deleteShift(Shift toBeDeleted) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            String query = " DELETE from shift WHERE ShiftID = ?";
+
+            // create the mysql delete preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setInt (1, toBeDeleted.getShiftID());
+            preparedStmt.execute();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
     public ArrayList<Shift> getAllShifts(){
         ArrayList<Shift> shifts = new ArrayList<>();
 

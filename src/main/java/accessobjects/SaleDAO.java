@@ -9,6 +9,27 @@ import java.util.ArrayList;
  * Created by damo k on 02/02/2017.
  */
 public class SaleDAO {
+
+    public void deleteSale(Sale toBeDeleted) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            String query = " DELETE from sale WHERE SaleID = ?";
+
+            // create the mysql delete preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setInt (1, toBeDeleted.getSaleID());
+            preparedStmt.execute();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
     public ArrayList<Sale> getAllSales(){
         ArrayList<Sale> sales = new ArrayList<>();
 

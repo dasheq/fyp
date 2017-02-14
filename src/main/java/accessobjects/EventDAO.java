@@ -44,6 +44,25 @@ public class EventDAO {
         }
 
     }
+    public void deleteEvent(Event toBeDeleted) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            String query = " DELETE from event WHERE EventID = ?";
+
+            // create the mysql delete preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setInt (1, toBeDeleted.getEventID());
+            preparedStmt.execute();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
 
     public ArrayList<Event> getAllEvents(){
         ArrayList<Event> events = new ArrayList<>();

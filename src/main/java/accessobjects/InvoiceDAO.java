@@ -43,6 +43,26 @@ public class InvoiceDAO {
         return invoices;
     }
 
+    public void deleteInvoice(Invoice toBeDeleted) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            String query = " DELETE from Invoice WHERE RefNumber = ?";
+
+            // create the mysql delete preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setInt (1, toBeDeleted.getRefNumber());
+            preparedStmt.execute();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
     public ArrayList<Invoice> getInvoicesByName(String filter){
         ArrayList<Invoice> invoices = new ArrayList<>();
 

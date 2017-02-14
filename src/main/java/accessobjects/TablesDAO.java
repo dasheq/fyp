@@ -9,6 +9,26 @@ import java.util.ArrayList;
  * Created by damo k on 02/02/2017.
  */
 public class TablesDAO {
+    public void deleteTable(Tables toBeDeleted) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            String query = " DELETE from tables WHERE TableID = ?";
+
+            // create the mysql delete preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setInt (1, toBeDeleted.getTableID());
+            preparedStmt.execute();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
     public ArrayList<Tables> getAllTables(){
         ArrayList<Tables> tables = new ArrayList<>();
 
