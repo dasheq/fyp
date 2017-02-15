@@ -29,6 +29,36 @@ public class TablesDAO {
 
     }
 
+    public void addTable(Tables table) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            String query = " insert into tables (NoOfSeats, TableID)"
+                    + " values (?, ?)";
+            Statement highestValueStmt = con.createStatement();
+            ResultSet rs = highestValueStmt.executeQuery("SELECT max(TableID) FROM tables");
+            int highestValue = 0;
+            if (rs.first()) {
+                highestValue = rs.getInt(1);
+            }
+            rs.close();
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setInt(1, table.getNoOfSeats());
+            preparedStmt.setInt(2, highestValue+1);
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public ArrayList<Tables> getAllTables(){
         ArrayList<Tables> tables = new ArrayList<>();
 

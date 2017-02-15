@@ -67,6 +67,35 @@ public class EmployeeDAO {
 
     }
 
+    public boolean login(String username, String password) {
+        boolean correctDetailsEntered = false;
+        try {
+
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            String query = "SELECT * FROM employee WHERE username=? AND Password=?";
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setString(1, username);
+            preparedStmt.setString(2, password);
+            ResultSet rs = preparedStmt.executeQuery();
+
+
+            if (rs.first()) {
+                correctDetailsEntered = true;
+            }
+
+            con.close();
+
+        } catch(Exception e){
+            System.out.println(e);
+            e.printStackTrace();
+            System.out.println("Here");
+        }
+
+        return correctDetailsEntered;
+    }
+
     public ArrayList<Employee> getAllEmployees(){
         ArrayList<Employee> employees = new ArrayList<>();
 
@@ -142,5 +171,7 @@ public class EmployeeDAO {
 
         return employees;
     }
+
+
 
 }

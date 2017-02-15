@@ -29,6 +29,40 @@ public class ShiftDAO {
 
     }
 
+    public void addShift(Shift shift) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            String query = " insert into shift (Start_Time, End_Time, OvertimeHours, Username, ShiftID)"
+                    + " values (?, ?, ?, ?, ?)";
+            Statement highestValueStmt = con.createStatement();
+            ResultSet rs = highestValueStmt.executeQuery("SELECT max(ShiftID) FROM shift");
+            int highestValue = 0;
+            if (rs.first()) {
+                highestValue = rs.getInt(1);
+            }
+            rs.close();
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setFloat (1, shift.getStartTime());
+            preparedStmt.setFloat (2, shift.getEndTime());
+            preparedStmt.setInt(3, shift.getOvertimeHours());
+            //  preparedStmt.setDate   (4, event.getDate());
+            preparedStmt.setString(4, shift.getUsername());
+            preparedStmt.setInt(5, highestValue+1);
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public ArrayList<Shift> getAllShifts(){
         ArrayList<Shift> shifts = new ArrayList<>();
 

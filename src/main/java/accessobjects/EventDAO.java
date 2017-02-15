@@ -44,6 +44,7 @@ public class EventDAO {
         }
 
     }
+
     public void deleteEvent(Event toBeDeleted) {
         try {
             Class.forName("com.mysql.jdbc.Driver");

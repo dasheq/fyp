@@ -1,2 +1,5 @@
+views\LoginView.class
+views\MainView.class
 ui\MyUI.class
 ui\MyUI$MyUIServlet.class
+views\InsertView.class

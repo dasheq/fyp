@@ -29,6 +29,41 @@ public class SupplierDAO {
 
     }
 
+    public void addSupplier(Supplier supplier) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            String query = " insert into supplier (Address, Name, Email, Website,ContactNumber,  SupplierID)"
+                    + " values (?, ?, ?, ?, ?, ?)";
+            Statement highestValueStmt = con.createStatement();
+            ResultSet rs = highestValueStmt.executeQuery("SELECT max(SupplierID) FROM supplier");
+            int highestValue = 0;
+            if (rs.first()) {
+                highestValue = rs.getInt(1);
+            }
+            rs.close();
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setString (1, supplier.getAddress());
+            preparedStmt.setString (2, supplier.getName());
+            preparedStmt.setString(3, supplier.getEmail());
+            //  preparedStmt.setDate   (4, event.getDate());
+            preparedStmt.setString(4, supplier.getWebsite());
+            preparedStmt.setInt(5, supplier.getContactNumber());
+            preparedStmt.setInt(6, highestValue+1);
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public ArrayList<Supplier> getAllSuppliers(){
         ArrayList<Supplier> suppliers = new ArrayList<>();
 
