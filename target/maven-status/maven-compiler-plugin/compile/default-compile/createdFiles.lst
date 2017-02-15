@@ -1,3 +1,4 @@
+views\WagesView.class
 views\LoginView.class
 views\MainView.class
 ui\MyUI.class

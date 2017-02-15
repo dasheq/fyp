@@ -39,6 +39,7 @@ public class MainView extends VerticalLayout implements View {
     CssLayout windows = new CssLayout();
     InsertView insertWindow;
 
+    private Button calcWagesButton = new Button("Calculate Wages");
 
 
     @Override
@@ -122,10 +123,19 @@ public class MainView extends VerticalLayout implements View {
 
         updateGrid(table);
 
+        calcWagesButton.addClickListener(e -> {
+            if(insertWindow != null)
+                windows.removeComponent(insertWindow);
 
+            WagesView wagesView = new WagesView();
+            wagesView.setWidth("25%");
+            wagesView.run();
+            windows.addComponent(wagesView);
+        });
 
         button1.addClickListener(e -> {
             table = 1;
+            filtering.addComponent(calcWagesButton);
             updateGrid(table);
             refreshInsertView(table);
 
