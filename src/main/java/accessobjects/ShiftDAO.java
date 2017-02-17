@@ -3,6 +3,7 @@ package accessobjects;
 import entities.Shift;
 
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -141,9 +142,13 @@ public class ShiftDAO {
     }
 
 
-    public float calculateWages(String username, int weekNo) {
+    public float[] calculateWages(String username, int weekNo) {
+        float[] wages = new float[4];
         float totalWages = 0;
+        float overtimeWages = 0;
         float hours = 0;
+        float totalHours = 0;
+        int overtimeHours = 0;
         float salaryPh = 0;
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -164,12 +169,14 @@ public class ShiftDAO {
             preparedStmt.setInt(2, weekNo);
             ResultSet rs = preparedStmt.executeQuery();
 
-
+            //Calculate Total Wages including Overtime
             while (rs.next()) {
+                overtimeHours = rs.getInt(7);
                 hours = (rs.getFloat(3) - rs.getFloat(2));
-                totalWages = totalWages + (hours * salaryPh);
+                overtimeWages = overtimeHours * salaryPh;
+                totalWages = totalWages + (hours * salaryPh) + overtimeWages;
+                totalHours = totalHours + hours;
             }
-
             con.close();
 
         } catch (Exception e) {
@@ -178,6 +185,10 @@ public class ShiftDAO {
             System.out.println("Here");
         }
 
-        return totalWages;
+        wages[0] = totalWages;
+        wages[1] = overtimeWages;
+        wages[2] = totalHours;
+        wages[3] = overtimeHours;
+        return wages;
     }
 }

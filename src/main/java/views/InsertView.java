@@ -9,6 +9,9 @@ import com.vaadin.server.SystemError;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import entities.Employee;
+//import java.sql.Date;
+
+import java.util.Date;
 
 /**
  * Created by damo k on 15/02/2017.
@@ -113,11 +116,12 @@ public class InsertView extends VerticalLayout {
         addButton = new Button("Add", e -> {
             switch (table) {
                 case 1:
+                    java.sql.Date testDate = new java.sql.Date(0);
                     Employee employee = new Employee();
                     employee.setName(employeeName.getValue());
                     employee.setAddress(employeeAddress.getValue());
                     employee.setContractType(employeeContractType.getValue().toString());
-                    // employee.setDob(employeeDoB.getValue());
+                    employee.setDob(new java.sql.Date( employeeDoB.getValue().getTime()));
                     employee.setPhone(Integer.valueOf(employeePhone.getValue()));
                     employee.setPosition(employeePosition.getValue());
                     employee.setSalaryPh(Float.valueOf(employeeSalaryPh.getValue()));
@@ -125,12 +129,13 @@ public class InsertView extends VerticalLayout {
                     employee.setPassword(employeePassword.getValue());
                     employeeDAO.addEmployee(employee);
                     clearFields(table);
-                    Notification.show("Added");
+                    Notification.show("Added " + employee.getName());
                     break;
                 case 2:
                     entities.Event event = new entities.Event();
                     event.setActName(eventActName.getValue());
                     event.setActType(eventActType.getValue());
+                    event.setDate(new java.sql.Date(eventDate.getValue().getTime()));
                     event.setArea(eventArea.getValue());
                     event.setEndTime(Float.valueOf(eventEndingTime.getValue()));
                     event.setPrice(Float.valueOf(eventPrice.getValue()));
@@ -148,6 +153,33 @@ public class InsertView extends VerticalLayout {
                     shift.setEndTime(Float.valueOf(shiftEndTime.getValue()));
                     shift.setOvertimeHours(Integer.valueOf(shiftOvertimeHours.getValue()));
                     shift.setUsername(shiftUsername.getValue());
+
+                    //Convert date to integers
+                    int day = Integer.valueOf(shiftDate.getValue().toString().substring(8,10));
+                    int month = Integer.valueOf(shiftDate.getValue().toString().substring(5,7));
+                    int year = Integer.valueOf(shiftDate.getValue().toString().substring(0,4));
+
+                    //Convert day to 1 to 7
+                    if ( day >= 8 && day <= 14) {
+                        day = day - 7;
+                    }
+                    else if (day >= 15 && day <= 21) {
+                        day = day - 14;
+                    }
+                    else if(day >= 22 && day <= 28) {
+                        day = day - 21;
+                    }
+                    else if(day >= 29) {
+                        day = day - 28;
+                    }
+
+                    //Convert week to 1 to 52
+
+
+                    shift.setDay(day);
+                    shift.setWeek(month);
+                    shift.setYear(year);
+
                     shiftDAO.addShift(shift);
                     clearFields(table);
                     break;
@@ -163,6 +195,7 @@ public class InsertView extends VerticalLayout {
                     break;
                 case 6:
                     entities.Invoice invoice = new entities.Invoice();
+                    invoice.setDate(new java.sql.Date( invoiceDate.getValue().getTime()));
                     invoice.setSupplierID(Integer.valueOf(invoiceSupplierID.getValue()));
                     invoice.setTotalValue(Float.valueOf(invoiceTotalValue.getValue()));
                     invoiceDAO.addInvoice(invoice);
@@ -220,7 +253,7 @@ public class InsertView extends VerticalLayout {
                 employeeContractType.setWidth("200");
                 employeeContractType.setRequired(true);
 
-                //employeeDoB.setValue(new Date().toLocalDate());
+                employeeDoB.setValue(new java.sql.Date(new java.util.Date().getTime()));
                 employeeDoB.setIcon(FontAwesome.USER);
                 employeeDoB.setRequired(true);
                 addComponents(insertLabel, employeeNameLabel, employeeName);
@@ -242,7 +275,7 @@ public class InsertView extends VerticalLayout {
                 eventEndingTime.setWidth(screenWidth);
 
                 eventDate.setCaption("Date");
-                //eventDate.setValue(new Date());
+                eventDate.setValue(new java.sql.Date(new java.util.Date().getTime()));
                 //eventDate.setRequired(true);
                 eventStartingTime.setRequired(true);
                 eventEndingTime.setRequired(true);
@@ -267,7 +300,7 @@ public class InsertView extends VerticalLayout {
                 shiftOvertimeHours.setWidth(screenWidth);
                 shiftStartTime.setWidth(screenWidth);
                 shiftUsername.setWidth(screenWidth);
-
+                shiftDate.setValue(new java.sql.Date(new java.util.Date().getTime()));
                 addComponents(insertLabel, shiftUsernameLabel, shiftUsername, shiftStartTimeLabel, shiftStartTime);
                 addComponents(shiftEndTimeLabel, shiftEndTime, shiftDate, shiftOvertimeHoursLabel, shiftOvertimeHours);
                 insertButtons.addComponents(addButton, clearButton);
@@ -292,7 +325,7 @@ public class InsertView extends VerticalLayout {
                 invoiceDate.setWidth(screenWidth);
                 invoiceSupplierID.setWidth(screenWidth);
                 invoiceTotalValue.setWidth(screenWidth);
-
+                invoiceDate.setValue(new java.sql.Date(new java.util.Date().getTime()));
                 addComponents(insertLabel, invoiceDate, invoiceTotalValueLabel, invoiceTotalValue, invoiceSupplierIDLabel, invoiceSupplierID);
                 insertButtons.addComponents(addButton, clearButton);
                 addComponents(insertButtons);

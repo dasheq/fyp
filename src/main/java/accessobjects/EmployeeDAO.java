@@ -22,24 +22,24 @@ public class EmployeeDAO {
            Class.forName("com.mysql.jdbc.Driver");
            Connection con = DriverManager.getConnection(
                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
-           String query = " insert into employee (name, Address, ContractType, Username, Position, Phone, SalaryPh, Password)"
-                   + " values (?, ?, ?, ?, ?, ?, ?, ?)";
+           String query = " insert into employee (name, Address, ContractType, DoB, Username, Position, Phone, SalaryPh, Password)"
+                   + " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
            // create the mysql insert preparedstatement
            PreparedStatement preparedStmt = con.prepareStatement(query);
            preparedStmt.setString (1, employee.getName());
            preparedStmt.setString (2, employee.getAddress());
            preparedStmt.setString(3, employee.getContractType());
-         //  preparedStmt.setDate   (4, employee.getDob());
-           preparedStmt.setString(4, employee.getUsername());
-           preparedStmt.setString(5, employee.getPosition());
-           preparedStmt.setInt    (6, employee.getPhone());
-           preparedStmt.setFloat(7, employee.getSalaryPh());
-           preparedStmt.setString(8, employee.getPassword());
-
+           preparedStmt.setDate(4, employee.getDob());
+           // preparedStmt.setDate   (4,new java.sql.Date( employee.getDob().getTime()));
+           preparedStmt.setString(5, employee.getUsername());
+           preparedStmt.setString(6, employee.getPosition());
+           preparedStmt.setInt    (7, employee.getPhone());
+           preparedStmt.setFloat(8, employee.getSalaryPh());
+           preparedStmt.setString(9, employee.getPassword());
            // execute the preparedstatement
            preparedStmt.execute();
-
+           System.out.println(preparedStmt);
            con.close();
        } catch (Exception e) {
            e.printStackTrace();

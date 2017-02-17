@@ -37,10 +37,11 @@ public class MainView extends VerticalLayout implements View {
     private int table = 0;
     private Label showTitle = new Label();
     CssLayout windows = new CssLayout();
-    InsertView insertWindow;
+    InsertView insertWindow = null;
+    WagesView wagesView = null;
 
     private Button calcWagesButton = new Button("Calculate Wages");
-
+    private boolean showCalcButton = false;
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
@@ -127,7 +128,7 @@ public class MainView extends VerticalLayout implements View {
             if(insertWindow != null)
                 windows.removeComponent(insertWindow);
 
-            WagesView wagesView = new WagesView();
+            wagesView = new WagesView();
             wagesView.setWidth("25%");
             wagesView.run();
             windows.addComponent(wagesView);
@@ -138,34 +139,58 @@ public class MainView extends VerticalLayout implements View {
             filtering.addComponent(calcWagesButton);
             updateGrid(table);
             refreshInsertView(table);
-
+            showCalcButton = true;
         });
         button2.addClickListener(e -> {
             table = 2;
+            if (showCalcButton) {
+                filtering.removeComponent(calcWagesButton);
+                showCalcButton = false;
+            }
             updateGrid(table);
             refreshInsertView(table);
         });
         button3.addClickListener(e -> {
             table = 3;
+            if (showCalcButton) {
+                filtering.removeComponent(calcWagesButton);
+                showCalcButton = false;
+            }
             updateGrid(table);
             refreshInsertView(table);
         });
         button4.addClickListener(e -> {
             table = 4;
+            if (showCalcButton) {
+                filtering.removeComponent(calcWagesButton);
+                showCalcButton = false;
+            }
             updateGrid(table);
             refreshInsertView(table);
         });
         button5.addClickListener(e -> {
             table = 5;
+            if (showCalcButton) {
+                filtering.removeComponent(calcWagesButton);
+                showCalcButton = false;
+            }
             updateGrid(table);
             refreshInsertView(table);
         });
         button6.addClickListener(e -> {
             table = 6;
+            if (showCalcButton) {
+                filtering.removeComponent(calcWagesButton);
+                showCalcButton = false;
+            }
             updateGrid(table);
             refreshInsertView(table);
         });
         button7.addClickListener(e -> {
+            if (showCalcButton) {
+                filtering.removeComponent(calcWagesButton);
+                showCalcButton = false;
+            }
             table = 7;
             updateGrid(table);
             refreshInsertView(table);
@@ -276,6 +301,8 @@ public class MainView extends VerticalLayout implements View {
     public void refreshInsertView(int tableNo) {
         if(insertWindow != null)
             windows.removeComponent(insertWindow);
+        if(wagesView != null)
+            windows.removeComponent(wagesView);
 
         insertWindow = new InsertView(tableNo);
         insertWindow.setWidth("25%");

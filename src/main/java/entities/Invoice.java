@@ -1,6 +1,6 @@
 package entities;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Created by damo k on 01/02/2017.

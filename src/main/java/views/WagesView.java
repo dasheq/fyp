@@ -20,9 +20,16 @@ public class WagesView extends VerticalLayout{
     private NativeSelect weekSelect = new NativeSelect("Select Calendar Week");
     private Label wagesTotalLabel = new Label();
     private Label wagesLabel = new Label("Calculate Wages");
+    private Label hoursLabel = new Label();
+    private Label overtimeHoursLabel = new Label();
+    private Label overtimeWagesLabel = new Label();
+    private Label employeeNameLabel = new Label();
+    private Label calendarWeekLabel = new Label();
     private String screenWidth = "100%";
     private Button calculateButton = new Button("Calculate");
-    private float wagesTotal;
+    private float[] wagesDetails = new float[4];
+
+    private VerticalLayout labelsLayout = new VerticalLayout();
 
     ShiftDAO shiftDAO = new ShiftDAO();
     EmployeeDAO employeeDAO = new EmployeeDAO();
@@ -30,6 +37,9 @@ public class WagesView extends VerticalLayout{
     public void run() {
         wagesLabel.setHeight("50");
         wagesLabel.setStyleName(ValoTheme.LABEL_H2);
+        wagesTotalLabel.setHeight("50");
+
+        super.setSpacing(true);
 
         employeeSelect.setWidth(screenWidth);
         weekSelect.setWidth(screenWidth);
@@ -55,11 +65,28 @@ public class WagesView extends VerticalLayout{
         addComponents(wagesLabel, employeeSelect, weekSelect, calculateButton);
 
         calculateButton.addClickListener(e -> {
-           wagesTotal = shiftDAO.calculateWages(
+           wagesDetails = shiftDAO.calculateWages(
                    employeeSelect.getValue().toString(), Integer.valueOf(weekSelect.getValue().toString()));
-
-           wagesTotalLabel.setValue(String.valueOf(wagesTotal));
-           addComponent(wagesTotalLabel);
+           updateWages(wagesDetails);
         });
+    }
+
+    public void updateWages(float[] wagesDetails) {
+        if (!wagesTotalLabel.getValue().isEmpty()) {
+            labelsLayout.removeAllComponents();
+        }
+
+        employeeNameLabel.setValue("Employee username: " + employeeSelect.getValue().toString());
+        calendarWeekLabel.setValue("Calendar week: " + weekSelect.getValue().toString());
+        wagesTotalLabel.setValue("Total earnings: €"+ String.valueOf(wagesDetails[0]));
+        hoursLabel.setValue("Hours worked: "+String.valueOf(wagesDetails[2]));
+        labelsLayout.addComponents(employeeNameLabel, calendarWeekLabel, wagesTotalLabel, hoursLabel);
+        if(wagesDetails[1] > 0) {
+            overtimeWagesLabel.setValue("Overtime earnings: €" + String.valueOf(wagesDetails[1]));
+            overtimeHoursLabel.setValue("Overtime hours worked: " + String.valueOf(wagesDetails[3]));
+            labelsLayout.addComponents(overtimeWagesLabel, overtimeHoursLabel);
+        }
+        labelsLayout.setSpacing(false);
+        addComponent(labelsLayout);
     }
 }

@@ -29,7 +29,7 @@ public class EventDAO {
             preparedStmt.setString (1, event.getActName());
             preparedStmt.setString (2, event.getActType());
             preparedStmt.setString(3, event.getArea());
-            //  preparedStmt.setDate   (4, event.getDate());
+            preparedStmt.setDate   (4, event.getDate());
             preparedStmt.setFloat(4, event.getEndTime());
             preparedStmt.setFloat(5, event.getPrice());
             preparedStmt.setFloat    (6, event.getStartingTime());
