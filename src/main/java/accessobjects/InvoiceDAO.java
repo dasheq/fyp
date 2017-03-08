@@ -68,8 +68,8 @@ public class InvoiceDAO {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
-            String query = " insert into invoice (SupplierID, TotalValue, RefNumber)"
-                    + " values (?, ?, ?)";
+            String query = " insert into invoice (SupplierID, TotalValue, RefNumber, Date)"
+                    + " values (?, ?, ?, ?)";
             Statement highestValueStmt = con.createStatement();
             ResultSet rs = highestValueStmt.executeQuery("SELECT max(RefNumber) FROM invoice");
             int highestValue = 0;
@@ -83,7 +83,7 @@ public class InvoiceDAO {
             preparedStmt.setInt (1, invoice.getSupplierID());
             preparedStmt.setFloat (2, invoice.getTotalValue());
             preparedStmt.setInt(3, highestValue+1);
-
+            preparedStmt.setDate(4, invoice.getDate());
             // execute the preparedstatement
             preparedStmt.execute();
 

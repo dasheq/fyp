@@ -1,4 +1,4 @@
-package ui;
+package misc;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -10,7 +10,6 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
-import views.InsertView;
 import views.LoginView;
 import views.MainView;
 

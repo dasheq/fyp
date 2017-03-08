@@ -191,4 +191,29 @@ public class ShiftDAO {
         wages[3] = overtimeHours;
         return wages;
     }
-}
+
+    public ArrayList<String> getShiftsByNameAndWeek() {
+        ArrayList<String> shifts = new ArrayList<>();
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            PreparedStatement stmt = con.prepareStatement("SELECT Start_Time, End_Time FROM shift WHERE Username = 'dasheq' AND week = 2 AND year = 2016");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                shifts.add(String.valueOf(rs.getFloat(1)) + " - " + String.valueOf(rs.getFloat(2)));
+            }
+
+
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
+            System.out.println("Here");
+        }
+
+        return shifts;
+    }}

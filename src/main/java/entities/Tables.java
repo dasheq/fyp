@@ -1,14 +1,22 @@
 package entities;
 
+import com.vaadin.ui.Button;
+
 import java.io.Serializable;
+import java.sql.Date;
 
 /**
  * Created by damo k on 01/02/2017.
  */
-public class Tables implements Serializable{
+public class Tables extends Button implements Serializable{
     private int tableID;
     private int noOfSeats;
-    private int reservationID;
+
+    private String area;
+
+    public Tables(String caption) {
+        this.setCaption(caption);
+    }
 
     public int getTableID() {
         return tableID;
@@ -26,11 +34,12 @@ public class Tables implements Serializable{
         this.noOfSeats = noOfSeats;
     }
 
-    public int getReservationID() {
-        return reservationID;
+    public String getArea() {
+        return area;
     }
 
-    public void setReservationID(int reservationID) {
-        this.reservationID = reservationID;
+    public void setArea(String area) {
+        this.area = area;
     }
+
 }

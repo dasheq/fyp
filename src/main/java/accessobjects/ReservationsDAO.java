@@ -25,12 +25,13 @@ public class ReservationsDAO {
                 reservation.setReservationID(rs.getInt(1));
                 reservation.setStartingTime(rs.getFloat(2));
                 reservation.setEndingTime(rs.getFloat(3));
-                reservation.setDate(rs.getDate(4));
-                reservation.setName(rs.getString(5));
-                reservation.setNumber(rs.getInt(6));
-                reservation.setEmail(rs.getString(7));
-                reservation.setNumberOfPeople(rs.getInt(8));
-                reservation.setDescription(rs.getString(9));
+                reservation.setName(rs.getString(4));
+                reservation.setNumber(rs.getInt(5));
+                reservation.setEmail(rs.getString(6));
+                reservation.setNumberOfPeople(rs.getInt(7));
+                reservation.setDescription(rs.getString(8));
+                reservation.setTableID(rs.getInt(9));
+                reservation.setDate(rs.getDate(10));
 
                 reservations.add(reservation);
 
@@ -81,20 +82,19 @@ public class ReservationsDAO {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-
                 Reservations reservation = new Reservations();
                 reservation.setReservationID(rs.getInt(1));
                 reservation.setStartingTime(rs.getFloat(2));
                 reservation.setEndingTime(rs.getFloat(3));
-                reservation.setDate(rs.getDate(4));
-                reservation.setName(rs.getString(5));
-                reservation.setNumber(rs.getInt(6));
-                reservation.setEmail(rs.getString(7));
-                reservation.setNumberOfPeople(rs.getInt(8));
-                reservation.setDescription(rs.getString(9));
+                reservation.setName(rs.getString(4));
+                reservation.setNumber(rs.getInt(5));
+                reservation.setEmail(rs.getString(6));
+                reservation.setNumberOfPeople(rs.getInt(7));
+                reservation.setDescription(rs.getString(8));
+                reservation.setTableID(rs.getInt(9));
+                reservation.setDate(rs.getDate(10));
 
                 reservations.add(reservation);
-
 
             }
 

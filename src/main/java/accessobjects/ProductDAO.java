@@ -27,6 +27,7 @@ public class ProductDAO {
                 product.setPrice(rs.getFloat(3));
                 product.setQuantity(rs.getInt(4));
                 product.setRefNumber(rs.getInt(5));
+                product.setType(rs.getString(6));
 
                 products.add(product);
 
@@ -83,6 +84,7 @@ public class ProductDAO {
                 product.setPrice(rs.getFloat(3));
                 product.setQuantity(rs.getInt(4));
                 product.setRefNumber(rs.getInt(5));
+                product.setType(rs.getString(6));
 
                 products.add(product);
 

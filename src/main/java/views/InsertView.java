@@ -9,8 +9,11 @@ import com.vaadin.server.SystemError;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import entities.Employee;
+import entities.Tables;
+import misc.DateConvertor;
 //import java.sql.Date;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -24,6 +27,7 @@ public class InsertView extends VerticalLayout {
     private Label insertLabel = new Label();
     Button addButton;
     Button clearButton;
+    Button checkAvailabilityButton;
     private int table;
 
     //Access Objects
@@ -69,6 +73,11 @@ public class InsertView extends VerticalLayout {
     private Label eventEndingTimeLabel = new Label("Ending Time");
     private Label eventAreaLabel = new Label("Area");
 
+    //Variables for Insert Reservation Window
+    private PopupDateField reservationDate = new PopupDateField("Date");
+    private NativeSelect reservationStartingTimeHour = new NativeSelect("Hour");
+    private NativeSelect reservationStartingTimeMin = new NativeSelect("Minute");
+
     //Variables for Insert Shift Window
     private TextField shiftUsername = new TextField();
     private TextField shiftStartTime = new TextField();
@@ -102,7 +111,9 @@ public class InsertView extends VerticalLayout {
 
     //Variables for Insert Table Window
     private TextField tableNoOfSeats = new TextField();
+    private TextField tableArea = new TextField();
     private Label tableNoOfSeatsLabel = new Label("Number of Seats");
+    private Label tableAreaLabel = new Label("Area");
 
 
     public InsertView(int tableNo) {
@@ -154,30 +165,19 @@ public class InsertView extends VerticalLayout {
                     shift.setOvertimeHours(Integer.valueOf(shiftOvertimeHours.getValue()));
                     shift.setUsername(shiftUsername.getValue());
 
+                    String dateString = shiftDate.getValue().toString();
+                    System.out.println(dateString);
                     //Convert date to integers
-                    int day = Integer.valueOf(shiftDate.getValue().toString().substring(8,10));
-                    int month = Integer.valueOf(shiftDate.getValue().toString().substring(5,7));
+
+
+                    DateConvertor dateConvertor = new DateConvertor(dateString);
                     int year = Integer.valueOf(shiftDate.getValue().toString().substring(0,4));
-
-                    //Convert day to 1 to 7
-                    if ( day >= 8 && day <= 14) {
-                        day = day - 7;
-                    }
-                    else if (day >= 15 && day <= 21) {
-                        day = day - 14;
-                    }
-                    else if(day >= 22 && day <= 28) {
-                        day = day - 21;
-                    }
-                    else if(day >= 29) {
-                        day = day - 28;
-                    }
-
-                    //Convert week to 1 to 52
+                    int week = dateConvertor.getWeekFromDate();
+                    int day = dateConvertor.getDayFromDate();
 
 
                     shift.setDay(day);
-                    shift.setWeek(month);
+                    shift.setWeek(week);
                     shift.setYear(year);
 
                     shiftDAO.addShift(shift);
@@ -195,22 +195,27 @@ public class InsertView extends VerticalLayout {
                     break;
                 case 6:
                     entities.Invoice invoice = new entities.Invoice();
-                    invoice.setDate(new java.sql.Date( invoiceDate.getValue().getTime()));
+                    invoice.setDate(new java.sql.Date(invoiceDate.getValue().getTime()));
                     invoice.setSupplierID(Integer.valueOf(invoiceSupplierID.getValue()));
                     invoice.setTotalValue(Float.valueOf(invoiceTotalValue.getValue()));
                     invoiceDAO.addInvoice(invoice);
                     clearFields(table);
                     break;
                 case 7:
-                    entities.Tables tables = new entities.Tables();
+                    entities.Tables tables = new entities.Tables("");
                     tables.setNoOfSeats(Integer.valueOf(tableNoOfSeats.getValue()));
+                    tables.setArea(tableArea.getValue());
                     tablesDAO.addTable(tables);
                     clearFields(table);
                     break;
             }
         });
-        clearButton = new Button("Clear", e -> {
-            clearFields(table);
+        clearButton = new Button("Clear", e -> clearFields(table));
+
+        checkAvailabilityButton = new Button("Check Availability", e-> {
+            String reservationTime = reservationStartingTimeHour.getValue().toString() + "." + reservationStartingTimeMin.getValue().toString();
+            TableMapView tableMapView = new TableMapView();
+            //tableMapView.checkAvailability(String.valueOf(reservationDate.getValue()), reservationTime);
         });
 
         updateInsertArea(table);
@@ -292,6 +297,34 @@ public class InsertView extends VerticalLayout {
                 break;
             case 3:
                 insertLabel.setValue("Add Reservation");
+                reservationDate.setWidth(screenWidth);
+                CssLayout selectTimeDiv = new CssLayout();
+                BeanItemContainer<String> hourContainer =
+                        new BeanItemContainer<>(String.class);
+
+                BeanItemContainer<String> minContainer =
+                        new BeanItemContainer<>(String.class);
+
+                for(int i = 12; i < 23; i++) {
+                    hourContainer.addItem("" + i );
+                }
+                for(int i = 0; i < 4; i++) {
+                    if(i == 0)
+                        minContainer.addItem("00");
+                    else
+                        minContainer.addItem("" + (i * 15));
+                }
+
+                reservationDate.setValue(new java.sql.Date(new java.util.Date().getTime()));
+                reservationStartingTimeHour.setContainerDataSource(hourContainer);
+                reservationStartingTimeHour.setWidth("100");
+                reservationStartingTimeMin.setWidth("100");
+                reservationStartingTimeMin.setContainerDataSource(minContainer);
+                selectTimeDiv.addComponents(reservationStartingTimeHour,reservationStartingTimeMin);
+                addComponents(insertLabel, reservationDate, selectTimeDiv);
+                insertButtons.addComponents(checkAvailabilityButton);
+                addComponent(insertButtons);
+                setSpacing(true);
                 break;
             case 4:
                 insertLabel.setValue("Add Shift");
@@ -333,8 +366,8 @@ public class InsertView extends VerticalLayout {
             case 7:
                 insertLabel.setValue("Add Table");
                 tableNoOfSeats.setWidth(screenWidth);
-
-                addComponents(insertLabel, tableNoOfSeatsLabel, tableNoOfSeats);
+                tableArea.setWidth(screenWidth);
+                addComponents(insertLabel, tableNoOfSeatsLabel, tableNoOfSeats, tableAreaLabel, tableArea);
                 insertButtons.addComponents(addButton, clearButton);
                 addComponents(insertButtons);
                 break;
@@ -385,6 +418,7 @@ public class InsertView extends VerticalLayout {
                 break;
             case 7:
                 tableNoOfSeats.clear();
+                tableArea.clear();
                 break;
         }
     }

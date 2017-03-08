@@ -29,13 +29,86 @@ public class TablesDAO {
 
     }
 
+    public int getNoOfTables() {
+        int noOfTables = 0;
+        try {
+
+
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT count(*) FROM tables");
+
+            if (rs.first()) {
+                noOfTables = rs.getInt(1);
+            }
+
+            con.close();
+
+        } catch(Exception e){
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        return noOfTables;
+    }
+
+    public ArrayList<String> getAreas() {
+        ArrayList<String> areas = new ArrayList<>();
+        try {
+
+
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT distinct Area FROM bar_mgmt.tables ORDER BY Area Asc;");
+
+            while(rs.next()) {
+                areas.add(rs.getString(1));
+            }
+
+            con.close();
+
+        } catch(Exception e){
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        return areas;
+
+    }
+
+    public int getNoOfAreas() {
+        int noOfAreas = 0;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT count(DISTINCT Area) FROM tables");
+
+            if (rs.first()) {
+                noOfAreas = rs.getInt(1);
+            }
+
+            con.close();
+
+        } catch (Exception e){
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        return noOfAreas;
+
+    }
+
+
     public void addTable(Tables table) {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
-            String query = " insert into tables (NoOfSeats, TableID)"
-                    + " values (?, ?)";
+            String query = " insert into tables (NoOfSeats, TableID, Area)"
+                    + " values (?, ?, ?)";
             Statement highestValueStmt = con.createStatement();
             ResultSet rs = highestValueStmt.executeQuery("SELECT max(TableID) FROM tables");
             int highestValue = 0;
@@ -48,6 +121,7 @@ public class TablesDAO {
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setInt(1, table.getNoOfSeats());
             preparedStmt.setInt(2, highestValue+1);
+            preparedStmt.setString(3, table.getArea());
 
             // execute the preparedstatement
             preparedStmt.execute();
@@ -68,14 +142,13 @@ public class TablesDAO {
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM tables");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM tables ORDER BY area Asc");
 
             while (rs.next()) {
-                Tables table = new Tables();
+                Tables table = new Tables(String.valueOf(rs.getInt(1)));
                 table.setTableID(rs.getInt(1));
                 table.setNoOfSeats(rs.getInt(2));
-                table.setReservationID(rs.getInt(3));
-
+                table.setArea(rs.getString(3));
                 tables.add(table);
 
             }
@@ -106,10 +179,10 @@ public class TablesDAO {
 
             while (rs.next()) {
 
-                Tables table = new Tables();
+                Tables table = new Tables(String.valueOf(rs.getInt(1)));
                 table.setTableID(rs.getInt(1));
                 table.setNoOfSeats(rs.getInt(2));
-                table.setReservationID(rs.getInt(3));
+                table.setArea(rs.getString(3));
 
                 tables.add(table);
 

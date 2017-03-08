@@ -1,6 +1,12 @@
+misc\NavigationBar.class
 views\WagesView.class
+views\TableMapView.class
+misc\MyUI$MyUIServlet.class
 views\LoginView.class
+misc\DateConvertor.class
 views\MainView.class
-ui\MyUI.class
-ui\MyUI$MyUIServlet.class
+views\MainView$1.class
+misc\TableButton.class
+views\PointOfSaleView.class
 views\InsertView.class
+misc\MyUI.class

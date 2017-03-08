@@ -9,6 +9,7 @@ public class Product implements Serializable{
     private int productID;
     private String name;
     private float price;
+    private String type;
     private int quantity;
     private int refNumber;
 
@@ -50,6 +51,15 @@ public class Product implements Serializable{
 
     public void setRefNumber(int refNumber) {
         this.refNumber = refNumber;
+    }
+
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
 

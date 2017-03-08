@@ -4,12 +4,14 @@ import com.vaadin.annotations.DesignRoot;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.server.FontAwesome;
 import com.vaadin.server.Page;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import entities.*;
 import accessobjects.*;
+import misc.TableButton;
+
+import java.util.ArrayList;
 
 /**
  * Created by damo k on 15/02/2017.
@@ -27,28 +29,24 @@ public class MainView extends VerticalLayout implements View {
     private String screenWidth = "100%";
     private Grid grid = new Grid();
     private TextField filterText = new TextField();
-    private Button button1 = new Button("Employee");
-    private Button button2 = new Button("Event");
-    private Button button3 = new Button("Reservations");
-    private Button button4 = new Button("Shift");
-    private Button button5 = new Button("Supplier");
-    private Button button6 = new Button("Invoice");
-    private Button button7 = new Button("Tables");
     private int table = 0;
     private Label showTitle = new Label();
     CssLayout windows = new CssLayout();
     InsertView insertWindow = null;
     WagesView wagesView = null;
-
-    private Button calcWagesButton = new Button("Calculate Wages");
-    private boolean showCalcButton = false;
+    TableMapView tableMapView = null;
+    CssLayout tablesMap = new CssLayout();
+    VerticalLayout tableWindow = new VerticalLayout();
+    VerticalLayout shiftDivHolder = new VerticalLayout();
+    CssLayout shiftDiv1 = new CssLayout();
+    CssLayout shiftDiv2 = new CssLayout();
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
         Page.getCurrent().setTitle("Main Page");
-        final VerticalLayout tableWindow = new VerticalLayout();
+
         //final CssLayout windows = new CssLayout();
-        final CssLayout tables = new CssLayout();
+        final CssLayout topHorizontalDiv = new CssLayout();
         final CssLayout filtering = new CssLayout();
 
         windows.setWidth("100%");
@@ -101,6 +99,10 @@ public class MainView extends VerticalLayout implements View {
 
         Button delSelected = new Button("Delete Selected");
         delSelected.addClickListener(e -> {
+
+            /* TODO: Confirmation Dialog */
+
+
             // Delete all selected data items
             for (Object itemId : selection.getSelectedRows()) {
                 grid.getContainerDataSource().removeItem(itemId);
@@ -112,10 +114,6 @@ public class MainView extends VerticalLayout implements View {
         });
 
 
-
-
-        tables.addComponents(button1, button2, button3, button4, button5, button6, button7);
-        tables.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
         Button clearFilterButton = new Button("Clear Filter");
         clearFilterButton.addClickListener(e -> {
             filterText.clear();
@@ -124,83 +122,112 @@ public class MainView extends VerticalLayout implements View {
 
         updateGrid(table);
 
-        calcWagesButton.addClickListener(e -> {
-            if(insertWindow != null)
-                windows.removeComponent(insertWindow);
 
-            wagesView = new WagesView();
-            wagesView.setWidth("25%");
-            wagesView.run();
-            windows.addComponent(wagesView);
-        });
+        MenuBar.Command menuCalcWages = new MenuBar.Command() {
+            @Override
+            public void menuSelected(MenuBar.MenuItem menuItem) {
+                table = 1;
+                updateGrid(table);
 
-        button1.addClickListener(e -> {
+                if(insertWindow != null)
+                    windows.removeComponent(insertWindow);
+
+                wagesView = new WagesView();
+                wagesView.setWidth("25%");
+                wagesView.run();
+                windows.addComponent(wagesView);
+            }
+        };
+
+        MenuBar.Command menuAddEmployee = (MenuBar.Command) menuItem -> {
             table = 1;
-            filtering.addComponent(calcWagesButton);
             updateGrid(table);
             refreshInsertView(table);
-            showCalcButton = true;
-        });
-        button2.addClickListener(e -> {
+        };
+
+        MenuBar.Command menuAddEvent = (MenuBar.Command) menuItem -> {
             table = 2;
-            if (showCalcButton) {
-                filtering.removeComponent(calcWagesButton);
-                showCalcButton = false;
-            }
             updateGrid(table);
             refreshInsertView(table);
-        });
-        button3.addClickListener(e -> {
+        };
+        MenuBar.Command menuAddReservation = (MenuBar.Command) menuItem -> {
             table = 3;
-            if (showCalcButton) {
-                filtering.removeComponent(calcWagesButton);
-                showCalcButton = false;
-            }
             updateGrid(table);
             refreshInsertView(table);
-        });
-        button4.addClickListener(e -> {
+
+        };
+        MenuBar.Command menuAddShift = (MenuBar.Command) menuItem -> {
             table = 4;
-            if (showCalcButton) {
-                filtering.removeComponent(calcWagesButton);
-                showCalcButton = false;
-            }
             updateGrid(table);
             refreshInsertView(table);
-        });
-        button5.addClickListener(e -> {
+        };
+        MenuBar.Command menuAddSupplier = (MenuBar.Command) menuItem -> {
             table = 5;
-            if (showCalcButton) {
-                filtering.removeComponent(calcWagesButton);
-                showCalcButton = false;
-            }
             updateGrid(table);
             refreshInsertView(table);
-        });
-        button6.addClickListener(e -> {
+        };
+        MenuBar.Command menuAddInvoice = (MenuBar.Command) menuItem -> {
             table = 6;
-            if (showCalcButton) {
-                filtering.removeComponent(calcWagesButton);
-                showCalcButton = false;
-            }
             updateGrid(table);
             refreshInsertView(table);
-        });
-        button7.addClickListener(e -> {
-            if (showCalcButton) {
-                filtering.removeComponent(calcWagesButton);
-                showCalcButton = false;
-            }
+        };
+        MenuBar.Command menuAddTables = (MenuBar.Command) menuItem -> {
             table = 7;
             updateGrid(table);
             refreshInsertView(table);
+        };
+        MenuBar.Command menuShowTableMap = (MenuBar.Command) menuItem -> {
 
-        });
+            /* int noOfTables = tablesDAO.getNoOfTables();
+            for(int i =0 ; i <noOfTables ; i++ ) {
+                Button button = new Button("Table " + i);
+                if(grid != null)
+                    tableWindow.removeComponent(grid);
+
+                tablesMap.addComponent(button);
+            }
+            */
+            if(grid != null)
+                tableWindow.removeComponent(grid);
+
+            tableMapView = new TableMapView();
+            tableMapView.run();
+            tableWindow.addComponent(tableMapView);
+            table = 3;
+            updateGrid(table);
+            refreshInsertView(table);
+        };
+
+
+       // NavigationBar menuBar = new NavigationBar();
+
+        MenuBar menuBar = new MenuBar();
+        menuBar.setAutoOpen(true);
+        menuBar.setHeight("40");
+        MenuBar.MenuItem staffMenu = menuBar.addItem("Staff", null);
+        staffMenu.addItem("Add Employee", menuAddEmployee);
+        staffMenu.addItem("Calculate Wages", menuCalcWages);
+        staffMenu.addItem("Manage Roster", menuAddShift);
+        MenuBar.MenuItem bookingsMenu = menuBar.addItem("Bookings", null);
+        bookingsMenu.addItem("Add Event", menuAddEvent);
+        //TODO: Working Reservations
+        bookingsMenu.addItem("Add Reservations", menuShowTableMap   );
+        bookingsMenu.addItem("Add Tables", menuAddTables);
+        MenuBar.MenuItem stockMenu = menuBar.addItem("Stock", null);
+        stockMenu.addItem("Add Invoice", menuAddInvoice);
+        stockMenu.addItem("Add Supplier", menuAddSupplier);
+
+        //TODO: Sales sales sales
+        MenuBar.MenuItem salesMenu = menuBar.addItem("Sales", null);
+        salesMenu.addItem("Sales Stats", null);
+        salesMenu.addItem("Transactions", null);
+
 
 
         filtering.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
         filtering.addComponents(filterText, clearFilterButton, delSelected);
-        tableWindow.addComponents(showTitle, tables, filtering, grid);
+        topHorizontalDiv.addComponents(showTitle, menuBar);
+        tableWindow.addComponents(topHorizontalDiv, filtering, grid);
         windows.addComponents(tableWindow);
 
         grid.setWidth(screenWidth);
@@ -243,9 +270,70 @@ public class MainView extends VerticalLayout implements View {
 
             case 4:
                 showTitle.setValue("Manage Rosters");
+                /*
                 grid.setEnabled(true);
                 grid.removeAllColumns();
-                grid.setContainerDataSource(new BeanItemContainer<>(Shift.class, shiftDAO.getAllShifts()));
+                grid.setContainerDataSource(new BeanItemContainer<>(Shift.class, shiftDAO.getAllShifts())); */
+                if(grid != null)
+                    tableWindow.removeComponent(grid);
+
+
+
+                Label dayLabel1 = new Label();
+                Label dayLabel2= new Label();
+                Label dayLabel3= new Label();
+                Label dayLabel4= new Label();
+                Label dayLabel5= new Label();
+                Label dayLabel6= new Label();
+                Label dayLabel7= new Label();
+
+                ArrayList<String> shiftsAL; // = new ArrayList<>();
+
+                shiftsAL = shiftDAO.getShiftsByNameAndWeek();
+                for(int i = 0 ; i < 7 ; i ++ ) {
+                   switch (i) {
+                       case 0:
+                           dayLabel1.setCaption("  Sunday");
+                           dayLabel1.setWidth("80");
+                           break;
+                       case 1:
+                           dayLabel2.setCaption(" Monday");
+                           dayLabel2.setWidth("80");
+                           break;
+                       case 2:
+                           dayLabel3.setCaption("Tuesday");
+                           dayLabel3.setWidth("60");
+                           break;
+                       case 3:
+                           dayLabel4.setCaption("Wednesday");
+                           dayLabel4.setWidth("50");
+                           break;
+                       case 4:
+                           dayLabel5.setCaption("Thursday");
+                           dayLabel5.setWidth("50");
+                           break;
+                       case 5:
+                           dayLabel6.setCaption("Friday");
+                           dayLabel6.setWidth("65");
+                           break;
+                       case 6:
+                           dayLabel7.setCaption("Saturday");
+                           dayLabel7.setWidth("65");
+                           break;
+
+                   }
+                }
+                shiftDiv1.addComponents(dayLabel1, dayLabel2, dayLabel3, dayLabel4, dayLabel5, dayLabel6, dayLabel7);
+                shiftDiv1.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
+                for(int i = 0; i <  shiftsAL.size(); i++ ) {
+                    Label shiftTimeLabel = new Label(shiftsAL.get(i));
+                    shiftTimeLabel.setWidth("125");
+                    shiftDiv2.addComponent(shiftTimeLabel);
+                }
+                shiftDiv2.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
+
+                shiftDivHolder.addComponents(shiftDiv1, shiftDiv2);
+                tableWindow.addComponent(shiftDivHolder);
                 break;
 
             case 5:
@@ -308,6 +396,25 @@ public class MainView extends VerticalLayout implements View {
         insertWindow.setWidth("25%");
         insertWindow.run();
         windows.addComponent(insertWindow);
+    }
+
+    public void checkTableAvailability(java.sql.Date date, String startingTime) {
+        int noOfTables = tablesDAO.getNoOfTables();
+        Notification.show(" dsad " + noOfTables);
+        for(int i =0 ; i <noOfTables ; i++ ) {
+            Tables tableButton = new Tables("Table " + i);
+            /*
+            if (tableButton.getReservationDate() == date)
+                if(tableButton.getReservationTime() >= Float.valueOf(startingTime)-2 ||
+                    tableButton.getReservationTime() <= Float.valueOf(startingTime)+2)
+                    tableButton.setStyleName(ValoTheme.BUTTON_PRIMARY);
+*/
+            if(grid != null)
+                tableWindow.removeComponent(grid);
+
+            tablesMap.addComponent(tableButton);
+        }
+        tableWindow.addComponent(tablesMap);
     }
 
 }

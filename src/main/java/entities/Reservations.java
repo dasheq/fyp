@@ -16,6 +16,7 @@ public class Reservations implements Serializable {
     private String email;
     private int numberOfPeople;
     private String description;
+    private int tableID;
 
     public int getReservationID() {
         return reservationID;
@@ -88,4 +89,13 @@ public class Reservations implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public int getTableID() {
+        return tableID;
+    }
+
+    public void setTableID(int tableID) {
+        this.tableID = tableID;
+    }
+
 }
