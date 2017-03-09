@@ -9,6 +9,7 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import entities.*;
 import accessobjects.*;
+import misc.MyUI;
 import misc.TableButton;
 
 import java.util.ArrayList;
@@ -177,25 +178,22 @@ public class MainView extends VerticalLayout implements View {
             refreshInsertView(table);
         };
         MenuBar.Command menuShowTableMap = (MenuBar.Command) menuItem -> {
-
-            /* int noOfTables = tablesDAO.getNoOfTables();
-            for(int i =0 ; i <noOfTables ; i++ ) {
-                Button button = new Button("Table " + i);
-                if(grid != null)
-                    tableWindow.removeComponent(grid);
-
-                tablesMap.addComponent(button);
-            }
-            */
             if(grid != null)
                 tableWindow.removeComponent(grid);
-
+            /*
+            if(tableMapView != null)
+                tableWindow.removeComponent(tableMapView);
+*/
+            MyUI.getCurrent().getUI().getNavigator().navigateTo("reservations");
+            //MyUI.getUI().getNavigator().navigateTo("reservations");
+            /*
             tableMapView = new TableMapView();
-            tableMapView.run();
+            tableMapView.enter();
             tableWindow.addComponent(tableMapView);
             table = 3;
             updateGrid(table);
             refreshInsertView(table);
+            */
         };
 
 

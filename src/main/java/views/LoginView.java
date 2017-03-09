@@ -39,7 +39,7 @@ public class LoginView extends CssLayout implements View{
         loginButton.addClickListener(e -> {
                 correctDetails = employeeDAO.login(username.getValue(), password.getValue());
             if (correctDetails) {
-                Notification.show("Welcome back" + username.getValue());
+                Notification.show("Welcome back " + username.getValue());
                 getUI().getNavigator().navigateTo("home");
             }
         });

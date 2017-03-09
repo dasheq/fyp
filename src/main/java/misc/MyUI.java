@@ -12,6 +12,7 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import views.LoginView;
 import views.MainView;
+import views.TableMapView;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -34,6 +35,7 @@ public class MyUI extends UI {
         final CssLayout mainWindow = new CssLayout();
         getNavigator().addView("login", new LoginView());
         getNavigator().addView("home", new MainView());
+        getNavigator().addView("reservations", new TableMapView());
         getNavigator().navigateTo("login");
         mainWindow.setStyleName(ValoTheme.LAYOUT_WELL);
 

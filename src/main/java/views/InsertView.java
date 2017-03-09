@@ -11,6 +11,7 @@ import com.vaadin.ui.themes.ValoTheme;
 import entities.Employee;
 import entities.Tables;
 import misc.DateConvertor;
+import misc.MyUI;
 //import java.sql.Date;
 
 import java.util.ArrayList;
@@ -165,7 +166,8 @@ public class InsertView extends VerticalLayout {
                     shift.setOvertimeHours(Integer.valueOf(shiftOvertimeHours.getValue()));
                     shift.setUsername(shiftUsername.getValue());
 
-                    String dateString = shiftDate.getValue().toString();
+                    java.sql.Date date = new java.sql.Date(shiftDate.getValue().getTime());
+                    String dateString = date.toString();
                     System.out.println(dateString);
                     //Convert date to integers
 
@@ -215,6 +217,7 @@ public class InsertView extends VerticalLayout {
         checkAvailabilityButton = new Button("Check Availability", e-> {
             String reservationTime = reservationStartingTimeHour.getValue().toString() + "." + reservationStartingTimeMin.getValue().toString();
             TableMapView tableMapView = new TableMapView();
+
             //tableMapView.checkAvailability(String.valueOf(reservationDate.getValue()), reservationTime);
         });
 
