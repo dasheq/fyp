@@ -192,18 +192,38 @@ public class ShiftDAO {
         return wages;
     }
 
-    public ArrayList<String> getShiftsByNameAndWeek() {
-        ArrayList<String> shifts = new ArrayList<>();
+    public ArrayList<Shift> getShiftsByNameAndWeek(String employeeName, int weekNo) {
+        ArrayList<Shift> shifts = new ArrayList<>();
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
-            PreparedStatement stmt = con.prepareStatement("SELECT Start_Time, End_Time FROM shift WHERE Username = 'dasheq' AND week = 2 AND year = 2016");
+            String query = "SELECT ShiftID, Start_Time, End_Time, Day, Week, Year, OvertimeHours, e.Username \n" +
+                    "FROM shift s \n" +
+                    "JOIN employee e\n" +
+                    "ON s.username = e.username\n" +
+                    "WHERE e.name = ? AND\n" +
+                    "s.week = ?";
+
+            PreparedStatement stmt = con.prepareStatement(query);
+            stmt.setString(1, employeeName);
+            stmt.setInt(2, weekNo);
+
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                shifts.add(String.valueOf(rs.getFloat(1)) + " - " + String.valueOf(rs.getFloat(2)));
+                Shift shift = new Shift();
+                shift.setShiftID(rs.getInt(1));
+                shift.setStartTime(rs.getFloat(2));
+                shift.setEndTime(rs.getFloat(3));
+                shift.setDay(rs.getInt(4));
+                shift.setWeek(rs.getInt(5));
+                shift.setYear(rs.getInt(6));
+                shift.setOvertimeHours(rs.getInt(7));
+                shift.setUsername(rs.getString(8));
+
+                shifts.add(shift);
             }
 
 
@@ -216,4 +236,35 @@ public class ShiftDAO {
         }
 
         return shifts;
-    }}
+    }
+
+    public ArrayList<String> getNameFromUsername() {
+        ArrayList<String> fullnames = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            PreparedStatement stmt = con.prepareStatement("SELECT DISTINCT(e.name) \n" +
+                    "FROM bar_mgmt.shift s " +
+                    "INNER JOIN bar_mgmt.employee e " +
+                    "ON s.Username = e.Username");
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                fullnames.add(rs.getString(1));
+            }
+
+
+            con.close();
+
+        } catch (Exception e) {
+            System.out.println(e);
+            e.printStackTrace();
+            System.out.println("Here");
+        }
+
+        return fullnames;
+    }
+
+}
+

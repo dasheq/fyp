@@ -3,6 +3,7 @@ views\WagesView.class
 views\TableMapView.class
 misc\MyUI$MyUIServlet.class
 views\LoginView.class
+views\RosterView.class
 misc\DateConvertor.class
 views\MainView.class
 views\MainView$1.class

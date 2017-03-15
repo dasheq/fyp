@@ -2,15 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7afa4fcc-383e-4286-9035-89bd9484212a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/views/RosterView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/accessobjects/ReservationsDAO.class" afterPath="$PROJECT_DIR$/target/classes/accessobjects/ReservationsDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/accessobjects/ShiftDAO.class" afterPath="$PROJECT_DIR$/target/classes/accessobjects/ShiftDAO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/accessobjects/TablesDAO.class" afterPath="$PROJECT_DIR$/target/classes/accessobjects/TablesDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/entities/Reservations.class" afterPath="$PROJECT_DIR$/target/classes/entities/Reservations.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/entities/Tables.class" afterPath="$PROJECT_DIR$/target/classes/entities/Tables.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/accessobjects/ReservationsDAO.java" afterPath="$PROJECT_DIR$/src/main/java/accessobjects/ReservationsDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/accessobjects/ShiftDAO.java" afterPath="$PROJECT_DIR$/src/main/java/accessobjects/ShiftDAO.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/accessobjects/TablesDAO.java" afterPath="$PROJECT_DIR$/src/main/java/accessobjects/TablesDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entities/Reservations.java" afterPath="$PROJECT_DIR$/src/main/java/entities/Reservations.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entities/Tables.java" afterPath="$PROJECT_DIR$/src/main/java/entities/Tables.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/misc/MyUI.java" afterPath="$PROJECT_DIR$/src/main/java/misc/MyUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/views/InsertView.java" afterPath="$PROJECT_DIR$/src/main/java/views/InsertView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/views/LoginView.java" afterPath="$PROJECT_DIR$/src/main/java/views/LoginView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/views/MainView.java" afterPath="$PROJECT_DIR$/src/main/java/views/MainView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/views/TableMapView.java" afterPath="$PROJECT_DIR$/src/main/java/views/TableMapView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.iml" afterPath="$PROJECT_DIR$/test.iml" />
     </list>
     <ignored path="test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,34 +93,6 @@
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - bar_mgmt@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="product" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - bar_mgmt@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="employee" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -120,21 +100,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/views/MainView.java">
+      <file leaf-file-name="TableMapView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/TableMapView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="235" column="32" lean-forward="true" selection-start-line="235" selection-start-column="32" selection-end-line="235" selection-end-column="32" />
+            <state relative-caret-position="2142">
+              <caret line="149" column="22" lean-forward="true" selection-start-line="149" selection-start-column="22" selection-end-line="149" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/views/LoginView.java">
+      <file leaf-file-name="MainView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/MainView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="43" column="13" lean-forward="true" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+            <state relative-caret-position="526">
+              <caret line="185" column="0" lean-forward="false" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -143,28 +123,18 @@
       <file leaf-file-name="MyUI.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/misc/MyUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="37" column="47" lean-forward="false" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
+            <state relative-caret-position="160">
+              <caret line="41" column="57" lean-forward="false" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Event.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/entities/Event.java">
+      <file leaf-file-name="RosterView.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/RosterView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-170">
-              <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TableMapView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/views/TableMapView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="93" column="36" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+            <state relative-caret-position="221">
+              <caret line="82" column="33" lean-forward="false" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -172,56 +142,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InsertView.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/views/InsertView.java">
+      <file leaf-file-name="ShiftDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/ShiftDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="174" column="53" lean-forward="false" selection-start-line="174" selection-start-column="53" selection-end-line="174" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Reservations.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/entities/Reservations.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TablesDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/TablesDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="134" column="0" lean-forward="true" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+            <state relative-caret-position="171">
+              <caret line="222" column="36" lean-forward="true" selection-start-line="222" selection-start-column="36" selection-end-line="222" selection-end-column="36" />
               <folding>
-                <marker date="1489061880924" expanded="true" signature="442:478" ph="DELETE from " />
-                <marker date="1489061880924" expanded="true" signature="1180:1207" ph="SELECT count... tables" />
-                <marker date="1489061880924" expanded="true" signature="1860:1919" ph="SELECT disti... tables" />
-                <marker date="1489061880924" expanded="true" signature="2533:2572" ph="SELECT count... tables" />
-                <marker date="1489061880924" expanded="true" signature="3101:3188" ph="insert into tables... " />
-                <marker date="1489061880924" expanded="true" signature="3313:3344" ph="SELECT max(T... tables" />
-                <marker date="1489061880924" expanded="true" signature="4380:4400" ph="SELECT * FRO... tables" />
-                <marker date="1489061880924" expanded="true" signature="4380:4418" ph="SELECT * FRO... tables" />
-                <marker date="1489061880924" expanded="true" signature="5379:5426" ph="SELECT * FRO... tables" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/ProductDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1615">
-              <caret line="98" column="39" lean-forward="false" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <marker date="1488999122992" expanded="true" signature="570:591" ph="SELECT * FRO... product" />
-                <marker date="1488999122992" expanded="true" signature="1524:1563" ph="DELETE from " />
-                <marker date="1488999122992" expanded="true" signature="2327:2366" ph="SELECT * FRO... product" />
+                <marker date="1489606788480" expanded="true" signature="471:506" ph="DELETE FROM " />
+                <marker date="1489606788480" expanded="true" signature="1115:1237" ph="INSERT INTO shift... " />
+                <marker date="1489606788480" expanded="true" signature="1362:1392" ph="SELECT max(S... shift" />
+                <marker date="1489606788480" expanded="true" signature="2616:2635" ph="SELECT * FRO... shift" />
+                <marker date="1489606788480" expanded="true" signature="3778:3819" ph="SELECT * FRO... shift" />
+                <marker date="1489606788480" expanded="true" signature="5149:5188" ph="SELECT * FRO... employee" />
+                <marker date="1489606788480" expanded="true" signature="5529:5577" ph="SELECT * FRO... shift" />
+                <marker date="1489606788480" expanded="true" signature="6899:7199" ph="SELECT Start... shift" />
+                <marker date="1489606788480" expanded="true" signature="8493:8673" ph="SELECT Start... shift" />
               </folding>
             </state>
           </provider>
@@ -255,8 +190,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/org/test/CustomerStatus.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/test/DataAccessObjec.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/test/Customer.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/test/CustomerService.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/test/EmployeeService.java" />
@@ -293,19 +226,21 @@
         <option value="$PROJECT_DIR$/src/main/java/ui/TableButton.java" />
         <option value="$PROJECT_DIR$/src/main/java/misc/DateConvertor.java" />
         <option value="$PROJECT_DIR$/src/main/java/misc/TableButton.java" />
-        <option value="$PROJECT_DIR$/src/main/java/accessobjects/ShiftDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/views/PointOfSaleView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entities/Tables.java" />
         <option value="$PROJECT_DIR$/src/main/java/entities/Product.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entities/Reservations.java" />
-        <option value="$PROJECT_DIR$/src/main/java/accessobjects/ReservationsDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/accessobjects/ProductDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/accessobjects/TablesDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/views/LoginView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/InsertView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entities/Tables.java" />
+        <option value="$PROJECT_DIR$/src/main/java/accessobjects/TablesDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entities/Reservations.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/TableMapView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/accessobjects/ReservationsDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/misc/NavigationBar.java" />
         <option value="$PROJECT_DIR$/src/main/java/misc/MyUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/views/MainView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/views/TableMapView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/views/InsertView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/accessobjects/ShiftDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/RosterView.java" />
       </list>
     </option>
   </component>
@@ -342,6 +277,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -489,8 +426,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -507,10 +442,10 @@
     <property name="js.eslint.eslintPackage" value="" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\College\Year4\FYP\test\test" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\College\Year4\FYP\test\test" />
     </key>
   </component>
@@ -1056,7 +991,13 @@
       <workItem from="1488817915898" duration="8821000" />
       <workItem from="1488973376284" duration="495000" />
       <workItem from="1488997672704" duration="7231000" />
-      <workItem from="1489059314115" duration="13275000" />
+      <workItem from="1489059314115" duration="13424000" />
+      <workItem from="1489083907369" duration="4799000" />
+      <workItem from="1489150446273" duration="2347000" />
+      <workItem from="1489399032249" duration="608000" />
+      <workItem from="1489409371636" duration="2923000" />
+      <workItem from="1489420207247" duration="12979000" />
+      <workItem from="1489505800858" duration="26436000" />
     </task>
     <task id="LOCAL-00001" summary="Add Emp/Event and Delete Emp">
       <created>1487012586649</created>
@@ -1100,11 +1041,18 @@
       <option name="project" value="LOCAL" />
       <updated>1489005564110</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Working on TableMap v2">
+      <created>1489079404085</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1489079404085</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191714000" />
+    <option name="totallyTimeSpent" value="241955000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1120,32 +1068,32 @@
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2903752" sideWeight="0.50453174" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23640484" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20090635" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5111821" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25448614" sideWeight="0.4954683" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2903752" sideWeight="0.50453174" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23628049" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33931485" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2756933" sideWeight="0.4954683" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.49697885" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23564954" sideWeight="0.4888179" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3141994" sideWeight="0.46952596" order="8" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5111821" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20090635" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3125" sideWeight="0.53047407" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1169,7 +1117,8 @@
     <MESSAGE value="Calculate wages v1" />
     <MESSAGE value="Calculate wages v2" />
     <MESSAGE value="Working on TableMap" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working on TableMap" />
+    <MESSAGE value="Working on TableMap v2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on TableMap v2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1196,24 +1145,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/EmployeeDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <marker date="1487263149810" expanded="true" signature="620:781" ph="insert into employee... " />
-            <marker date="1487263149810" expanded="true" signature="2062:2083" ph="DELETE from " />
-            <marker date="1487263149810" expanded="true" signature="2062:2101" ph="DELETE from " />
-            <marker date="1487263149810" expanded="true" signature="2062:2102" ph="DELETE from " />
-            <marker date="1487263149810" expanded="true" signature="2783:2837" ph="SELECT * FRO... employee" />
-            <marker date="1487263149810" expanded="true" signature="3787:3809" ph="SELECT * FRO... employee" />
-            <marker date="1487263149810" expanded="true" signature="4962:5002" ph="SELECT * FRO... employee" />
-            <marker date="1487263149810" expanded="true" signature="4962:5004" ph="SELECT * FRO... employee" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/entities/Employee.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1598">
@@ -1349,29 +1280,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="73" column="21" lean-forward="false" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/172be0c/12854066-22c2-458b-a966-c5e8c472d101/bar_mgmt.reservations">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
         </state>
       </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.7.4/vaadin-server-7.7.4.jar!/com/vaadin/ui/Button.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="85" column="13" lean-forward="false" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="13" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1383,25 +1300,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/SaleDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="21" column="59" lean-forward="false" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entities/Shift.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/entities/Supplier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1410,13 +1312,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="55">
           <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <marker date="1487188358985" expanded="true" signature="451:492" ph="DELETE from " />
-            <marker date="1487188358985" expanded="true" signature="1114:1244" ph="insert into supplier... " />
-            <marker date="1487188358985" expanded="true" signature="1369:1405" ph="SELECT max(S... supplier" />
-            <marker date="1487188358985" expanded="true" signature="2708:2730" ph="SELECT * FRO... supplier" />
-            <marker date="1487188358985" expanded="true" signature="3828:3868" ph="SELECT * FRO... supplier" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1424,56 +1319,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="9" column="3" lean-forward="false" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-          <folding>
-            <element signature="e#565#566#0" expanded="false" />
-            <element signature="e#587#588#0" expanded="false" />
-            <element signature="e#632#633#0" expanded="false" />
-            <element signature="e#663#664#0" expanded="false" />
-            <element signature="e#691#692#0" expanded="false" />
-            <element signature="e#709#710#0" expanded="false" />
-            <element signature="e#746#747#0" expanded="false" />
-            <element signature="e#769#770#0" expanded="false" />
-            <element signature="e#800#801#0" expanded="false" />
-            <element signature="e#821#822#0" expanded="false" />
-            <element signature="e#864#865#0" expanded="false" />
-            <element signature="e#893#894#0" expanded="false" />
-            <element signature="e#918#919#0" expanded="false" />
-            <element signature="e#935#936#0" expanded="false" />
-            <element signature="e#1024#1025#0" expanded="false" />
-            <element signature="e#1043#1044#0" expanded="false" />
-            <element signature="e#1079#1080#0" expanded="false" />
-            <element signature="e#1104#1105#0" expanded="false" />
-            <element signature="e#1135#1136#0" expanded="false" />
-            <element signature="e#1157#1158#0" expanded="false" />
-            <element signature="e#1201#1202#0" expanded="false" />
-            <element signature="e#1232#1233#0" expanded="false" />
-            <element signature="e#1268#1269#0" expanded="false" />
-            <element signature="e#1294#1295#0" expanded="false" />
-            <element signature="e#1347#1348#0" expanded="false" />
-            <element signature="e#1386#1387#0" expanded="false" />
-            <element signature="e#1418#1419#0" expanded="false" />
-            <element signature="e#1440#1441#0" expanded="false" />
-            <element signature="e#1485#1486#0" expanded="false" />
-            <element signature="e#1516#1517#0" expanded="false" />
-            <element signature="e#1548#1549#0" expanded="false" />
-            <element signature="e#1570#1571#0" expanded="false" />
-            <element signature="e#1615#1616#0" expanded="false" />
-            <element signature="e#1646#1647#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/EventDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="31" column="43" lean-forward="false" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
-          <folding>
-            <marker date="1487263734097" expanded="true" signature="430:565" ph="insert into event... " />
-            <marker date="1487263734097" expanded="true" signature="690:720" ph="select max(e... event" />
-            <marker date="1487263734097" expanded="true" signature="1935:1970" ph="DELETE from " />
-            <marker date="1487263734097" expanded="true" signature="2708:2727" ph="SELECT * FRO... event" />
-            <marker date="1487263734097" expanded="true" signature="3872:3912" ph="SELECT * FRO... event" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1499,50 +1344,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="803">
           <caret line="85" column="53" lean-forward="false" selection-start-line="85" selection-start-column="53" selection-end-line="85" selection-end-column="53" />
-          <folding>
-            <marker date="1487764462042" expanded="true" signature="571:592" ph="SELECT * FRO... invoice" />
-            <marker date="1487764462042" expanded="true" signature="1428:1467" ph="DELETE from " />
-            <marker date="1487764462042" expanded="true" signature="2085:2191" ph="insert into invoice... " />
-            <marker date="1487764462042" expanded="true" signature="2316:2350" ph="SELECT max(R... invoice" />
-            <marker date="1487764462042" expanded="true" signature="3476:3515" ph="SELECT * FRO... invoice" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/misc/NavigationBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="17" column="20" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/ShiftDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3451">
-          <caret line="207" column="0" lean-forward="false" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <marker date="1487876851622" expanded="true" signature="471:506" ph="DELETE from " />
-            <marker date="1487876851622" expanded="true" signature="1115:1237" ph="insert into event... " />
-            <marker date="1487876851622" expanded="true" signature="1362:1387" ph="SELECT max(e... event" />
-            <marker date="1487876851622" expanded="true" signature="1362:1392" ph="SELECT max(S... shift" />
-            <marker date="1487876851622" expanded="true" signature="2616:2635" ph="SELECT * FRO... shift" />
-            <marker date="1487876851622" expanded="true" signature="3778:3819" ph="SELECT * FRO... shift" />
-            <marker date="1487876851622" expanded="true" signature="5149:5188" ph="SELECT * FRO... employee" />
-            <marker date="1487876851622" expanded="true" signature="5529:5577" ph="SELECT * FRO... shift" />
-            <marker date="1487876851622" expanded="true" signature="6901:6956" ph="SELECT Start... shift" />
-            <marker date="1487876851622" expanded="true" signature="6901:6978" ph="SELECT Start... shift" />
-            <marker date="1487876851622" expanded="true" signature="6901:6994" ph="SELECT Start... shift" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/misc/TableButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1556,26 +1357,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entities/Tables.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-          <folding>
-            <element signature="e#318#319#0" expanded="false" />
-            <element signature="e#358#359#0" expanded="false" />
-            <element signature="e#685#686#0" expanded="false" />
-            <element signature="e#712#713#0" expanded="false" />
-            <element signature="e#752#753#0" expanded="false" />
-            <element signature="e#784#785#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/entities/Sale.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1587,7 +1372,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/views/PointOfSaleView.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/entities/Product.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="62" column="5" lean-forward="false" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.7.4/vaadin-server-7.7.4.jar!/com/vaadin/ui/MenuBar.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="143" column="0" lean-forward="false" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entities/Invoice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entities/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/LoginView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="43" column="13" lean-forward="false" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/misc/TableButton.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
@@ -1595,44 +1418,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entities/Product.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/entities/Tables.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="62" column="5" lean-forward="false" selection-start-line="62" selection-start-column="5" selection-end-line="62" selection-end-column="5" />
+        <state relative-caret-position="272">
+          <caret line="22" column="8" lean-forward="false" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
           <folding>
-            <element signature="e#325#326#0" expanded="false" />
-            <element signature="e#357#358#0" expanded="false" />
-            <element signature="e#404#405#0" expanded="false" />
-            <element signature="e#446#447#0" expanded="false" />
-            <element signature="e#477#478#0" expanded="false" />
+            <element signature="imports" expanded="false" />
             <element signature="e#504#505#0" expanded="false" />
-            <element signature="e#544#545#0" expanded="false" />
-            <element signature="e#576#577#0" expanded="false" />
-            <element signature="e#607#608#0" expanded="false" />
-            <element signature="e#635#636#0" expanded="false" />
-            <element signature="e#676#677#0" expanded="false" />
-            <element signature="e#710#711#0" expanded="false" />
-            <element signature="e#742#743#0" expanded="false" />
-            <element signature="e#773#774#0" expanded="false" />
-            <element signature="e#818#819#0" expanded="false" />
-            <element signature="e#858#859#0" expanded="false" />
-            <element signature="e#891#892#0" expanded="false" />
-            <element signature="e#923#924#0" expanded="false" />
-            <element signature="e#970#971#0" expanded="false" />
-            <element signature="e#1012#1013#0" expanded="false" />
+            <element signature="e#534#535#0" expanded="false" />
+            <element signature="e#577#578#0" expanded="false" />
+            <element signature="e#615#616#0" expanded="false" />
+            <element signature="e#648#649#0" expanded="false" />
+            <element signature="e#680#681#0" expanded="false" />
+            <element signature="e#727#728#0" expanded="false" />
+            <element signature="e#769#770#0" expanded="false" />
+            <element signature="e#800#801#0" expanded="false" />
+            <element signature="e#827#828#0" expanded="false" />
+            <element signature="e#867#868#0" expanded="false" />
+            <element signature="e#899#900#0" expanded="false" />
+            <element signature="e#934#935#0" expanded="false" />
+            <element signature="e#967#968#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/ReservationsDAO.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1377">
-          <caret line="84" column="15" lean-forward="false" selection-start-line="84" selection-start-column="15" selection-end-line="84" selection-end-column="15" />
+        <state relative-caret-position="1088">
+          <caret line="73" column="21" lean-forward="false" selection-start-line="73" selection-start-column="21" selection-end-line="73" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/TablesDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2550">
+          <caret line="153" column="13" lean-forward="false" selection-start-line="153" selection-start-column="13" selection-end-line="153" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="false" />
-            <marker date="1488999122938" expanded="true" signature="598:624" ph="SELECT * FRO... reservations" />
-            <marker date="1488999122938" expanded="true" signature="1858:1906" ph="DELETE from " />
-            <marker date="1488999122938" expanded="true" signature="2693:2732" ph="SELECT * FRO... product" />
+            <marker date="1489430394146" expanded="true" signature="442:478" ph="DELETE from " />
+            <marker date="1489430394146" expanded="true" signature="1180:1207" ph="SELECT count... tables" />
+            <marker date="1489430394146" expanded="true" signature="1860:1919" ph="SELECT disti... tables" />
+            <marker date="1489430394146" expanded="true" signature="2533:2572" ph="SELECT count... tables" />
+            <marker date="1489430394146" expanded="true" signature="3101:3188" ph="insert into tables... " />
+            <marker date="1489430394146" expanded="true" signature="3313:3344" ph="SELECT max(T... tables" />
+            <marker date="1489430394146" expanded="true" signature="4380:4400" ph="SELECT * FRO... tables" />
+            <marker date="1489430394146" expanded="true" signature="4380:4418" ph="SELECT * FRO... tables" />
+            <marker date="1489430394146" expanded="true" signature="5394:5441" ph="SELECT * FRO... tables" />
           </folding>
         </state>
       </provider>
@@ -1650,95 +1482,147 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/TablesDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/InsertView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="134" column="0" lean-forward="true" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
-          <folding>
-            <marker date="1489061880924" expanded="true" signature="442:478" ph="DELETE from " />
-            <marker date="1489061880924" expanded="true" signature="1180:1207" ph="SELECT count... tables" />
-            <marker date="1489061880924" expanded="true" signature="1860:1919" ph="SELECT disti... tables" />
-            <marker date="1489061880924" expanded="true" signature="2533:2572" ph="SELECT count... tables" />
-            <marker date="1489061880924" expanded="true" signature="3101:3188" ph="insert into tables... " />
-            <marker date="1489061880924" expanded="true" signature="3313:3344" ph="SELECT max(T... tables" />
-            <marker date="1489061880924" expanded="true" signature="4380:4400" ph="SELECT * FRO... tables" />
-            <marker date="1489061880924" expanded="true" signature="4380:4418" ph="SELECT * FRO... tables" />
-            <marker date="1489061880924" expanded="true" signature="5379:5426" ph="SELECT * FRO... tables" />
-          </folding>
+        <state relative-caret-position="207">
+          <caret line="199" column="87" lean-forward="false" selection-start-line="199" selection-start-column="36" selection-end-line="199" selection-end-column="87" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.7.4/vaadin-server-7.7.4.jar!/com/vaadin/ui/MenuBar.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/misc/NavigationBar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="143" column="0" lean-forward="false" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
+        <state relative-caret-position="272">
+          <caret line="16" column="10" lean-forward="false" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/SaleDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="21" column="59" lean-forward="false" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
+          <folding>
+            <marker date="1487016499612" expanded="true" signature="436:469" ph="DELETE from " />
+            <marker date="1487016499612" expanded="true" signature="1202:1220" ph="SELECT * FRO... sale" />
+            <marker date="1487016499612" expanded="true" signature="2207:2248" ph="SELECT * FRO... sale" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/entities/Reservations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+        <state relative-caret-position="-187">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/EventDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="17" column="51" lean-forward="true" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
+          <folding>
+            <marker date="1487263734097" expanded="true" signature="430:565" ph="insert into event... " />
+            <marker date="1487263734097" expanded="true" signature="690:720" ph="SELECT max(e... event" />
+            <marker date="1487263734097" expanded="true" signature="1935:1970" ph="DELETE from " />
+            <marker date="1487263734097" expanded="true" signature="2708:2727" ph="SELECT * FRO... event" />
+            <marker date="1487263734097" expanded="true" signature="3872:3912" ph="SELECT * FRO... event" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/ReservationsDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="96" column="35" lean-forward="false" selection-start-line="96" selection-start-column="35" selection-end-line="96" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1489591977000" expanded="true" signature="598:624" ph="SELECT * FRO... reservations" />
+            <marker date="1489591977000" expanded="true" signature="1858:1906" ph="DELETE from " />
+            <marker date="1489591977000" expanded="true" signature="2539:2744" ph="insert into event... " />
+            <marker date="1489591977000" expanded="true" signature="2869:2900" ph="SELECT max(e... event" />
+            <marker date="1489591977000" expanded="true" signature="2869:2912" ph="SELECT max(r... reservations" />
+            <marker date="1489591977000" expanded="true" signature="4439:4478" ph="SELECT * FRO... product" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entities/Shift.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entities/Invoice.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/PointOfSaleView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        <state relative-caret-position="136">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/vaadin/vaadin-server/7.7.4/vaadin-server-7.7.4.jar!/com/vaadin/ui/Button.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="242" column="13" lean-forward="false" selection-start-line="242" selection-start-column="13" selection-end-line="242" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/misc/MyUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="37" column="47" lean-forward="false" selection-start-line="37" selection-start-column="47" selection-end-line="37" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entities/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-170">
-          <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/views/LoginView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="43" column="13" lean-forward="true" selection-start-line="43" selection-start-column="13" selection-end-line="43" selection-end-column="13" />
+        <state relative-caret-position="160">
+          <caret line="41" column="57" lean-forward="false" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/views/MainView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="235" column="32" lean-forward="true" selection-start-line="235" selection-start-column="32" selection-end-line="235" selection-end-column="32" />
+        <state relative-caret-position="526">
+          <caret line="185" column="0" lean-forward="false" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/views/TableMapView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="93" column="36" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+        <state relative-caret-position="2142">
+          <caret line="149" column="22" lean-forward="true" selection-start-line="149" selection-start-column="22" selection-end-line="149" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/ShiftDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="222" column="36" lean-forward="true" selection-start-line="222" selection-start-column="36" selection-end-line="222" selection-end-column="36" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <marker date="1489606788480" expanded="true" signature="471:506" ph="DELETE FROM " />
+            <marker date="1489606788480" expanded="true" signature="1115:1237" ph="INSERT INTO shift... " />
+            <marker date="1489606788480" expanded="true" signature="1362:1392" ph="SELECT max(S... shift" />
+            <marker date="1489606788480" expanded="true" signature="2616:2635" ph="SELECT * FRO... shift" />
+            <marker date="1489606788480" expanded="true" signature="3778:3819" ph="SELECT * FRO... shift" />
+            <marker date="1489606788480" expanded="true" signature="5149:5188" ph="SELECT * FRO... employee" />
+            <marker date="1489606788480" expanded="true" signature="5529:5577" ph="SELECT * FRO... shift" />
+            <marker date="1489606788480" expanded="true" signature="6899:7199" ph="SELECT Start... shift" />
+            <marker date="1489606788480" expanded="true" signature="8493:8673" ph="SELECT Start... shift" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/views/InsertView.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/RosterView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="174" column="53" lean-forward="false" selection-start-line="174" selection-start-column="53" selection-end-line="174" selection-end-column="53" />
-          <folding />
+        <state relative-caret-position="221">
+          <caret line="82" column="33" lean-forward="false" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

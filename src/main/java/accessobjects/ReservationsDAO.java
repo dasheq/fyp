@@ -68,6 +68,43 @@ public class ReservationsDAO {
 
     }
 
+    public void addReservation(Reservations toBeAdded) {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            String query = " insert into reservations (ReservationID, StartingTime, EndingTime, Name, Number, Email, NumberOfPeople, Description, TableID, ReservationDate)"
+                    + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            Statement highestValueStmt = con.createStatement();
+            ResultSet rs = highestValueStmt.executeQuery("SELECT max(reservationID) FROM reservations");
+            int highestValue = 0;
+            if (rs.first()) {
+                highestValue = rs.getInt(1);
+            }
+            rs.close();
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setInt(1, highestValue+1);
+            preparedStmt.setFloat(2, toBeAdded.getStartingTime());
+            preparedStmt.setFloat(3, toBeAdded.getEndingTime());
+            preparedStmt.setString(4, toBeAdded.getName());
+            preparedStmt.setInt(5, toBeAdded.getNumber());
+            preparedStmt.setString(6, toBeAdded.getEmail());
+            preparedStmt.setInt(7, toBeAdded.getNumberOfPeople());
+            preparedStmt.setString(8, toBeAdded.getDescription());
+            preparedStmt.setInt(9, toBeAdded.getTableID());
+            preparedStmt.setDate(10, toBeAdded.getDate());
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public ArrayList<Reservations> getReservationsByName(String filter){
         ArrayList<Reservations> reservations = new ArrayList<>();
 

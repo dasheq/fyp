@@ -26,6 +26,7 @@ public class MainView extends VerticalLayout implements View {
     ShiftDAO shiftDAO = new ShiftDAO();
     SupplierDAO supplierDAO = new SupplierDAO();
     TablesDAO tablesDAO = new TablesDAO();
+    SaleDAO saleDAO = new SaleDAO();
 
     private String screenWidth = "100%";
     private Grid grid = new Grid();
@@ -88,6 +89,8 @@ public class MainView extends VerticalLayout implements View {
                 case 7:
                     grid.setContainerDataSource(new BeanItemContainer<>(Tables.class, tablesDAO.getTableByName(e.getText())));
                     break;
+                case 8:
+                    grid.setContainerDataSource(new BeanItemContainer<>(Sale.class, saleDAO.getSaleByName(e.getText())));
             }
 
             if (e.getText().equals(""))
@@ -151,16 +154,11 @@ public class MainView extends VerticalLayout implements View {
             updateGrid(table);
             refreshInsertView(table);
         };
-        MenuBar.Command menuAddReservation = (MenuBar.Command) menuItem -> {
-            table = 3;
-            updateGrid(table);
-            refreshInsertView(table);
-
-        };
         MenuBar.Command menuAddShift = (MenuBar.Command) menuItem -> {
-            table = 4;
-            updateGrid(table);
-            refreshInsertView(table);
+            if(grid != null)
+                tableWindow.removeComponent(grid);
+
+            MyUI.getCurrent().getUI().getNavigator().navigateTo("roster");
         };
         MenuBar.Command menuAddSupplier = (MenuBar.Command) menuItem -> {
             table = 5;
@@ -177,23 +175,20 @@ public class MainView extends VerticalLayout implements View {
             updateGrid(table);
             refreshInsertView(table);
         };
-        MenuBar.Command menuShowTableMap = (MenuBar.Command) menuItem -> {
-            if(grid != null)
-                tableWindow.removeComponent(grid);
-            /*
-            if(tableMapView != null)
-                tableWindow.removeComponent(tableMapView);
-*/
-            MyUI.getCurrent().getUI().getNavigator().navigateTo("reservations");
-            //MyUI.getUI().getNavigator().navigateTo("reservations");
-            /*
-            tableMapView = new TableMapView();
-            tableMapView.enter();
-            tableWindow.addComponent(tableMapView);
+        MenuBar.Command menuShowReservations = (MenuBar.Command) menuItem -> {
             table = 3;
             updateGrid(table);
             refreshInsertView(table);
-            */
+        };
+        MenuBar.Command menuShowTableMap = (MenuBar.Command) menuItem -> {
+            if(grid != null)
+                tableWindow.removeComponent(grid);
+
+            MyUI.getCurrent().getUI().getNavigator().navigateTo("reservations");
+        };
+        MenuBar.Command menuSaleTransactions = (MenuBar.Command) menuItem -> {
+            table = 8;
+            updateGrid(table);
         };
 
 
@@ -208,8 +203,8 @@ public class MainView extends VerticalLayout implements View {
         staffMenu.addItem("Manage Roster", menuAddShift);
         MenuBar.MenuItem bookingsMenu = menuBar.addItem("Bookings", null);
         bookingsMenu.addItem("Add Event", menuAddEvent);
-        //TODO: Working Reservations
-        bookingsMenu.addItem("Add Reservations", menuShowTableMap   );
+        bookingsMenu.addItem("See Reservations", menuShowReservations);
+        bookingsMenu.addItem("Make a Reservation", menuShowTableMap   );
         bookingsMenu.addItem("Add Tables", menuAddTables);
         MenuBar.MenuItem stockMenu = menuBar.addItem("Stock", null);
         stockMenu.addItem("Add Invoice", menuAddInvoice);
@@ -218,7 +213,7 @@ public class MainView extends VerticalLayout implements View {
         //TODO: Sales sales sales
         MenuBar.MenuItem salesMenu = menuBar.addItem("Sales", null);
         salesMenu.addItem("Sales Stats", null);
-        salesMenu.addItem("Transactions", null);
+        salesMenu.addItem("Transactions", menuSaleTransactions);
 
 
 
@@ -267,11 +262,9 @@ public class MainView extends VerticalLayout implements View {
                 break;
 
             case 4:
-                showTitle.setValue("Manage Rosters");
                 /*
-                grid.setEnabled(true);
-                grid.removeAllColumns();
-                grid.setContainerDataSource(new BeanItemContainer<>(Shift.class, shiftDAO.getAllShifts())); */
+                showTitle.setValue("Manage Rosters");
+
                 if(grid != null)
                     tableWindow.removeComponent(grid);
 
@@ -332,8 +325,8 @@ public class MainView extends VerticalLayout implements View {
 
                 shiftDivHolder.addComponents(shiftDiv1, shiftDiv2);
                 tableWindow.addComponent(shiftDivHolder);
+                */
                 break;
-
             case 5:
                 showTitle.setValue("Manage Suppliers");
                 grid.setEnabled(true);
@@ -354,6 +347,12 @@ public class MainView extends VerticalLayout implements View {
                 grid.removeAllColumns();
                 grid.setContainerDataSource(new BeanItemContainer<>(Tables.class, tablesDAO.getAllTables()));
                 break;
+
+            case 8:
+                showTitle.setValue("Manage Sales");
+                grid.setEnabled(true);
+                grid.removeAllColumns();
+                grid.setContainerDataSource(new BeanItemContainer<>(Sale.class, saleDAO.getAllSales()));
         }
     }
 
@@ -380,6 +379,8 @@ public class MainView extends VerticalLayout implements View {
             case 7:
                 tablesDAO.deleteTable((Tables) toBeDeleted);
                 break;
+            case 8:
+                saleDAO.deleteSale((Sale) toBeDeleted);
         }
         updateGrid(table);
     }
@@ -394,25 +395,6 @@ public class MainView extends VerticalLayout implements View {
         insertWindow.setWidth("25%");
         insertWindow.run();
         windows.addComponent(insertWindow);
-    }
-
-    public void checkTableAvailability(java.sql.Date date, String startingTime) {
-        int noOfTables = tablesDAO.getNoOfTables();
-        Notification.show(" dsad " + noOfTables);
-        for(int i =0 ; i <noOfTables ; i++ ) {
-            Tables tableButton = new Tables("Table " + i);
-            /*
-            if (tableButton.getReservationDate() == date)
-                if(tableButton.getReservationTime() >= Float.valueOf(startingTime)-2 ||
-                    tableButton.getReservationTime() <= Float.valueOf(startingTime)+2)
-                    tableButton.setStyleName(ValoTheme.BUTTON_PRIMARY);
-*/
-            if(grid != null)
-                tableWindow.removeComponent(grid);
-
-            tablesMap.addComponent(tableButton);
-        }
-        tableWindow.addComponent(tablesMap);
     }
 
 }

@@ -145,7 +145,7 @@ public class TablesDAO {
             ResultSet rs = stmt.executeQuery("SELECT * FROM tables ORDER BY area Asc");
 
             while (rs.next()) {
-                Tables table = new Tables(String.valueOf("ID: " + rs.getInt(1)) + " Seats: " + rs.getInt(2));
+                Tables table = new Tables("ID: "+ String.valueOf(rs.getInt(1)) + " Seats: " + String.valueOf(rs.getInt(2)));
                 table.setTableID(rs.getInt(1));
                 table.setNoOfSeats(rs.getInt(2));
                 table.setArea(rs.getString(3));
@@ -179,7 +179,7 @@ public class TablesDAO {
 
             while (rs.next()) {
 
-                Tables table = new Tables(String.valueOf(rs.getInt(1)));
+                Tables table = new Tables("ID: "+rs.getInt(1) + " Seats: " + rs.getInt(3));
                 table.setTableID(rs.getInt(1));
                 table.setNoOfSeats(rs.getInt(2));
                 table.setArea(rs.getString(3));

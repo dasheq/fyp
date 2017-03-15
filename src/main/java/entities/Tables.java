@@ -1,21 +1,29 @@
 package entities;
 
 import com.vaadin.ui.Button;
+import com.vaadin.ui.CheckBox;
 
+import java.awt.*;
 import java.io.Serializable;
 import java.sql.Date;
 
 /**
  * Created by damo k on 01/02/2017.
  */
-public class Tables extends Button implements Serializable{
+public class Tables extends CheckBox implements Serializable{
     private int tableID;
     private int noOfSeats;
+
+
+    private boolean isReserved;
 
     private String area;
 
     public Tables(String caption) {
         this.setCaption(caption);
+    }
+
+    public Tables() {
     }
 
     public int getTableID() {
@@ -40,6 +48,15 @@ public class Tables extends Button implements Serializable{
 
     public void setArea(String area) {
         this.area = area;
+    }
+
+    public boolean isReserved() {
+        return isReserved;
+    }
+
+    public void setReserved(boolean reserved) {
+        isReserved = reserved;
+        //setStyleName();
     }
 
 }

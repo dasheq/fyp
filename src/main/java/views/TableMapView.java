@@ -7,13 +7,14 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Page;
 import com.vaadin.ui.*;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.TextField;
 import com.vaadin.ui.themes.ValoTheme;
 import entities.Reservations;
 import entities.Tables;
 
 import java.util.ArrayList;
-
-import static jdk.nashorn.internal.runtime.regexp.joni.Syntax.Java;
 
 /**
  * Created by damo k on 06/03/2017.
@@ -25,16 +26,23 @@ public class TableMapView extends CssLayout implements View {
     CssLayout insertButtons = new CssLayout();
 
     Button checkAvailabilityButton = new Button("Check Availability");
+    Label chosenTablesLabel = new Label();
+    Label noOfSeatsLabel = new Label();
 
     ReservationsDAO reservationsDAO = new ReservationsDAO();
     TablesDAO tablesDAO = new TablesDAO();
     ArrayList<Tables> tablesList = tablesDAO.getAllTables();
     ArrayList<Reservations> reservationsList = reservationsDAO.getAllReservations();
     ArrayList<String> areas = tablesDAO.getAreas();
+    ArrayList<Integer> tableIDs = new ArrayList<>();
+    int noOfSeats;
     int noOfTables = tablesList.size();
     int noOfAreas = tablesDAO.getNoOfAreas();
+    String screenWidth = "100%";
 
     //Variables for Insert Reservation Window
+    boolean tablesAvailable = false;
+    boolean continueReservation = false;
     private Label insertLabel = new Label("Add Reservations");
     private PopupDateField reservationDate = new PopupDateField("Date");
     private NativeSelect reservationStartingTimeHour = new NativeSelect("Hour");
@@ -46,14 +54,67 @@ public class TableMapView extends CssLayout implements View {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
+        setupComponents();
+        getUI().setContent(this);
+
+        for(int i = 0; i< tablesList.size(); i++ ) {
+            tablesList.get(i).addValueChangeListener(e -> {
+                if(tablesAvailable) {
+                    tableIDs.clear();
+                    noOfSeats = 0;
+                    checkTablesChosen();
+                    chosenTablesLabel.setValue("Chosen Tables: " + tableIDs.toString());
+                    noOfSeatsLabel.setValue("Seats :" + noOfSeats);
+                    if(!continueReservation) {
+                        setupMoreComponents();
+                        continueReservation = true;
+                    }
+                }
+            });
+        }
+    }
+
+    public void checkTablesChosen() {
+        for(int i = 0 ; i< tablesList.size(); i++) {
+            if(tablesList.get(i).getValue() == true) {
+                if(!tableIDs.contains(tablesList.get(i).getTableID())) {
+                    noOfSeats += tablesList.get(i).getNoOfSeats();
+                    tableIDs.add(tablesList.get(i).getTableID());
+                }
+            }
+        }
+    }
+
+
+    public void checkAvailability(String reservationDate, String reservationTime) {
+        for(int k = 0; k < tablesList.size(); k++) {
+            tablesList.get(k).setEnabled(true);
+        }
+        tablesAvailable = true;
+
+        for (int i = 0; i < reservationsList.size(); i++) {
+            if (String.valueOf(reservationsList.get(i).getDate()).equals(reservationDate)) {
+                for(int j = 0; j < tablesList.size() ; j++) {
+                    if (reservationsList.get(i).getTableID() == tablesList.get(j).getTableID()) {
+                        if ((reservationsList.get(i).getStartingTime() - Float.valueOf(reservationTime)) >= -2 &&
+                                (reservationsList.get(i).getStartingTime() - Float.valueOf(reservationTime)) <= 2) {
+                            tablesList.get(j).setEnabled(false);
+                            //tablesList.get(j).setReserved(true);
+                        } else {
+                            tablesList.get(j).setEnabled(true);
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+    public void setupComponents() {
         this.setWidth("100%");
         mainView.setWidth("75%");
         sideView.setWidth("25%");
-        String screenWidth = String.valueOf(this.getWidth());
-        System.out.println(screenWidth);
         Page.getCurrent().setTitle("Reservations");
-
-
 
         Label label = new Label("Tables Map");
         label.setStyleName(ValoTheme.LABEL_H3);
@@ -65,13 +126,16 @@ public class TableMapView extends CssLayout implements View {
             CssLayout areaTableLayout = new CssLayout();
             for(int j = 0; j < noOfTables; j++) {
                 if (tablesList.get(j).getArea().equals(areas.get(i))) {
+                    tablesList.get(j).setEnabled(false);
                     areaTableLayout.addComponent(tablesList.get(j));
+                    tablesList.get(j).setStyleName(ValoTheme.CHECKBOX_LARGE);
                 }
             }
+            areaTableLayout.setStyleName(ValoTheme.LAYOUT_HORIZONTAL_WRAPPING);
             mainView.addComponent(areaTableLayout);
         }
 
-        reservationDate.setWidth("100%");
+        reservationDate.setWidth(screenWidth);
         CssLayout selectTimeDiv = new CssLayout();
         BeanItemContainer<String> hourContainer =
                 new BeanItemContainer<>(String.class);
@@ -92,39 +156,77 @@ public class TableMapView extends CssLayout implements View {
         checkAvailabilityButton.addClickListener(e -> {
             String reservationTime = reservationStartingTimeHour.getValue().toString() + "." + reservationStartingTimeMin.getValue().toString();
             java.sql.Date date = new java.sql.Date(reservationDate.getValue().getTime());
-            System.out.println(reservationDate.getValue().toString().getClass());
             checkAvailability(date.toString(), reservationTime);
         });
 
         reservationDate.setValue(new java.sql.Date(new java.util.Date().getTime()));
         reservationStartingTimeHour.setContainerDataSource(hourContainer);
-        reservationStartingTimeHour.setWidth("100%");
-        reservationStartingTimeMin.setWidth("100%");
+        reservationStartingTimeHour.setWidth(screenWidth);
+        reservationStartingTimeMin.setWidth(screenWidth);
         reservationStartingTimeMin.setContainerDataSource(minContainer);
         selectTimeDiv.addComponents(reservationStartingTimeHour,reservationStartingTimeMin);
         sideView.addComponents(insertLabel, reservationDate, selectTimeDiv);
         insertButtons.addComponents(checkAvailabilityButton);
         sideView.addComponent(insertButtons);
+        mainView.setMargin(true);
+        mainView.setSpacing(true);
+        sideView.setMargin(true);
+        sideView.setSpacing(true);
+
+
+        sideView.addComponent(chosenTablesLabel);
+        sideView.addComponent(noOfSeatsLabel);
         addComponents(mainView,sideView);
-        getUI().setContent(this);
     }
 
+    public void setupMoreComponents() {
+        NativeSelect reservationEndingTime = new NativeSelect("Ending Time");
+        TextField reservationName = new TextField("Name");
+        TextField reservationNumber = new TextField("Number");
+        TextField reservationNumberOFPeople = new TextField("Number of People");
+        TextField reservationDescription = new TextField("Description");
+        TextField reservationEmail = new TextField("Email");
+        Button submitReservationButton = new Button("Submit Reservation");
 
-    public void checkAvailability(String reservationDate, String reservationTime) {
-        for (int i = 0; i < reservationsList.size(); i++) {
-            System.out.println(reservationDate + reservationsList.get(i).getDate());
-            if (String.valueOf(reservationsList.get(i).getDate()).equals(reservationDate)) {
-                System.out.println(" ss " + reservationsList.get(i).getStartingTime() + reservationTime);
-                if ((reservationsList.get(i).getStartingTime() - Float.valueOf(reservationTime)) <= -2 &&
-                        (reservationsList.get(i).getStartingTime() - Float.valueOf(reservationTime)) >= 2) {
-                    //System.out.println(reservationsList.get(i).getStartingTime() + reservationTime);
-                    tablesList.get(i).setStyleName(ValoTheme.BUTTON_PRIMARY);
-                    System.out.println("howya");
-                    //tableMap.removeComponent(tablesList.get(i));
-                }
+        reservationEndingTime.setWidth(screenWidth);
+        reservationName.setWidth(screenWidth);
+        reservationNumber.setWidth(screenWidth);
+        reservationNumberOFPeople.setWidth(screenWidth);
+        reservationDescription.setWidth(screenWidth);
+        reservationEmail.setWidth(screenWidth);
+        submitReservationButton.setWidth(screenWidth);
 
-            }
+        BeanItemContainer<String> hourContainer =
+                new BeanItemContainer<>(String.class);
+
+        for(int i = (Integer.valueOf(reservationStartingTimeHour.getValue().toString()) + 1); i < 24; i++) {
+            hourContainer.addItem(String.valueOf(i));
         }
+
+        reservationEndingTime.setContainerDataSource(hourContainer);
+
+        sideView.addComponents(reservationEndingTime, reservationName, reservationNumber,
+                reservationEmail, reservationNumberOFPeople, reservationDescription);
+        sideView.addComponent(submitReservationButton);
+
+        submitReservationButton.addClickListener(e -> {
+            ReservationsDAO reservationsDAO = new ReservationsDAO();
+            for(int i = 0; i< tableIDs.size() ; i++) {
+                Reservations reservation = new Reservations();
+                reservation.setTableID(tableIDs.get(i));
+                reservation.setDate(new java.sql.Date(reservationDate.getValue().getTime()));
+                reservation.setDescription(reservationDescription.getValue());
+                reservation.setEmail(reservationEmail.getValue());
+                reservation.setName(reservationName.getValue());
+                reservation.setNumber(Integer.valueOf(reservationNumber.getValue()));
+                reservation.setNumberOfPeople(Integer.valueOf(reservationNumberOFPeople.getValue()));
+                reservation.setStartingTime(Float.valueOf(reservationStartingTimeHour.getValue().toString() + "." + reservationStartingTimeMin.getValue().toString()));
+                reservation.setEndingTime(Float.valueOf(reservationEndingTime.getValue().toString()));
+                reservationsDAO.addReservation(reservation);
+            }
+        });
+
     }
+
 
 }

@@ -12,6 +12,7 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import views.LoginView;
 import views.MainView;
+import views.RosterView;
 import views.TableMapView;
 
 /**
@@ -31,11 +32,14 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
+        Label label = new Label("No");
         navigator = new Navigator(this,this);
         final CssLayout mainWindow = new CssLayout();
+        mainWindow.addComponent(label);
         getNavigator().addView("login", new LoginView());
         getNavigator().addView("home", new MainView());
         getNavigator().addView("reservations", new TableMapView());
+        getNavigator().addView("roster", new RosterView());
         getNavigator().navigateTo("login");
         mainWindow.setStyleName(ValoTheme.LAYOUT_WELL);
 
