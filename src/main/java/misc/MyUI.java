@@ -3,6 +3,7 @@ package misc;
 import javax.servlet.annotation.WebServlet;
 
 import accessobjects.*;
+import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
@@ -23,7 +24,7 @@ import views.TableMapView;
  * overridden to add component to the user interface and initialize non-component functionality.
  */
 
-
+@PreserveOnRefresh
 @Theme("mytheme")
 public class MyUI extends UI {
     Navigator navigator;

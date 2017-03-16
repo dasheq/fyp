@@ -41,6 +41,7 @@ public class LoginView extends CssLayout implements View{
             if (correctDetails) {
                 Notification.show("Welcome back " + username.getValue());
                 getUI().getNavigator().navigateTo("home");
+
             }
         });
 

@@ -117,7 +117,7 @@ public class TableMapView extends CssLayout implements View {
         Page.getCurrent().setTitle("Reservations");
 
         Label label = new Label("Tables Map");
-        label.setStyleName(ValoTheme.LABEL_H3);
+        label.setStyleName(ValoTheme.LABEL_H2);
         mainView.addComponent(label);
         for(int i = 0; i< noOfAreas; i++) {
             Label areaLabel = new Label(areas.get(i));

@@ -46,6 +46,8 @@ public class MainView extends VerticalLayout implements View {
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
         Page.getCurrent().setTitle("Main Page");
+        System.out.println("Enter called in :"+this.getClass());
+
 
         //final CssLayout windows = new CssLayout();
         final CssLayout topHorizontalDiv = new CssLayout();
@@ -158,6 +160,8 @@ public class MainView extends VerticalLayout implements View {
             if(grid != null)
                 tableWindow.removeComponent(grid);
 
+            MyUI.getCurrent().getUI().getNavigator().removeView("roster");
+            MyUI.getCurrent().getUI().getNavigator().addView("roster", new RosterView());
             MyUI.getCurrent().getUI().getNavigator().navigateTo("roster");
         };
         MenuBar.Command menuAddSupplier = (MenuBar.Command) menuItem -> {
@@ -184,6 +188,8 @@ public class MainView extends VerticalLayout implements View {
             if(grid != null)
                 tableWindow.removeComponent(grid);
 
+            MyUI.getCurrent().getUI().getNavigator().removeView("reservations");
+            MyUI.getCurrent().getUI().getNavigator().addView("reservations", new TableMapView());
             MyUI.getCurrent().getUI().getNavigator().navigateTo("reservations");
         };
         MenuBar.Command menuSaleTransactions = (MenuBar.Command) menuItem -> {
@@ -219,7 +225,10 @@ public class MainView extends VerticalLayout implements View {
 
         filtering.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
         filtering.addComponents(filterText, clearFilterButton, delSelected);
-        topHorizontalDiv.addComponents(showTitle, menuBar);
+
+        if(topHorizontalDiv.getComponentCount() == 0) {
+            topHorizontalDiv.addComponents(showTitle, menuBar);
+        }
         tableWindow.addComponents(topHorizontalDiv, filtering, grid);
         windows.addComponents(tableWindow);
 
@@ -262,70 +271,7 @@ public class MainView extends VerticalLayout implements View {
                 break;
 
             case 4:
-                /*
-                showTitle.setValue("Manage Rosters");
 
-                if(grid != null)
-                    tableWindow.removeComponent(grid);
-
-
-
-                Label dayLabel1 = new Label();
-                Label dayLabel2= new Label();
-                Label dayLabel3= new Label();
-                Label dayLabel4= new Label();
-                Label dayLabel5= new Label();
-                Label dayLabel6= new Label();
-                Label dayLabel7= new Label();
-
-                ArrayList<String> shiftsAL; // = new ArrayList<>();
-
-                shiftsAL = shiftDAO.getShiftsByNameAndWeek();
-                for(int i = 0 ; i < 7 ; i ++ ) {
-                   switch (i) {
-                       case 0:
-                           dayLabel1.setCaption("  Sunday");
-                           dayLabel1.setWidth("80");
-                           break;
-                       case 1:
-                           dayLabel2.setCaption(" Monday");
-                           dayLabel2.setWidth("80");
-                           break;
-                       case 2:
-                           dayLabel3.setCaption("Tuesday");
-                           dayLabel3.setWidth("60");
-                           break;
-                       case 3:
-                           dayLabel4.setCaption("Wednesday");
-                           dayLabel4.setWidth("50");
-                           break;
-                       case 4:
-                           dayLabel5.setCaption("Thursday");
-                           dayLabel5.setWidth("50");
-                           break;
-                       case 5:
-                           dayLabel6.setCaption("Friday");
-                           dayLabel6.setWidth("65");
-                           break;
-                       case 6:
-                           dayLabel7.setCaption("Saturday");
-                           dayLabel7.setWidth("65");
-                           break;
-
-                   }
-                }
-                shiftDiv1.addComponents(dayLabel1, dayLabel2, dayLabel3, dayLabel4, dayLabel5, dayLabel6, dayLabel7);
-                shiftDiv1.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
-                for(int i = 0; i <  shiftsAL.size(); i++ ) {
-                    Label shiftTimeLabel = new Label(shiftsAL.get(i));
-                    shiftTimeLabel.setWidth("125");
-                    shiftDiv2.addComponent(shiftTimeLabel);
-                }
-                shiftDiv2.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
-
-                shiftDivHolder.addComponents(shiftDiv1, shiftDiv2);
-                tableWindow.addComponent(shiftDivHolder);
-                */
                 break;
             case 5:
                 showTitle.setValue("Manage Suppliers");
