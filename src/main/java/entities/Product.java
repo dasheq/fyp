@@ -1,11 +1,13 @@
 package entities;
 
+import com.vaadin.ui.Button;
+
 import java.io.Serializable;
 
 /**
  * Created by damo k on 01/02/2017.
  */
-public class Product implements Serializable{
+public class Product extends Button implements Serializable{
     private int productID;
     private String name;
     private float price;

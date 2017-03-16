@@ -196,6 +196,14 @@ public class MainView extends VerticalLayout implements View {
             table = 8;
             updateGrid(table);
         };
+        MenuBar.Command menuShowPointOfSale = (MenuBar.Command) menuItem -> {
+            if(grid != null)
+                tableWindow.removeComponent(grid);
+
+            MyUI.getCurrent().getUI().getNavigator().removeView("sale");
+            MyUI.getCurrent().getUI().getNavigator().addView("sale", new PointOfSaleView());
+            MyUI.getCurrent().getUI().getNavigator().navigateTo("sale");
+        };
 
 
        // NavigationBar menuBar = new NavigationBar();
@@ -218,7 +226,7 @@ public class MainView extends VerticalLayout implements View {
 
         //TODO: Sales sales sales
         MenuBar.MenuItem salesMenu = menuBar.addItem("Sales", null);
-        salesMenu.addItem("Sales Stats", null);
+        salesMenu.addItem("Sales Stats", menuShowPointOfSale);
         salesMenu.addItem("Transactions", menuSaleTransactions);
 
 

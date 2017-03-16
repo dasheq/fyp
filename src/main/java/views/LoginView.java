@@ -6,6 +6,7 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Page;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import entities.Employee;
@@ -25,6 +26,7 @@ public class LoginView extends CssLayout implements View{
     Button loginButton = new Button("Login");
     EmployeeDAO employeeDAO = new EmployeeDAO();
     private boolean correctDetails = false;
+    String user;
 
     public LoginView() {
     }
@@ -36,14 +38,17 @@ public class LoginView extends CssLayout implements View{
         title.setStyleName(ValoTheme.LABEL_HUGE);
         username.setValue("dasheq");
         password.setValue("password");
-        loginButton.addClickListener(e -> {
+        loginButton.addClickListener((Button.ClickEvent e) -> {
                 correctDetails = employeeDAO.login(username.getValue(), password.getValue());
             if (correctDetails) {
                 Notification.show("Welcome back " + username.getValue());
                 getUI().getNavigator().navigateTo("home");
-
+                //getSession().setAttribute("user", username.getValue());
+                VaadinService.getCurrentRequest().getWrappedSession()
+                        .setAttribute("user", username.getValue());
             }
         });
+
 
 
      }

@@ -9,12 +9,10 @@ import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
-import views.LoginView;
-import views.MainView;
-import views.RosterView;
-import views.TableMapView;
+import views.*;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -41,6 +39,7 @@ public class MyUI extends UI {
         getNavigator().addView("home", new MainView());
         getNavigator().addView("reservations", new TableMapView());
         getNavigator().addView("roster", new RosterView());
+        getNavigator().addView("sale", new PointOfSaleView());
         getNavigator().navigateTo("login");
         mainWindow.setStyleName(ValoTheme.LAYOUT_WELL);
 

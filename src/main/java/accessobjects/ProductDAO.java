@@ -64,6 +64,29 @@ public class ProductDAO {
 
     }
 
+    public ArrayList<String> getTypes() {
+        ArrayList<String> types = new ArrayList<>();
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT DISTINCT TYPE FROM product");
+
+            while (rs.next()) {
+                types.add(rs.getString(1));
+            }
+
+            con.close();
+
+        } catch (Exception e){
+            System.out.println(e);
+            e.printStackTrace();
+        }
+        return types;
+
+    }
+
     public ArrayList<Product> getProductByName(String filter){
         ArrayList<Product> products = new ArrayList<>();
 
