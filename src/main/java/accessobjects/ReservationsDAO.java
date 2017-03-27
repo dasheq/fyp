@@ -14,9 +14,9 @@ public class ReservationsDAO {
 
         try {
 
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM reservations");
 
@@ -50,9 +50,9 @@ public class ReservationsDAO {
 
     public void deleteReservation(Reservations toBeDeleted) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             String query = " DELETE from reservations WHERE ReservationID = ?";
 
             // create the mysql delete preparedstatement
@@ -70,9 +70,9 @@ public class ReservationsDAO {
 
     public void addReservation(Reservations toBeAdded) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             String query = " insert into reservations (ReservationID, StartingTime, EndingTime, Name, Number, Email, NumberOfPeople, Description, TableID, ReservationDate)"
                     + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             Statement highestValueStmt = con.createStatement();
@@ -113,9 +113,12 @@ public class ReservationsDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
-            PreparedStatement stmt = con.prepareStatement("SELECT * FROM product WHERE name LIKE ?");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM reservations WHERE name LIKE ? OR Number LIKE ? or Email LIKE ? OR Description LIKE ?");
             stmt.setString(1, filter);
+            stmt.setString(2, filter);
+            stmt.setString(3, filter);
+            stmt.setString(4, filter);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {

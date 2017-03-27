@@ -19,11 +19,11 @@ public class EmployeeDAO {
     }
 */  public void addEmployee(Employee employee) {
        try {
-           Class.forName("com.mysql.jdbc.Driver");
+           Class.forName("com.mysql.cj.jdbc.Driver");
            Connection con = DriverManager.getConnection(
-                   "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
-           String query = " insert into employee (name, Address, ContractType, DoB, Username, Position, Phone, SalaryPh, Password)"
-                   + " values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                   "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+           String query = " insert into employee (name, Address, ContractType, DoB, Username, Position, Phone, SalaryPh, Password, AccessLevel)"
+                   + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
            // create the mysql insert preparedstatement
            PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -31,12 +31,12 @@ public class EmployeeDAO {
            preparedStmt.setString (2, employee.getAddress());
            preparedStmt.setString(3, employee.getContractType());
            preparedStmt.setDate(4, employee.getDob());
-           // preparedStmt.setDate   (4,new java.sql.Date( employee.getDob().getTime()));
            preparedStmt.setString(5, employee.getUsername());
            preparedStmt.setString(6, employee.getPosition());
            preparedStmt.setInt    (7, employee.getPhone());
            preparedStmt.setFloat(8, employee.getSalaryPh());
            preparedStmt.setString(9, employee.getPassword());
+           preparedStmt.setInt(10, employee.getAccessLevel());
            // execute the preparedstatement
            preparedStmt.execute();
            System.out.println(preparedStmt);
@@ -49,9 +49,9 @@ public class EmployeeDAO {
 
     public void deleteEmployee(Employee toBeDeleted) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             String query = " DELETE from employee WHERE Username = ?";
 
             // create the mysql delete preparedstatement
@@ -67,13 +67,13 @@ public class EmployeeDAO {
 
     }
 
-    public boolean login(String username, String password) {
-        boolean correctDetailsEntered = false;
+    public Employee login(String username, String password) {
+        Employee employeeValidated = null;
         try {
 
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             String query = "SELECT * FROM employee WHERE username=? AND Password=?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setString(1, username);
@@ -82,7 +82,9 @@ public class EmployeeDAO {
 
 
             if (rs.first()) {
-                correctDetailsEntered = true;
+                employeeValidated = new Employee();
+                employeeValidated.setAccessLevel(rs.getInt(10));
+                employeeValidated.setUsername(rs.getString(1));
             }
 
             con.close();
@@ -93,7 +95,7 @@ public class EmployeeDAO {
             System.out.println("Here");
         }
 
-        return correctDetailsEntered;
+        return employeeValidated;
     }
 
     public ArrayList<Employee> getAllEmployees(){
@@ -101,9 +103,9 @@ public class EmployeeDAO {
 
         try {
 
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM employee");
 
@@ -117,6 +119,8 @@ public class EmployeeDAO {
                 emp.setSalaryPh(rs.getFloat(6));
                 emp.setContractType(rs.getString(7));
                 emp.setPosition(rs.getString(8));
+                emp.setPassword("*******");
+                emp.setAccessLevel(rs.getInt(10));
 
                 employees.add(emp);
 
@@ -141,9 +145,13 @@ public class EmployeeDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
-            PreparedStatement stmt = con.prepareStatement("SELECT * FROM employee WHERE name LIKE ?");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM employee WHERE name LIKE ? or Username LIKE ?" +
+                    "OR Address LIKE ? or Position LIKE ?");
             stmt.setString(1, filter);
+            stmt.setString(2, filter);
+            stmt.setString(3, filter);
+            stmt.setString(4, filter);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -156,6 +164,8 @@ public class EmployeeDAO {
                 emp.setSalaryPh(rs.getFloat(6));
                 emp.setContractType(rs.getString(7));
                 emp.setPosition(rs.getString(8));
+                emp.setPassword("*******");
+                emp.setAccessLevel(rs.getInt(10));
 
                 employees.add(emp);
 

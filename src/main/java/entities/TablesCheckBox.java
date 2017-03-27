@@ -10,7 +10,7 @@ import java.sql.Date;
 /**
  * Created by damo k on 01/02/2017.
  */
-public class Tables implements Serializable{
+public class TablesCheckBox extends CheckBox implements Serializable{
     private int tableID;
     private int noOfSeats;
 
@@ -19,10 +19,11 @@ public class Tables implements Serializable{
 
     private String area;
 
-    public Tables(String caption) {
+    public TablesCheckBox(String caption) {
+        this.setCaption(caption);
     }
 
-    public Tables() {
+    public TablesCheckBox() {
     }
 
     public int getTableID() {

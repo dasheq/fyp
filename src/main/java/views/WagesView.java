@@ -3,12 +3,14 @@ package views;
 import accessobjects.EmployeeDAO;
 import accessobjects.ShiftDAO;
 import com.vaadin.data.util.BeanItemContainer;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.NativeSelect;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 import entities.Employee;
+import misc.MyUI;
 
 import java.util.ArrayList;
 
@@ -18,6 +20,7 @@ import java.util.ArrayList;
 public class WagesView extends VerticalLayout{
     private NativeSelect employeeSelect = new NativeSelect("Select Employee");
     private NativeSelect weekSelect = new NativeSelect("Select Calendar Week");
+    private String employeeName;
     private Label wagesTotalLabel = new Label();
     private Label wagesLabel = new Label("Calculate Wages");
     private Label hoursLabel = new Label();
@@ -28,11 +31,16 @@ public class WagesView extends VerticalLayout{
     private String screenWidth = "100%";
     private Button calculateButton = new Button("Calculate");
     private float[] wagesDetails = new float[4];
+    private int accessLevel;
 
     private VerticalLayout labelsLayout = new VerticalLayout();
 
     ShiftDAO shiftDAO = new ShiftDAO();
     EmployeeDAO employeeDAO = new EmployeeDAO();
+
+    public WagesView(int accessLevel) {
+        this.accessLevel = accessLevel;
+    }
 
     public void run() {
         wagesLabel.setHeight("50");
@@ -62,11 +70,22 @@ public class WagesView extends VerticalLayout{
         employeeSelect.setContainerDataSource(containerEmployees);
         weekSelect.setContainerDataSource(containerWeeks);
 
-        addComponents(wagesLabel, employeeSelect, weekSelect, calculateButton);
+        addComponent(wagesLabel);
+
+        if(accessLevel == 0) {
+            employeeName = VaadinService.getCurrentRequest().getWrappedSession().getAttribute("user").toString();
+        }
+        else {
+            addComponent(employeeSelect);
+        }
+        addComponents(weekSelect, calculateButton);
 
         calculateButton.addClickListener(e -> {
+            if(accessLevel == 1) {
+                employeeName = employeeSelect.getValue().toString();
+            }
            wagesDetails = shiftDAO.calculateWages(
-                   employeeSelect.getValue().toString(), Integer.valueOf(weekSelect.getValue().toString()));
+                   employeeName, Integer.valueOf(weekSelect.getValue().toString()));
            updateWages(wagesDetails);
         });
     }
@@ -76,7 +95,7 @@ public class WagesView extends VerticalLayout{
             labelsLayout.removeAllComponents();
         }
 
-        employeeNameLabel.setValue("Employee username: " + employeeSelect.getValue().toString());
+        employeeNameLabel.setValue("Employee username: " + employeeName);
         calendarWeekLabel.setValue("Calendar week: " + weekSelect.getValue().toString());
         wagesTotalLabel.setValue("Total earnings: €"+ String.valueOf(wagesDetails[0]));
         hoursLabel.setValue("Hours worked: "+String.valueOf(wagesDetails[2]));

@@ -38,7 +38,7 @@ public class MyUI extends UI {
         getNavigator().addView("login", new LoginView());
         getNavigator().addView("home", new MainView());
         getNavigator().addView("reservations", new TableMapView());
-        getNavigator().addView("roster", new RosterView());
+        //getNavigator().addView("roster", new RosterView());
         getNavigator().addView("sale", new PointOfSaleView());
         getNavigator().navigateTo("login");
         mainWindow.setStyleName(ValoTheme.LAYOUT_WELL);

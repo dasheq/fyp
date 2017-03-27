@@ -25,7 +25,7 @@ public class LoginView extends CssLayout implements View{
     PasswordField password = new PasswordField("Password");
     Button loginButton = new Button("Login");
     EmployeeDAO employeeDAO = new EmployeeDAO();
-    private boolean correctDetails = false;
+    Employee employeeDetails;
     String user;
 
     public LoginView() {
@@ -39,13 +39,17 @@ public class LoginView extends CssLayout implements View{
         username.setValue("dasheq");
         password.setValue("password");
         loginButton.addClickListener((Button.ClickEvent e) -> {
-                correctDetails = employeeDAO.login(username.getValue(), password.getValue());
-            if (correctDetails) {
+                employeeDetails = employeeDAO.login(username.getValue(), password.getValue());
+            if (employeeDetails != null) {
                 Notification.show("Welcome back " + username.getValue());
-                getUI().getNavigator().navigateTo("home");
-                //getSession().setAttribute("user", username.getValue());
                 VaadinService.getCurrentRequest().getWrappedSession()
-                        .setAttribute("user", username.getValue());
+                        .setAttribute("user", employeeDetails.getUsername());
+                VaadinService.getCurrentRequest().getWrappedSession()
+                        .setAttribute("access", employeeDetails.getAccessLevel());
+                getUI().getNavigator().navigateTo("home");
+            }
+            else {
+                Notification.show("Incorrect Login Details");
             }
         });
 

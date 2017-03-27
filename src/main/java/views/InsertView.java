@@ -42,37 +42,25 @@ public class InsertView extends VerticalLayout {
 
 
     //Variables for Insert Employee Window
-    private TextField employeeName = new TextField();
-    private TextField employeeAddress = new TextField();
+    private TextField employeeName = new TextField("Name");
+    private TextField employeeAddress = new TextField("Address");
     private NativeSelect employeeContractType = new NativeSelect("Contract Type");
     private PopupDateField employeeDoB = new PopupDateField("Date of Birth");
-    private TextField employeePhone = new TextField();
-    private TextField employeePosition = new TextField();
-    private TextField employeeSalaryPh = new TextField();
-    private TextField employeeUsername = new TextField();
+    private TextField employeePhone = new TextField("Phone");
+    private TextField employeePosition = new TextField("Position");
+    private TextField employeeSalaryPh = new TextField("Salary Per Hour");
+    private TextField employeeUsername = new TextField("Username");
     private PasswordField employeePassword = new PasswordField("Password");
-
-    private Label employeeNameLabel = new Label("Name");
-    private Label employeeAddressLabel = new Label("Address");
-    private Label employeePhoneLabel = new Label("Phone");
-    private Label employeePositionLabel = new Label("Position");
-    private Label employeeSalaryPhLabel = new Label("Salary Per Hour");
-    private Label employeeUsernameLabel = new Label("Username");
+    private NativeSelect employeeAccessLevel = new NativeSelect("Access Level");
 
     //Variables for Insert Event Window
-    private TextField eventActName = new TextField();
-    private TextField eventActType = new TextField();
-    private TextField eventPrice = new TextField();
-    private TextField eventStartingTime = new TextField();
-    private TextField eventEndingTime = new TextField();
+    private TextField eventActName = new TextField("Act Name");
+    private TextField eventActType = new TextField("Act Type");
+    private TextField eventPrice = new TextField("Price");
+    private TextField eventStartingTime = new TextField("Starting Time");
+    private TextField eventEndingTime = new TextField("Ending Time");
     private PopupDateField eventDate = new PopupDateField("Date");
-    private TextField eventArea = new TextField();
-    private Label eventActNameLabel = new Label("Act Name");
-    private Label eventActTypeLabel = new Label("Act Type");
-    private Label eventPriceLabel = new Label("Price");
-    private Label eventStartingTimeLabel = new Label("Starting Time");
-    private Label eventEndingTimeLabel = new Label("Ending Time");
-    private Label eventAreaLabel = new Label("Area");
+    private TextField eventArea = new TextField("Area");
 
     //Variables for Insert Reservation Window
     private PopupDateField reservationDate = new PopupDateField("Date");
@@ -80,41 +68,28 @@ public class InsertView extends VerticalLayout {
     private NativeSelect reservationStartingTimeMin = new NativeSelect("Minute");
 
     //Variables for Insert Shift Window
-    private TextField shiftUsername = new TextField();
-    private TextField shiftStartTime = new TextField();
-    private TextField shiftEndTime = new TextField();
+    private TextField shiftUsername = new TextField("Username");
+    private TextField shiftStartTime = new TextField("Starting Time");
+    private TextField shiftEndTime = new TextField("Ending Time");
     private PopupDateField shiftDate = new PopupDateField("Date");
-    private TextField shiftOvertimeHours = new TextField();
-    private Label shiftUsernameLabel = new Label("Username");
-    private Label shiftStartTimeLabel = new Label("Starting Time");
-    private Label shiftEndTimeLabel = new Label("Ending Time");
-    private Label shiftOvertimeHoursLabel = new Label("Overtime Hours");
+    private TextField shiftOvertimeHours = new TextField("Overtime Hours");
 
     //Variables for Insert Supplier Window
-    private TextField supplierName = new TextField();
-    private TextField supplierAddress = new TextField();
-    private TextField supplierContactNo = new TextField();
-    private TextField supplierEmail = new TextField();
-    private TextField supplierWebsite = new TextField();
-    private Label supplierNameLabel = new Label("Name");
-    private Label supplierAddressLabel = new Label("Address");
-    private Label supplierContactNoLabel = new Label("Contact Number");
-    private Label supplierEmailLabel = new Label("Email");
-    private Label supplierWebsiteLabel = new Label("Website");
+    private TextField supplierName = new TextField("Name");
+    private TextField supplierAddress = new TextField("Address");
+    private TextField supplierContactNo = new TextField("Contact Number");
+    private TextField supplierEmail = new TextField("Email");
+    private TextField supplierWebsite = new TextField("Website");
 
     //Variables for Insert Invoice Window
     private PopupDateField invoiceDate = new PopupDateField("Date");
-    private TextField invoiceTotalValue = new TextField();
-    private TextField invoiceSupplierID = new TextField();
-    private Label invoiceTotalValueLabel = new Label("Total Value");
-    private Label invoiceSupplierIDLabel = new Label("Supplier ID");
+    private TextField invoiceTotalValue = new TextField("Total Value");
+    private TextField invoiceSupplierID = new TextField("Supplier ID");
 
 
     //Variables for Insert Table Window
-    private TextField tableNoOfSeats = new TextField();
-    private TextField tableArea = new TextField();
-    private Label tableNoOfSeatsLabel = new Label("Number of Seats");
-    private Label tableAreaLabel = new Label("Area");
+    private TextField tableNoOfSeats = new TextField("Number of Seats");
+    private TextField tableArea = new TextField("Area");
 
 
     public InsertView(int tableNo) {
@@ -139,6 +114,12 @@ public class InsertView extends VerticalLayout {
                     employee.setSalaryPh(Float.valueOf(employeeSalaryPh.getValue()));
                     employee.setUsername(employeeUsername.getValue());
                     employee.setPassword(employeePassword.getValue());
+
+                    if(employeeAccessLevel.getValue().toString().equals("Manager"))
+                        employee.setAccessLevel(1);
+                    else
+                        employee.setAccessLevel(0);
+
                     employeeDAO.addEmployee(employee);
                     clearFields(table);
                     Notification.show("Added " + employee.getName());
@@ -239,6 +220,7 @@ public class InsertView extends VerticalLayout {
                 employeePassword.setWidth(screenWidth);
                 employeePosition.setWidth(screenWidth);
                 employeeSalaryPh.setWidth(screenWidth);
+                employeeAccessLevel.setWidth(screenWidth);
 
                 employeeName.setRequired(true);
                 employeeAddress.setRequired(true);
@@ -246,7 +228,7 @@ public class InsertView extends VerticalLayout {
                 employeePassword.setRequired(true);
                 employeePosition.setRequired(true);
                 employeeSalaryPh.setRequired(true);
-                employeeContractType.setRequired(true);
+                employeeAccessLevel.setRequired(true);
 
 
                 BeanItemContainer<String> container =
@@ -261,15 +243,21 @@ public class InsertView extends VerticalLayout {
                 employeeContractType.setWidth("200");
                 employeeContractType.setRequired(true);
 
+                BeanItemContainer<String> accessLevelContainer = new BeanItemContainer<>(String.class);
+
+                accessLevelContainer.addItem("Manager");
+                accessLevelContainer.addItem("Basic");
+
+                employeeAccessLevel.setContainerDataSource(accessLevelContainer);
+
                 employeeDoB.setValue(new java.sql.Date(new java.util.Date().getTime()));
                 employeeDoB.setIcon(FontAwesome.USER);
                 employeeDoB.setRequired(true);
-                addComponents(insertLabel, employeeNameLabel, employeeName);
-                addComponents(employeeUsernameLabel, employeeUsername, employeePassword);
-                addComponents(employeeAddressLabel, employeeAddress, employeeContractType, employeeDoB);
-                //insertWindow.addComponent(employeeDoB);
-                addComponents(employeePhoneLabel, employeePhone, employeePositionLabel, employeePosition);
-                addComponents(employeeSalaryPhLabel, employeeSalaryPh);
+                addComponents(insertLabel, employeeName);
+                addComponents(employeeUsername, employeePassword);
+                addComponents(employeeAddress, employeeContractType, employeeDoB);
+                addComponents(employeePhone, employeePosition);
+                addComponents(employeeSalaryPh, employeeAccessLevel);
                 insertButtons.addComponents(addButton, clearButton);
                 addComponents(insertButtons);
                 break;
@@ -284,22 +272,22 @@ public class InsertView extends VerticalLayout {
 
                 eventDate.setCaption("Date");
                 eventDate.setValue(new java.sql.Date(new java.util.Date().getTime()));
+                eventDate.setRequired(true);
                 //eventDate.setRequired(true);
                 eventStartingTime.setRequired(true);
                 eventEndingTime.setRequired(true);
-                eventArea.setRequired(true);
                 eventActName.setRequired(true);
                 eventActType.setRequired(true);
                 eventPrice.setRequired(true);
 
-                addComponents(insertLabel, eventActNameLabel, eventActName, eventActTypeLabel, eventActType);
-                addComponents(eventPriceLabel, eventPrice, eventStartingTimeLabel, eventStartingTime, eventEndingTimeLabel, eventEndingTime);
-                addComponents(eventDate, eventAreaLabel, eventArea);
+                addComponents(insertLabel, eventActName, eventActType);
+                addComponents( eventPrice,  eventStartingTime,  eventEndingTime);
+                addComponents(eventDate, eventArea);
                 insertButtons.addComponents(addButton, clearButton);
                 addComponents(insertButtons);
                 break;
             case 3:
-                insertLabel.setValue("Add Reservation");
+                /* insertLabel.setValue("Add Reservation");
                 reservationDate.setWidth(screenWidth);
                 CssLayout selectTimeDiv = new CssLayout();
                 BeanItemContainer<String> hourContainer =
@@ -328,7 +316,7 @@ public class InsertView extends VerticalLayout {
                 insertButtons.addComponents(checkAvailabilityButton);
                 addComponent(insertButtons);
                 setSpacing(true);
-                break;
+                break; */
             case 4:
                 insertLabel.setValue("Add Shift");
                 shiftDate.setWidth(screenWidth);
@@ -337,8 +325,8 @@ public class InsertView extends VerticalLayout {
                 shiftStartTime.setWidth(screenWidth);
                 shiftUsername.setWidth(screenWidth);
                 shiftDate.setValue(new java.sql.Date(new java.util.Date().getTime()));
-                addComponents(insertLabel, shiftUsernameLabel, shiftUsername, shiftStartTimeLabel, shiftStartTime);
-                addComponents(shiftEndTimeLabel, shiftEndTime, shiftDate, shiftOvertimeHoursLabel, shiftOvertimeHours);
+                addComponents(insertLabel,  shiftUsername,  shiftStartTime);
+                addComponents( shiftEndTime, shiftDate, shiftOvertimeHours);
                 insertButtons.addComponents(addButton, clearButton);
                 addComponents(insertButtons);
                 break;
@@ -350,9 +338,15 @@ public class InsertView extends VerticalLayout {
                 supplierName.setWidth(screenWidth);
                 supplierWebsite.setWidth(screenWidth);
 
-                addComponents(insertLabel, supplierNameLabel, supplierName, supplierAddressLabel, supplierAddress);
-                addComponents(supplierContactNoLabel, supplierContactNo, supplierEmailLabel, supplierEmail);
-                addComponents(supplierWebsiteLabel, supplierWebsite);
+                supplierAddress.setRequired(true);
+                supplierContactNo.setRequired(true);
+                supplierEmail.setRequired(true);
+                supplierName.setRequired(true);
+                supplierWebsite.setRequired(true);
+
+                addComponents(insertLabel, supplierName, supplierAddress);
+                addComponents(supplierContactNo, supplierEmail);
+                addComponents( supplierWebsite);
                 insertButtons.addComponents(addButton, clearButton);
                 addComponents(insertButtons);
                 break;
@@ -362,7 +356,11 @@ public class InsertView extends VerticalLayout {
                 invoiceSupplierID.setWidth(screenWidth);
                 invoiceTotalValue.setWidth(screenWidth);
                 invoiceDate.setValue(new java.sql.Date(new java.util.Date().getTime()));
-                addComponents(insertLabel, invoiceDate, invoiceTotalValueLabel, invoiceTotalValue, invoiceSupplierIDLabel, invoiceSupplierID);
+
+                invoiceDate.setRequired(true);
+                invoiceSupplierID.setRequired(true);
+                invoiceTotalValue.setRequired(true);
+                addComponents(insertLabel, invoiceDate, invoiceTotalValue, invoiceSupplierID);
                 insertButtons.addComponents(addButton, clearButton);
                 addComponents(insertButtons);
                 break;
@@ -370,7 +368,9 @@ public class InsertView extends VerticalLayout {
                 insertLabel.setValue("Add Table");
                 tableNoOfSeats.setWidth(screenWidth);
                 tableArea.setWidth(screenWidth);
-                addComponents(insertLabel, tableNoOfSeatsLabel, tableNoOfSeats, tableAreaLabel, tableArea);
+                tableNoOfSeats.setRequired(true);
+                tableArea.setRequired(true);
+                addComponents(insertLabel, tableNoOfSeats, tableArea);
                 insertButtons.addComponents(addButton, clearButton);
                 addComponents(insertButtons);
                 break;

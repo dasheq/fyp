@@ -11,9 +11,9 @@ import java.util.ArrayList;
 public class EventDAO {
     public void addEvent(Event event) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             String query = " insert into event (ActName, ActType, Area, EndTime, Price, StartingTime, EventID)"
                     + " values (?, ?, ?, ?, ?, ?, ?)";
             Statement highestValueStmt = con.createStatement();
@@ -47,9 +47,9 @@ public class EventDAO {
 
     public void deleteEvent(Event toBeDeleted) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             String query = " DELETE from event WHERE EventID = ?";
 
             // create the mysql delete preparedstatement
@@ -70,9 +70,9 @@ public class EventDAO {
 
         try {
 
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM event");
 
@@ -110,9 +110,11 @@ public class EventDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
-            PreparedStatement stmt = con.prepareStatement("SELECT * FROM event WHERE actname LIKE ?");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM event WHERE actname LIKE ? OR event.ActType LIKE ? or event.Area LIKE ?");
             stmt.setString(1, filter);
+            stmt.setString(2, filter);
+            stmt.setString(3, filter);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {

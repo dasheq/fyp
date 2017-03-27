@@ -5,10 +5,13 @@ import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Page;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import entities.Shift;
+import misc.MyUI;
 
+import javax.swing.text.html.CSS;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +20,10 @@ import java.util.ArrayList;
 public class RosterView extends CssLayout implements View {
     final VerticalLayout mainView = new VerticalLayout();
     final VerticalLayout sideView = new VerticalLayout();
+    final CssLayout navLayout = new CssLayout();
     final CssLayout mainInsideView = new CssLayout();
+    private int accessLevel;
+    private String employeeName;
 
     ShiftDAO shiftDAO = new ShiftDAO();
     ArrayList<Shift> shifts;
@@ -26,9 +32,14 @@ public class RosterView extends CssLayout implements View {
 
     Button checkRosterButton = new Button("View Roster");
     Button goBack = new Button("Back");
+    Button logout = new Button("Logout");
     NativeSelect employees = new NativeSelect("Employee");
     NativeSelect weeks = new NativeSelect("Week");
 
+
+    public RosterView(int accessLevel) {
+        this.accessLevel = accessLevel;
+    }
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
@@ -44,7 +55,8 @@ public class RosterView extends CssLayout implements View {
 
         Label label = new Label("Roster");
         label.setStyleName(ValoTheme.LABEL_H2);
-        mainView.addComponents(goBack, label);
+        navLayout.addComponents(goBack, logout);
+        mainView.addComponents(navLayout, label);
 
         employees.setWidth(screenWidth);
         weeks.setWidth(screenWidth);
@@ -68,7 +80,13 @@ public class RosterView extends CssLayout implements View {
         }
 
         weeks.setContainerDataSource(weeksContainer);
-        sideView.addComponents(employees, weeks, checkRosterButton);
+        if(accessLevel == 1){
+            sideView.addComponent(employees);
+        }
+        else {
+            employeeName = VaadinService.getCurrentRequest().getWrappedSession().getAttribute("user").toString();
+        }
+        sideView.addComponents(weeks, checkRosterButton);
         sideView.setSpacing(true);
         sideView.setMargin(true);
         mainView.setSpacing(true);
@@ -83,14 +101,27 @@ public class RosterView extends CssLayout implements View {
             getUI().getNavigator().addView("home", new MainView());
             getUI().getNavigator().navigateTo("home");
         });
+
+        logout.addClickListener(e -> {
+            VaadinService.getCurrentRequest().getWrappedSession().invalidate();
+            getUI().getPage().setLocation("/*");
+
+
+            MyUI.getCurrent().getUI().getNavigator().removeView("login");
+            MyUI.getCurrent().getUI().getNavigator().addView("login", new LoginView());
+            MyUI.getCurrent().getUI().getNavigator().navigateTo("login");
+        });
     }
 
     public void displayRoster() {
-        shifts = shiftDAO.getShiftsByNameAndWeek(employees.getValue().toString(), Integer.valueOf(weeks.getValue().toString()));
+        if(accessLevel == 1) {
+            employeeName = employees.getValue().toString();
+        }
+        shifts = shiftDAO.getShiftsByNameAndWeek(employeeName, Integer.valueOf(weeks.getValue().toString()));
         ArrayList<Label> dayLabels = new ArrayList<>();
         ArrayList<Label> shiftLabels = new ArrayList<>();
         Label rosterLabel = new Label();
-        rosterLabel.setValue("Employee: "+employees.getValue().toString() + " Week: "+ weeks.getValue().toString());
+        rosterLabel.setValue("Employee: "+employeeName + " Week: "+ weeks.getValue().toString());
         mainInsideView.addComponent(rosterLabel);
 
 

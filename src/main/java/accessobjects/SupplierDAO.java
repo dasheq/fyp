@@ -11,9 +11,9 @@ import java.util.ArrayList;
 public class SupplierDAO {
     public void deleteSupplier(Supplier toBeDeleted) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             String query = " DELETE from supplier WHERE SupplierID = ?";
 
             // create the mysql delete preparedstatement
@@ -31,9 +31,9 @@ public class SupplierDAO {
 
     public void addSupplier(Supplier supplier) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             String query = " insert into supplier (Address, Name, Email, Website,ContactNumber,  SupplierID)"
                     + " values (?, ?, ?, ?, ?, ?)";
             Statement highestValueStmt = con.createStatement();
@@ -69,9 +69,9 @@ public class SupplierDAO {
 
         try {
 
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM supplier");
 
@@ -106,9 +106,13 @@ public class SupplierDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
-            PreparedStatement stmt = con.prepareStatement("SELECT * FROM supplier WHERE name LIKE ?");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM supplier WHERE name LIKE ? OR Address LIKE ? or ContactNumber LIKE ? or Email LIKE ? or Website LIKE ?");
             stmt.setString(1, filter);
+            stmt.setString(2, filter);
+            stmt.setString(3, filter);
+            stmt.setString(4, filter);
+            stmt.setString(5, filter);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {

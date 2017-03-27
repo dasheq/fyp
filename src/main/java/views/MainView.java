@@ -2,17 +2,16 @@ package views;
 
 import com.vaadin.annotations.DesignRoot;
 import com.vaadin.data.util.BeanItemContainer;
+import com.vaadin.data.util.filter.Not;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Page;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import entities.*;
 import accessobjects.*;
 import misc.MyUI;
-import misc.TableButton;
-
-import java.util.ArrayList;
 
 /**
  * Created by damo k on 15/02/2017.
@@ -26,27 +25,33 @@ public class MainView extends VerticalLayout implements View {
     ShiftDAO shiftDAO = new ShiftDAO();
     SupplierDAO supplierDAO = new SupplierDAO();
     TablesDAO tablesDAO = new TablesDAO();
-    SaleDAO saleDAO = new SaleDAO();
+    TransactionDAO transactionDAO = new TransactionDAO();
+
+    int accessLevel;
 
     private String screenWidth = "100%";
     private Grid grid = new Grid();
     private TextField filterText = new TextField();
     private int table = 0;
     private Label showTitle = new Label();
+    MenuBar menuBar = new MenuBar();
     CssLayout windows = new CssLayout();
     InsertView insertWindow = null;
     WagesView wagesView = null;
+    StatsView statsView = null;
     TableMapView tableMapView = null;
     CssLayout tablesMap = new CssLayout();
     VerticalLayout tableWindow = new VerticalLayout();
     VerticalLayout shiftDivHolder = new VerticalLayout();
     CssLayout shiftDiv1 = new CssLayout();
     CssLayout shiftDiv2 = new CssLayout();
+    Grid.MultiSelectionModel selection;
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
         Page.getCurrent().setTitle("Main Page");
-        System.out.println("Enter called in :"+this.getClass());
+
+        accessLevel = Integer.valueOf(VaadinService.getCurrentRequest().getWrappedSession().getAttribute("access").toString());
 
 
         //final CssLayout windows = new CssLayout();
@@ -65,7 +70,7 @@ public class MainView extends VerticalLayout implements View {
         //
         //
 
-        filterText.setInputPrompt("Filter by name...");
+        filterText.setInputPrompt("Filter Search");
         filterText.addTextChangeListener(e -> {
             switch (table) {
                 case 0:
@@ -92,21 +97,27 @@ public class MainView extends VerticalLayout implements View {
                     grid.setContainerDataSource(new BeanItemContainer<>(Tables.class, tablesDAO.getTableByName(e.getText())));
                     break;
                 case 8:
-                    grid.setContainerDataSource(new BeanItemContainer<>(Sale.class, saleDAO.getSaleByName(e.getText())));
+                    grid.setContainerDataSource(new BeanItemContainer<>(Transaction.class, transactionDAO.getTransactionByName(e.getText())));
             }
 
             if (e.getText().equals(""))
                 updateGrid(table);
         });
 
-        grid.setSelectionMode(Grid.SelectionMode.MULTI);
-        Grid.MultiSelectionModel selection =
-                (Grid.MultiSelectionModel) grid.getSelectionModel();
+        if(accessLevel == 1) {
+            grid.setSelectionMode(Grid.SelectionMode.MULTI);
+            selection =
+                    (Grid.MultiSelectionModel) grid.getSelectionModel();
+        }
+
 
         Button delSelected = new Button("Delete Selected");
+        if(accessLevel == 0) {
+            delSelected.setEnabled(false);
+        }
         delSelected.addClickListener(e -> {
 
-            /* TODO: Confirmation Dialog */
+            Notification.show("Deleted");
 
 
             // Delete all selected data items
@@ -132,13 +143,20 @@ public class MainView extends VerticalLayout implements View {
         MenuBar.Command menuCalcWages = new MenuBar.Command() {
             @Override
             public void menuSelected(MenuBar.MenuItem menuItem) {
-                table = 1;
-                updateGrid(table);
+                if(accessLevel == 1) {
+                    table = 1;
+                    updateGrid(table);
+                }
+                else {
+                    grid.removeAllColumns();
+                    grid.setEnabled(true);
+                    grid.setContainerDataSource(new BeanItemContainer<>(entities.Employee.class, employeeDAO.getEmployeesByName(VaadinService.getCurrentRequest().getWrappedSession().getAttribute("user").toString())));
+                }
 
                 if(insertWindow != null)
                     windows.removeComponent(insertWindow);
 
-                wagesView = new WagesView();
+                wagesView = new WagesView(accessLevel);
                 wagesView.setWidth("25%");
                 wagesView.run();
                 windows.addComponent(wagesView);
@@ -146,43 +164,59 @@ public class MainView extends VerticalLayout implements View {
         };
 
         MenuBar.Command menuAddEmployee = (MenuBar.Command) menuItem -> {
-            table = 1;
-            updateGrid(table);
-            refreshInsertView(table);
+            if(accessLevel == 1) {
+                table = 1;
+                updateGrid(table);
+                refreshInsertView(table);
+            }
+            else {
+                Notification.show("Access Only For Managers");
+            }
         };
 
         MenuBar.Command menuAddEvent = (MenuBar.Command) menuItem -> {
             table = 2;
             updateGrid(table);
-            refreshInsertView(table);
+            if(accessLevel == 1) {
+                refreshInsertView(table);
+            }
         };
         MenuBar.Command menuAddShift = (MenuBar.Command) menuItem -> {
             if(grid != null)
                 tableWindow.removeComponent(grid);
 
-            MyUI.getCurrent().getUI().getNavigator().removeView("roster");
-            MyUI.getCurrent().getUI().getNavigator().addView("roster", new RosterView());
+            //MyUI.getCurrent().getUI().getNavigator().removeView("roster");
+            MyUI.getCurrent().getUI().getNavigator().addView("roster", new RosterView(accessLevel));
             MyUI.getCurrent().getUI().getNavigator().navigateTo("roster");
         };
         MenuBar.Command menuAddSupplier = (MenuBar.Command) menuItem -> {
             table = 5;
             updateGrid(table);
-            refreshInsertView(table);
+            if(accessLevel == 1) {
+                refreshInsertView(table);
+            }
         };
         MenuBar.Command menuAddInvoice = (MenuBar.Command) menuItem -> {
             table = 6;
             updateGrid(table);
-            refreshInsertView(table);
+            if(accessLevel == 1) {
+                refreshInsertView(table);
+            }
         };
         MenuBar.Command menuAddTables = (MenuBar.Command) menuItem -> {
             table = 7;
             updateGrid(table);
-            refreshInsertView(table);
+            if(accessLevel == 1) {
+                refreshInsertView(table);
+            }
         };
         MenuBar.Command menuShowReservations = (MenuBar.Command) menuItem -> {
+            if(insertWindow != null)
+                windows.removeComponent(insertWindow);
+
             table = 3;
             updateGrid(table);
-            refreshInsertView(table);
+            //refreshInsertView(table);
         };
         MenuBar.Command menuShowTableMap = (MenuBar.Command) menuItem -> {
             if(grid != null)
@@ -194,7 +228,33 @@ public class MainView extends VerticalLayout implements View {
         };
         MenuBar.Command menuSaleTransactions = (MenuBar.Command) menuItem -> {
             table = 8;
-            updateGrid(table);
+            if(accessLevel == 1)
+                updateGrid(table);
+            else
+                grid.removeAllColumns();
+                grid.setEnabled(true);
+                grid.setContainerDataSource(new BeanItemContainer<>(Transaction.class, transactionDAO.getTransactionByName(VaadinService.getCurrentRequest().getWrappedSession().getAttribute("user").toString())));
+
+        };
+        MenuBar.Command menuShowSaleStats = (MenuBar.Command) menuItem -> {
+            if(accessLevel == 1){
+                if(grid != null)
+                    tableWindow.removeComponent(grid);
+
+                if(insertWindow != null)
+                    removeComponent(insertWindow);
+
+                if(statsView == null) {
+                    statsView = new StatsView();
+                    statsView.run();
+                    tableWindow.addComponent(statsView);
+                }
+            }
+            else {
+                Notification.show("Access Only For Managers");
+            }
+
+
         };
         MenuBar.Command menuShowPointOfSale = (MenuBar.Command) menuItem -> {
             if(grid != null)
@@ -204,11 +264,25 @@ public class MainView extends VerticalLayout implements View {
             MyUI.getCurrent().getUI().getNavigator().addView("sale", new PointOfSaleView());
             MyUI.getCurrent().getUI().getNavigator().navigateTo("sale");
         };
+        MenuBar.Command menuShowHome = (MenuBar.Command) menuItem -> {
+            MyUI.getCurrent().getUI().getNavigator().removeView("home");
+            MyUI.getCurrent().getUI().getNavigator().addView("home", new MainView());
+            MyUI.getCurrent().getUI().getNavigator().navigateTo("home");
+        };
+        MenuBar.Command menuLogout = (MenuBar.Command) menuItem -> {
+           // getUI().getSession().close();
+            VaadinService.getCurrentRequest().getWrappedSession().invalidate();
+            MyUI.getCurrent().getUI().getPage().setLocation("/*");
+
+
+            MyUI.getCurrent().getUI().getNavigator().removeView("login");
+            MyUI.getCurrent().getUI().getNavigator().addView("login", new LoginView());
+            MyUI.getCurrent().getUI().getNavigator().navigateTo("login");
+        };
 
 
        // NavigationBar menuBar = new NavigationBar();
 
-        MenuBar menuBar = new MenuBar();
         menuBar.setAutoOpen(true);
         menuBar.setHeight("40");
         MenuBar.MenuItem staffMenu = menuBar.addItem("Staff", null);
@@ -216,18 +290,21 @@ public class MainView extends VerticalLayout implements View {
         staffMenu.addItem("Calculate Wages", menuCalcWages);
         staffMenu.addItem("Manage Roster", menuAddShift);
         MenuBar.MenuItem bookingsMenu = menuBar.addItem("Bookings", null);
-        bookingsMenu.addItem("Add Event", menuAddEvent);
+        bookingsMenu.addItem("Events", menuAddEvent);
         bookingsMenu.addItem("See Reservations", menuShowReservations);
         bookingsMenu.addItem("Make a Reservation", menuShowTableMap   );
         bookingsMenu.addItem("Add Tables", menuAddTables);
         MenuBar.MenuItem stockMenu = menuBar.addItem("Stock", null);
         stockMenu.addItem("Add Invoice", menuAddInvoice);
         stockMenu.addItem("Add Supplier", menuAddSupplier);
-
-        //TODO: Sales sales sales
         MenuBar.MenuItem salesMenu = menuBar.addItem("Sales", null);
-        salesMenu.addItem("Sales Stats", menuShowPointOfSale);
+        salesMenu.addItem("Point of Transaction", menuShowPointOfSale);
         salesMenu.addItem("Transactions", menuSaleTransactions);
+        salesMenu.addItem("Sales Statistics", menuShowSaleStats);
+        MenuBar.MenuItem userMenu = menuBar.addItem("Navigate", null);
+        userMenu.addItem("Home", menuShowHome);
+        userMenu.addItem("Logout", menuLogout);
+
 
 
 
@@ -306,7 +383,7 @@ public class MainView extends VerticalLayout implements View {
                 showTitle.setValue("Manage Sales");
                 grid.setEnabled(true);
                 grid.removeAllColumns();
-                grid.setContainerDataSource(new BeanItemContainer<>(Sale.class, saleDAO.getAllSales()));
+                grid.setContainerDataSource(new BeanItemContainer<>(Transaction.class, transactionDAO.getAllSales()));
         }
     }
 
@@ -334,7 +411,7 @@ public class MainView extends VerticalLayout implements View {
                 tablesDAO.deleteTable((Tables) toBeDeleted);
                 break;
             case 8:
-                saleDAO.deleteSale((Sale) toBeDeleted);
+                transactionDAO.deleteSale((Transaction) toBeDeleted);
         }
         updateGrid(table);
     }

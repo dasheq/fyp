@@ -20,6 +20,7 @@ public class Employee implements Serializable {
 	private String contractType;
 	private String position;
 	private String password;
+	private int accessLevel;
 
 	public String getUsername() {
 		return username;
@@ -92,4 +93,14 @@ public class Employee implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+
+	public int getAccessLevel() {
+		return accessLevel;
+	}
+
+	public void setAccessLevel(int accessLevel) {
+		this.accessLevel = accessLevel;
+	}
+
 }

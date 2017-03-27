@@ -6,6 +6,7 @@ import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Page;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.*;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
@@ -13,6 +14,8 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.themes.ValoTheme;
 import entities.Reservations;
 import entities.Tables;
+import entities.TablesCheckBox;
+import misc.MyUI;
 
 import java.util.ArrayList;
 
@@ -23,15 +26,19 @@ public class TableMapView extends CssLayout implements View {
 
     final VerticalLayout mainView = new VerticalLayout();
     final VerticalLayout sideView = new VerticalLayout();
+    final CssLayout navLayout = new CssLayout();
     CssLayout insertButtons = new CssLayout();
 
     Button checkAvailabilityButton = new Button("Check Availability");
     Label chosenTablesLabel = new Label();
     Label noOfSeatsLabel = new Label();
+    Button goBack = new Button("Back");
+    Button logout = new Button("Logout");
+
 
     ReservationsDAO reservationsDAO = new ReservationsDAO();
     TablesDAO tablesDAO = new TablesDAO();
-    ArrayList<Tables> tablesList = tablesDAO.getAllTables();
+    ArrayList<TablesCheckBox> tablesList = tablesDAO.getAllTablesCb();
     ArrayList<Reservations> reservationsList = reservationsDAO.getAllReservations();
     ArrayList<String> areas = tablesDAO.getAreas();
     ArrayList<Integer> tableIDs = new ArrayList<>();
@@ -76,7 +83,7 @@ public class TableMapView extends CssLayout implements View {
 
     public void checkTablesChosen() {
         for(int i = 0 ; i< tablesList.size(); i++) {
-            if(tablesList.get(i).getValue() == true) {
+            if(tablesList.get(i).getValue()) {
                 if(!tableIDs.contains(tablesList.get(i).getTableID())) {
                     noOfSeats += tablesList.get(i).getNoOfSeats();
                     tableIDs.add(tablesList.get(i).getTableID());
@@ -118,7 +125,8 @@ public class TableMapView extends CssLayout implements View {
 
         Label label = new Label("Tables Map");
         label.setStyleName(ValoTheme.LABEL_H2);
-        mainView.addComponent(label);
+        navLayout.addComponents(goBack, logout);
+        mainView.addComponents(navLayout, label);
         for(int i = 0; i< noOfAreas; i++) {
             Label areaLabel = new Label(areas.get(i));
             areaLabel.setStyleName(ValoTheme.LABEL_H4);
@@ -157,6 +165,22 @@ public class TableMapView extends CssLayout implements View {
             String reservationTime = reservationStartingTimeHour.getValue().toString() + "." + reservationStartingTimeMin.getValue().toString();
             java.sql.Date date = new java.sql.Date(reservationDate.getValue().getTime());
             checkAvailability(date.toString(), reservationTime);
+        });
+
+        goBack.addClickListener(e -> {
+            getUI().getNavigator().removeView("home");
+            getUI().getNavigator().addView("home", new MainView());
+            getUI().getNavigator().navigateTo("home");
+        });
+
+        logout.addClickListener(e -> {
+            VaadinService.getCurrentRequest().getWrappedSession().invalidate();
+            getUI().getPage().setLocation("/*");
+
+
+            MyUI.getCurrent().getUI().getNavigator().removeView("login");
+            MyUI.getCurrent().getUI().getNavigator().addView("login", new LoginView());
+            MyUI.getCurrent().getUI().getNavigator().navigateTo("login");
         });
 
         reservationDate.setValue(new java.sql.Date(new java.util.Date().getTime()));

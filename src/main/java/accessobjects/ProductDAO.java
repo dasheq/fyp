@@ -14,9 +14,9 @@ public class ProductDAO {
 
         try {
 
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM product");
 
@@ -44,11 +44,32 @@ public class ProductDAO {
         return products;
     }
 
+    public void updateProductQuantity(Product toBeUpdated) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+            String query = "UPDATE product \n" +
+                    "SET Quantity = Quantity-1\n" +
+                    "WHERE productid = ?;";
+
+            // create the mysql delete preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setInt (1, toBeUpdated.getProductID());
+            preparedStmt.execute();
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void deleteProduct(Product toBeDeleted) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             String query = " DELETE from product WHERE ProductID = ?";
 
             // create the mysql delete preparedstatement
@@ -67,9 +88,9 @@ public class ProductDAO {
     public ArrayList<String> getTypes() {
         ArrayList<String> types = new ArrayList<>();
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT DISTINCT TYPE FROM product");
 
@@ -95,9 +116,11 @@ public class ProductDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
-            PreparedStatement stmt = con.prepareStatement("SELECT * FROM product WHERE name LIKE ?");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM product WHERE name LIKE ? OR Type LIKE ? OR Price LIKE ?");
             stmt.setString(1, filter);
+            stmt.setString(2, filter);
+            stmt.setString(3, filter);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {

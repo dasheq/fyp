@@ -15,9 +15,9 @@ public class InvoiceDAO {
 
         try {
 
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM invoice");
 
@@ -45,9 +45,9 @@ public class InvoiceDAO {
 
     public void deleteInvoice(Invoice toBeDeleted) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             String query = " DELETE from Invoice WHERE RefNumber = ?";
 
             // create the mysql delete preparedstatement
@@ -65,9 +65,9 @@ public class InvoiceDAO {
 
     public void addInvoice(Invoice invoice) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
             String query = " insert into invoice (SupplierID, TotalValue, RefNumber, Date)"
                     + " values (?, ?, ?, ?)";
             Statement highestValueStmt = con.createStatement();
@@ -102,9 +102,10 @@ public class InvoiceDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt", "root", "");
-            PreparedStatement stmt = con.prepareStatement("SELECT * FROM invoice WHERE name LIKE ?");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM invoice WHERE invoice.RefNumber LIKE ? OR TotalValue LIKE ?");
             stmt.setString(1, filter);
+            stmt.setString(2, filter);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {

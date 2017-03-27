@@ -14,6 +14,11 @@ public class Product extends Button implements Serializable{
     private String type;
     private int quantity;
     private int refNumber;
+    private boolean clicked;
+
+    public Product() {
+        clicked = false;
+    }
 
     public int getProductID() {
         return productID;
@@ -64,6 +69,8 @@ public class Product extends Button implements Serializable{
         this.type = type;
     }
 
+    public boolean isClicked() { return clicked; }
 
+    public void setClicked(boolean clicked) {this.clicked = clicked;}
 
 }
