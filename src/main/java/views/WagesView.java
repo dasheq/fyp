@@ -9,6 +9,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.NativeSelect;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
+import controllers.DataController;
 import entities.Employee;
 import misc.MyUI;
 
@@ -35,8 +36,10 @@ public class WagesView extends VerticalLayout{
 
     private VerticalLayout labelsLayout = new VerticalLayout();
 
-    ShiftDAO shiftDAO = new ShiftDAO();
-    EmployeeDAO employeeDAO = new EmployeeDAO();
+    DataController dataController = new DataController();
+
+    //ShiftDAO shiftDAO = new ShiftDAO();
+    //EmployeeDAO employeeDAO = new EmployeeDAO();
 
     public WagesView(int accessLevel) {
         this.accessLevel = accessLevel;
@@ -54,7 +57,7 @@ public class WagesView extends VerticalLayout{
 
         BeanItemContainer<String> containerEmployees =
                 new BeanItemContainer<>(String.class);
-        ArrayList<Employee> employees = employeeDAO.getAllEmployees();
+        ArrayList<Employee> employees = dataController.getAllEmployees();
 
         for (Employee employee : employees) {
             containerEmployees.addItem(employee.getUsername());
@@ -84,7 +87,7 @@ public class WagesView extends VerticalLayout{
             if(accessLevel == 1) {
                 employeeName = employeeSelect.getValue().toString();
             }
-           wagesDetails = shiftDAO.calculateWages(
+           wagesDetails = dataController.calculateWages(
                    employeeName, Integer.valueOf(weekSelect.getValue().toString()));
            updateWages(wagesDetails);
         });

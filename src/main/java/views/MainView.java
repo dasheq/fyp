@@ -9,6 +9,7 @@ import com.vaadin.server.Page;
 import com.vaadin.server.VaadinService;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import controllers.DataController;
 import entities.*;
 import accessobjects.*;
 import misc.MyUI;
@@ -18,6 +19,8 @@ import misc.MyUI;
  */
 @DesignRoot
 public class MainView extends VerticalLayout implements View {
+    DataController dataController = new DataController();
+    /*
     EmployeeDAO employeeDAO = new EmployeeDAO();
     EventDAO eventDAO = new EventDAO();
     InvoiceDAO invoiceDAO = new InvoiceDAO();
@@ -26,6 +29,7 @@ public class MainView extends VerticalLayout implements View {
     SupplierDAO supplierDAO = new SupplierDAO();
     TablesDAO tablesDAO = new TablesDAO();
     TransactionDAO transactionDAO = new TransactionDAO();
+    */
 
     int accessLevel;
 
@@ -76,28 +80,28 @@ public class MainView extends VerticalLayout implements View {
                 case 0:
                     break;
                 case 1:
-                    grid.setContainerDataSource(new BeanItemContainer<>(entities.Employee.class, employeeDAO.getEmployeesByName(e.getText())));
+                    grid.setContainerDataSource(new BeanItemContainer<>(entities.Employee.class, dataController.getEmployeesByName(e.getText())));
                     break;
                 case 2:
-                    grid.setContainerDataSource(new BeanItemContainer<>(entities.Event.class, eventDAO.getEventsByName(e.getText())));
+                    grid.setContainerDataSource(new BeanItemContainer<>(entities.Event.class, dataController.getEventsByName(e.getText())));
                     break;
                 case 3:
-                    grid.setContainerDataSource(new BeanItemContainer<>(Reservations.class, reservationsDAO.getReservationsByName(e.getText())));
+                    grid.setContainerDataSource(new BeanItemContainer<>(Reservations.class, dataController.getReservationsByName(e.getText())));
                     break;
                 case 4:
-                    grid.setContainerDataSource(new BeanItemContainer<>(Shift.class, shiftDAO.getShiftByName(e.getText())));
+                    grid.setContainerDataSource(new BeanItemContainer<>(Shift.class, dataController.getShiftByName(e.getText())));
                     break;
                 case 5:
-                    grid.setContainerDataSource(new BeanItemContainer<>(Supplier.class, supplierDAO.getSupplierByName(e.getText())));
+                    grid.setContainerDataSource(new BeanItemContainer<>(Supplier.class, dataController.getSupplierByName(e.getText())));
                     break;
                 case 6:
-                    grid.setContainerDataSource(new BeanItemContainer<>(Invoice.class, invoiceDAO.getInvoicesByName(e.getText())));
+                    grid.setContainerDataSource(new BeanItemContainer<>(Invoice.class, dataController.getInvoicesByName(e.getText())));
                     break;
                 case 7:
-                    grid.setContainerDataSource(new BeanItemContainer<>(Tables.class, tablesDAO.getTableByName(e.getText())));
+                    grid.setContainerDataSource(new BeanItemContainer<>(Tables.class, dataController.getTableByName(e.getText())));
                     break;
                 case 8:
-                    grid.setContainerDataSource(new BeanItemContainer<>(Transaction.class, transactionDAO.getTransactionByName(e.getText())));
+                    grid.setContainerDataSource(new BeanItemContainer<>(Transaction.class, dataController.getTransactionByName(e.getText())));
             }
 
             if (e.getText().equals(""))
@@ -150,7 +154,7 @@ public class MainView extends VerticalLayout implements View {
                 else {
                     grid.removeAllColumns();
                     grid.setEnabled(true);
-                    grid.setContainerDataSource(new BeanItemContainer<>(entities.Employee.class, employeeDAO.getEmployeesByName(VaadinService.getCurrentRequest().getWrappedSession().getAttribute("user").toString())));
+                    grid.setContainerDataSource(new BeanItemContainer<>(entities.Employee.class, dataController.getEmployeesByName(VaadinService.getCurrentRequest().getWrappedSession().getAttribute("user").toString())));
                 }
 
                 if(insertWindow != null)
@@ -233,7 +237,7 @@ public class MainView extends VerticalLayout implements View {
             else
                 grid.removeAllColumns();
                 grid.setEnabled(true);
-                grid.setContainerDataSource(new BeanItemContainer<>(Transaction.class, transactionDAO.getTransactionByName(VaadinService.getCurrentRequest().getWrappedSession().getAttribute("user").toString())));
+                grid.setContainerDataSource(new BeanItemContainer<>(Transaction.class, dataController.getTransactionByName(VaadinService.getCurrentRequest().getWrappedSession().getAttribute("user").toString())));
 
         };
         MenuBar.Command menuShowSaleStats = (MenuBar.Command) menuItem -> {
@@ -338,21 +342,21 @@ public class MainView extends VerticalLayout implements View {
                 showTitle.setValue("Manage Employees");
                 grid.setEnabled(true);
                 grid.removeAllColumns();
-                grid.setContainerDataSource(new BeanItemContainer<>(entities.Employee.class, employeeDAO.getAllEmployees()));
+                grid.setContainerDataSource(new BeanItemContainer<>(entities.Employee.class, dataController.getAllEmployees()));
                 break;
 
             case 2:
                 showTitle.setValue("Manage Events");
                 grid.setEnabled(true);
                 grid.removeAllColumns();
-                grid.setContainerDataSource(new BeanItemContainer<>(entities.Event.class, eventDAO.getAllEvents()));
+                grid.setContainerDataSource(new BeanItemContainer<>(entities.Event.class, dataController.getAllEvents()));
                 break;
 
             case 3:
                 showTitle.setValue("Manage Reservations");
                 grid.setEnabled(true);
                 grid.removeAllColumns();
-                grid.setContainerDataSource(new BeanItemContainer<>(Reservations.class, reservationsDAO.getAllReservations()));
+                grid.setContainerDataSource(new BeanItemContainer<>(Reservations.class, dataController.getAllReservations()));
                 break;
 
             case 4:
@@ -362,56 +366,56 @@ public class MainView extends VerticalLayout implements View {
                 showTitle.setValue("Manage Suppliers");
                 grid.setEnabled(true);
                 grid.removeAllColumns();
-                grid.setContainerDataSource(new BeanItemContainer<>(Supplier.class, supplierDAO.getAllSuppliers()));
+                grid.setContainerDataSource(new BeanItemContainer<>(Supplier.class, dataController.getAllSuppliers()));
                 break;
 
             case 6:
                 showTitle.setValue("Manage Invoices");
                 grid.setEnabled(true);
                 grid.removeAllColumns();
-                grid.setContainerDataSource(new BeanItemContainer<>(Invoice.class, invoiceDAO.getAllInvoices()));
+                grid.setContainerDataSource(new BeanItemContainer<>(Invoice.class, dataController.getAllInvoices()));
                 break;
 
             case 7:
                 showTitle.setValue("Manage Tables");
                 grid.setEnabled(true);
                 grid.removeAllColumns();
-                grid.setContainerDataSource(new BeanItemContainer<>(Tables.class, tablesDAO.getAllTables()));
+                grid.setContainerDataSource(new BeanItemContainer<>(Tables.class, dataController.getAllTables()));
                 break;
 
             case 8:
                 showTitle.setValue("Manage Sales");
                 grid.setEnabled(true);
                 grid.removeAllColumns();
-                grid.setContainerDataSource(new BeanItemContainer<>(Transaction.class, transactionDAO.getAllSales()));
+                grid.setContainerDataSource(new BeanItemContainer<>(Transaction.class, dataController.getAllSales()));
         }
     }
 
     public void deleteRecords(int tableNo, Object toBeDeleted) {
         switch (tableNo) {
             case 1:
-                employeeDAO.deleteEmployee((entities.Employee) toBeDeleted);
+                dataController.deleteEmployee((entities.Employee) toBeDeleted);
                 break;
             case 2:
-                eventDAO.deleteEvent((entities.Event) toBeDeleted);
+                dataController.deleteEvent((entities.Event) toBeDeleted);
                 break;
             case 3:
-                reservationsDAO.deleteReservation((Reservations) toBeDeleted);
+                dataController.deleteReservation((Reservations) toBeDeleted);
                 break;
             case 4:
-                shiftDAO.deleteShift((Shift) toBeDeleted);
+                dataController.deleteShift((Shift) toBeDeleted);
                 break;
             case 5:
-                supplierDAO.deleteSupplier((Supplier) toBeDeleted);
+                dataController.deleteSupplier((Supplier) toBeDeleted);
                 break;
             case 6:
-                invoiceDAO.deleteInvoice((Invoice) toBeDeleted);
+                dataController.deleteInvoice((Invoice) toBeDeleted);
                 break;
             case 7:
-                tablesDAO.deleteTable((Tables) toBeDeleted);
+                dataController.deleteTable((Tables) toBeDeleted);
                 break;
             case 8:
-                transactionDAO.deleteSale((Transaction) toBeDeleted);
+                dataController.deleteSale((Transaction) toBeDeleted);
         }
         updateGrid(table);
     }

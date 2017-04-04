@@ -12,6 +12,7 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.themes.ValoTheme;
+import controllers.DataController;
 import entities.Reservations;
 import entities.Tables;
 import entities.TablesCheckBox;
@@ -35,16 +36,17 @@ public class TableMapView extends CssLayout implements View {
     Button goBack = new Button("Back");
     Button logout = new Button("Logout");
 
+    DataController dataController = new DataController();
 
-    ReservationsDAO reservationsDAO = new ReservationsDAO();
-    TablesDAO tablesDAO = new TablesDAO();
-    ArrayList<TablesCheckBox> tablesList = tablesDAO.getAllTablesCb();
-    ArrayList<Reservations> reservationsList = reservationsDAO.getAllReservations();
-    ArrayList<String> areas = tablesDAO.getAreas();
+   // ReservationsDAO reservationsDAO = new ReservationsDAO();
+   // TablesDAO tablesDAO = new TablesDAO();
+    ArrayList<TablesCheckBox> tablesList = dataController.getAllTablesCb();
+    ArrayList<Reservations> reservationsList = dataController.getAllReservations();
+    ArrayList<String> areas = dataController.getAreas();
     ArrayList<Integer> tableIDs = new ArrayList<>();
     int noOfSeats;
     int noOfTables = tablesList.size();
-    int noOfAreas = tablesDAO.getNoOfAreas();
+    int noOfAreas = dataController.getNoOfAreas();
     String screenWidth = "100%";
 
     //Variables for Insert Reservation Window
@@ -234,7 +236,7 @@ public class TableMapView extends CssLayout implements View {
         sideView.addComponent(submitReservationButton);
 
         submitReservationButton.addClickListener(e -> {
-            ReservationsDAO reservationsDAO = new ReservationsDAO();
+            //ReservationsDAO reservationsDAO = new ReservationsDAO();
             for(int i = 0; i< tableIDs.size() ; i++) {
                 Reservations reservation = new Reservations();
                 reservation.setTableID(tableIDs.get(i));
@@ -246,7 +248,7 @@ public class TableMapView extends CssLayout implements View {
                 reservation.setNumberOfPeople(Integer.valueOf(reservationNumberOFPeople.getValue()));
                 reservation.setStartingTime(Float.valueOf(reservationStartingTimeHour.getValue().toString() + "." + reservationStartingTimeMin.getValue().toString()));
                 reservation.setEndingTime(Float.valueOf(reservationEndingTime.getValue().toString()));
-                reservationsDAO.addReservation(reservation);
+                dataController.addReservation(reservation);
             }
         });
 

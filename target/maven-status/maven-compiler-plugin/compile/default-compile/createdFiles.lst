@@ -8,9 +8,9 @@ views\RosterView.class
 entities\PieChartDataTransaction.class
 misc\DateConvertor.class
 accessobjects\TransactionDAO.class
-misc\DataController.class
 views\MainView.class
 views\MainView$1.class
+controllers\DataController.class
 views\PointOfSaleView.class
 views\InsertView.class
 entities\TablesCheckBox.class

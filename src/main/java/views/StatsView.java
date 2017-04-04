@@ -13,6 +13,7 @@ import com.vaadin.server.VaadinService;
 import com.vaadin.shared.ui.colorpicker.Color;
 import com.vaadin.ui.*;
 import at.downdrown.vaadinaddons.highchartsapi.*;
+import controllers.DataController;
 import entities.PieChartDataTransaction;
 import entities.Transaction;
 
@@ -25,7 +26,10 @@ import java.util.ArrayList;
 public class StatsView extends VerticalLayout  {
     final VerticalLayout chartView = new VerticalLayout();
     HighChart pieChart;
-    TransactionDAO transactionDAO = new TransactionDAO();
+
+    DataController dataController = new DataController();
+
+    //TransactionDAO transactionDAO = new TransactionDAO();
     ArrayList<Transaction> transactions = new ArrayList<>();
     ArrayList<PieChartDataTransaction> usernames = new ArrayList<>();
     ArrayList<String> usernamesStrings = new ArrayList<>();
@@ -142,13 +146,13 @@ public class StatsView extends VerticalLayout  {
 
     public void queryDatabaseAll() {
         transactions = null;
-        transactions = transactionDAO.getAllSales();
+        transactions = dataController.getAllSales();
         showPieChart();
     }
 
     public void queryDatabaseFilter(int filterType, int filter) {
         transactions = null;
-        transactions = transactionDAO.getSalesByFilter(filterType, filter);
+        transactions = dataController.getSalesByFilter(filterType, filter);
         if(transactions.size() != 0) {
             showPieChart();
         }
@@ -160,14 +164,14 @@ public class StatsView extends VerticalLayout  {
 
     public void showPieChart() {
         usernamesStrings = null;
-        usernamesStrings = transactionDAO.getAllUsernames();
+        usernamesStrings = dataController.getAllUsernames();
         //<PieChartData> usernamesPC = new ArrayList<>();
         PieChartSeries pieRevenue = new PieChartSeries("Total Revenue in €");
 
         ChartConfiguration pieConfiguration = new ChartConfiguration();
 
 
-        int noOfUsers = transactionDAO.getAllUsernames().size();
+        int noOfUsers = dataController.getAllUsernames().size();
         for(int i=0; i<noOfUsers; i++) {
             usernames.add(new PieChartDataTransaction(usernamesStrings.get(i)));
         }

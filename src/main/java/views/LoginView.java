@@ -18,6 +18,7 @@ import controllers.DataController;
 @DesignRoot
 public class LoginView extends CssLayout implements View{
     DataController dataController = new DataController();
+
     CssLayout horizontalLayout = new CssLayout();
     VerticalLayout spacing = new VerticalLayout();
     public static final String NAME = "LoginView";

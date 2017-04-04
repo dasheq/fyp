@@ -9,6 +9,7 @@ import com.vaadin.server.Page;
 import com.vaadin.server.VaadinService;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import controllers.DataController;
 import entities.Product;
 import entities.Transaction;
 import misc.MyUI;
@@ -23,8 +24,10 @@ public class PointOfSaleView extends CssLayout implements View{
     final VerticalLayout sideView = new VerticalLayout();
     final CssLayout navLayout = new CssLayout();
 
-    ProductDAO productDAO = new ProductDAO();
-    ArrayList<Product> products = productDAO.getAllProducts();
+    DataController dataController = new DataController();
+
+    //ProductDAO productDAO = new ProductDAO();
+    ArrayList<Product> products = dataController.getAllProducts();
     ArrayList<Product> saleProducts = new ArrayList<>();
     String screenWidth = "100%";
     float totalPrice = 0;
@@ -39,7 +42,7 @@ public class PointOfSaleView extends CssLayout implements View{
 
     Button showProductsList = new Button("Show products list");
 
-    ArrayList<String> productTypes= productDAO.getTypes();
+    ArrayList<String> productTypes= dataController.getTypes();
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
@@ -85,16 +88,16 @@ public class PointOfSaleView extends CssLayout implements View{
             float changeAmount = Float.valueOf(subTotal.getValue()) - totalPrice;
             change.setValue(change.getValue() + ": " +String.valueOf(changeAmount));
             for(int i = 0; i < saleProducts.size(); i++){
-                productDAO.updateProductQuantity(saleProducts.get(i));
+                dataController.updateProductQuantity(saleProducts.get(i));
             }
             Notification.show(String.valueOf(new java.sql.Timestamp(System.currentTimeMillis())) + " " +change.getValue() + ": " + change.getValue());
-            TransactionDAO transactionDAO = new TransactionDAO();
+            //TransactionDAO transactionDAO = new TransactionDAO();
             Transaction transaction = new Transaction();
             transaction.setUsername(VaadinService.getCurrentRequest().getWrappedSession().getAttribute("user").toString());
             transaction.setTotalPrice(totalPrice);
             transaction.setPaymentMethod(paymentMethod.getValue().toString());
             transaction.setTimeOfSale(new java.sql.Timestamp(System.currentTimeMillis()));
-            transactionDAO.addSale(transaction);
+            dataController.addSale(transaction);
         });
 
         showProductsList.addClickListener(e -> {
@@ -153,7 +156,7 @@ public class PointOfSaleView extends CssLayout implements View{
 
             for(int j = 0; j < products.size(); j++) {
                 if (products.get(j).getType().equals(productTypes.get(i))) {
-                    products.get(j).setCaption(products.get(j).getName() + " $"+ products.get(j).getPrice());
+                    products.get(j).setCaption(products.get(j).getName() + " €"+ products.get(j).getPrice() + " " + products.get(j).getQuantity() + " left");
                     productTypeLayout.addComponent(products.get(j));
                 }
             }

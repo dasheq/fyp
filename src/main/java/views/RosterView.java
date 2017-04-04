@@ -8,6 +8,7 @@ import com.vaadin.server.Page;
 import com.vaadin.server.VaadinService;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import controllers.DataController;
 import entities.Shift;
 import misc.MyUI;
 
@@ -25,7 +26,9 @@ public class RosterView extends CssLayout implements View {
     private int accessLevel;
     private String employeeName;
 
-    ShiftDAO shiftDAO = new ShiftDAO();
+    DataController dataController = new DataController();
+
+    //ShiftDAO shiftDAO = new ShiftDAO();
     ArrayList<Shift> shifts;
     ArrayList<String> employeesNames;
     String screenWidth = "100%";
@@ -67,7 +70,7 @@ public class RosterView extends CssLayout implements View {
         BeanItemContainer<String> weeksContainer =
                 new BeanItemContainer<>(String.class);
 
-        employeesNames = shiftDAO.getNameFromUsername();
+        employeesNames = dataController.getNameFromUsername();
 
         for(int i =0 ;i< employeesNames.size(); i++) {
             employeeContainer.addItem(employeesNames.get(i));
@@ -117,7 +120,7 @@ public class RosterView extends CssLayout implements View {
         if(accessLevel == 1) {
             employeeName = employees.getValue().toString();
         }
-        shifts = shiftDAO.getShiftsByNameAndWeek(employeeName, Integer.valueOf(weeks.getValue().toString()));
+        shifts = dataController.getShiftsByNameAndWeek(employeeName, Integer.valueOf(weeks.getValue().toString()));
         ArrayList<Label> dayLabels = new ArrayList<>();
         ArrayList<Label> shiftLabels = new ArrayList<>();
         Label rosterLabel = new Label();

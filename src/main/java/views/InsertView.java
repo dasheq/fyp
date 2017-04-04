@@ -8,6 +8,7 @@ import com.vaadin.server.FontAwesome;
 import com.vaadin.server.SystemError;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
+import controllers.DataController;
 import entities.Employee;
 import entities.Tables;
 import misc.DateConvertor;
@@ -22,6 +23,8 @@ import java.util.Date;
  */
 public class InsertView extends VerticalLayout {
 
+
+    DataController dataController = new DataController();
     //Misc Variables
     CssLayout insertButtons = new CssLayout();
     private String screenWidth = "100%";
@@ -32,6 +35,7 @@ public class InsertView extends VerticalLayout {
     private int table;
 
     //Access Objects
+    /*
     EmployeeDAO employeeDAO = new EmployeeDAO();
     EventDAO eventDAO = new EventDAO();
     InvoiceDAO invoiceDAO = new InvoiceDAO();
@@ -39,7 +43,7 @@ public class InsertView extends VerticalLayout {
     ShiftDAO shiftDAO = new ShiftDAO();
     SupplierDAO supplierDAO = new SupplierDAO();
     TablesDAO tablesDAO = new TablesDAO();
-
+    */
 
     //Variables for Insert Employee Window
     private TextField employeeName = new TextField("Name");
@@ -120,7 +124,7 @@ public class InsertView extends VerticalLayout {
                     else
                         employee.setAccessLevel(0);
 
-                    employeeDAO.addEmployee(employee);
+                    dataController.addEmployee(employee);
                     clearFields(table);
                     Notification.show("Added " + employee.getName());
                     break;
@@ -133,7 +137,7 @@ public class InsertView extends VerticalLayout {
                     event.setEndTime(Float.valueOf(eventEndingTime.getValue()));
                     event.setPrice(Float.valueOf(eventPrice.getValue()));
                     event.setStartingTime(Float.valueOf(eventStartingTime.getValue()));
-                    eventDAO.addEvent(event);
+                    dataController.addEvent(event);
                     clearFields(table);
                     break;
                 case 3:
@@ -163,7 +167,7 @@ public class InsertView extends VerticalLayout {
                     shift.setWeek(week);
                     shift.setYear(year);
 
-                    shiftDAO.addShift(shift);
+                    dataController.addShift(shift);
                     clearFields(table);
                     break;
                 case 5:
@@ -173,7 +177,7 @@ public class InsertView extends VerticalLayout {
                     supplier.setContactNumber(Integer.valueOf(supplierContactNo.getValue()));
                     supplier.setEmail(supplierEmail.getValue());
                     supplier.setWebsite(supplierWebsite.getValue());
-                    supplierDAO.addSupplier(supplier);
+                    dataController.addSupplier(supplier);
                     clearFields(table);
                     break;
                 case 6:
@@ -181,14 +185,14 @@ public class InsertView extends VerticalLayout {
                     invoice.setDate(new java.sql.Date(invoiceDate.getValue().getTime()));
                     invoice.setSupplierID(Integer.valueOf(invoiceSupplierID.getValue()));
                     invoice.setTotalValue(Float.valueOf(invoiceTotalValue.getValue()));
-                    invoiceDAO.addInvoice(invoice);
+                    dataController.addInvoice(invoice);
                     clearFields(table);
                     break;
                 case 7:
                     entities.Tables tables = new entities.Tables("");
                     tables.setNoOfSeats(Integer.valueOf(tableNoOfSeats.getValue()));
                     tables.setArea(tableArea.getValue());
-                    tablesDAO.addTable(tables);
+                    dataController.addTable(tables);
                     clearFields(table);
                     break;
             }
