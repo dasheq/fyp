@@ -8,6 +8,7 @@ views\RosterView.class
 entities\PieChartDataTransaction.class
 misc\DateConvertor.class
 accessobjects\TransactionDAO.class
+misc\DataController.class
 views\MainView.class
 views\MainView$1.class
 views\PointOfSaleView.class

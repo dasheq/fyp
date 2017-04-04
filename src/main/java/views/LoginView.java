@@ -2,7 +2,6 @@ package views;
 
 import accessobjects.EmployeeDAO;
 import com.vaadin.annotations.DesignRoot;
-import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Page;
@@ -10,6 +9,7 @@ import com.vaadin.server.VaadinService;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import entities.Employee;
+import controllers.DataController;
 
 
 /**
@@ -17,6 +17,7 @@ import entities.Employee;
  */
 @DesignRoot
 public class LoginView extends CssLayout implements View{
+    DataController dataController = new DataController();
     CssLayout horizontalLayout = new CssLayout();
     VerticalLayout spacing = new VerticalLayout();
     public static final String NAME = "LoginView";
@@ -39,7 +40,8 @@ public class LoginView extends CssLayout implements View{
         username.setValue("dasheq");
         password.setValue("password");
         loginButton.addClickListener((Button.ClickEvent e) -> {
-                employeeDetails = employeeDAO.login(username.getValue(), password.getValue());
+                employeeDetails = dataController.login(username.getValue(), password.getValue());
+            //  employeeDetails = employeeDAO.login(username.getValue(), password.getValue());
             if (employeeDetails != null) {
                 Notification.show("Welcome back " + username.getValue());
                 VaadinService.getCurrentRequest().getWrappedSession()
