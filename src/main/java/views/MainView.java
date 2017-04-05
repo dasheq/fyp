@@ -66,13 +66,6 @@ public class MainView extends VerticalLayout implements View {
         tableWindow.setWidth("75%");
         showTitle.setStyleName(ValoTheme.LABEL_H2);
 
-        //screenWidth = String.valueOf(windows.getWidth()) + "%";
-
-        //
-        //
-        // Grid
-        //
-        //
 
         filterText.setInputPrompt("Filter Search");
         filterText.addTextChangeListener(e -> {
@@ -102,6 +95,9 @@ public class MainView extends VerticalLayout implements View {
                     break;
                 case 8:
                     grid.setContainerDataSource(new BeanItemContainer<>(Transaction.class, dataController.getTransactionByName(e.getText())));
+                    break;
+                case 9:
+                    grid.setContainerDataSource(new BeanItemContainer<>(Product.class, dataController.getProductByName(e.getText())));
             }
 
             if (e.getText().equals(""))
@@ -144,27 +140,24 @@ public class MainView extends VerticalLayout implements View {
         updateGrid(table);
 
 
-        MenuBar.Command menuCalcWages = new MenuBar.Command() {
-            @Override
-            public void menuSelected(MenuBar.MenuItem menuItem) {
-                if(accessLevel == 1) {
-                    table = 1;
-                    updateGrid(table);
-                }
-                else {
-                    grid.removeAllColumns();
-                    grid.setEnabled(true);
-                    grid.setContainerDataSource(new BeanItemContainer<>(entities.Employee.class, dataController.getEmployeesByName(VaadinService.getCurrentRequest().getWrappedSession().getAttribute("user").toString())));
-                }
-
-                if(insertWindow != null)
-                    windows.removeComponent(insertWindow);
-
-                wagesView = new WagesView(accessLevel);
-                wagesView.setWidth("25%");
-                wagesView.run();
-                windows.addComponent(wagesView);
+        MenuBar.Command menuCalcWages = (MenuBar.Command) menuItem -> {
+            if(accessLevel == 1) {
+                table = 1;
+                updateGrid(table);
             }
+            else {
+                grid.removeAllColumns();
+                grid.setEnabled(true);
+                grid.setContainerDataSource(new BeanItemContainer<>(Employee.class, dataController.getEmployeesByName(VaadinService.getCurrentRequest().getWrappedSession().getAttribute("user").toString())));
+            }
+
+            if(insertWindow != null)
+                windows.removeComponent(insertWindow);
+
+            wagesView = new WagesView(accessLevel);
+            wagesView.setWidth("25%");
+            wagesView.run();
+            windows.addComponent(wagesView);
         };
 
         MenuBar.Command menuAddEmployee = (MenuBar.Command) menuItem -> {
@@ -192,6 +185,14 @@ public class MainView extends VerticalLayout implements View {
             //MyUI.getCurrent().getUI().getNavigator().removeView("roster");
             MyUI.getCurrent().getUI().getNavigator().addView("roster", new RosterView(accessLevel));
             MyUI.getCurrent().getUI().getNavigator().navigateTo("roster");
+        };
+        MenuBar.Command menuCheckProductAvailability = (MenuBar.Command) menuItem -> {
+            table = 9;
+            updateGrid(table);
+
+            if(accessLevel == 1) {
+                refreshInsertView(table);
+            }
         };
         MenuBar.Command menuAddSupplier = (MenuBar.Command) menuItem -> {
             table = 5;
@@ -299,6 +300,7 @@ public class MainView extends VerticalLayout implements View {
         bookingsMenu.addItem("Make a Reservation", menuShowTableMap   );
         bookingsMenu.addItem("Add Tables", menuAddTables);
         MenuBar.MenuItem stockMenu = menuBar.addItem("Stock", null);
+        stockMenu.addItem("Products", menuCheckProductAvailability);
         stockMenu.addItem("Add Invoice", menuAddInvoice);
         stockMenu.addItem("Add Supplier", menuAddSupplier);
         MenuBar.MenuItem salesMenu = menuBar.addItem("Sales", null);
@@ -388,6 +390,13 @@ public class MainView extends VerticalLayout implements View {
                 grid.setEnabled(true);
                 grid.removeAllColumns();
                 grid.setContainerDataSource(new BeanItemContainer<>(Transaction.class, dataController.getAllSales()));
+                break;
+            case 9:
+                showTitle.setValue("Manage Products");
+                grid.setEnabled(true);
+                grid.removeAllColumns();
+                grid.setContainerDataSource(new BeanItemContainer<>(entities.Product.class, dataController.getAllProducts()));
+                break;
         }
     }
 
@@ -416,6 +425,10 @@ public class MainView extends VerticalLayout implements View {
                 break;
             case 8:
                 dataController.deleteSale((Transaction) toBeDeleted);
+                break;
+            case 9:
+                dataController.deleteProduct((Product) toBeDeleted);
+                break;
         }
         updateGrid(table);
     }

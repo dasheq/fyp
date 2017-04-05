@@ -14,7 +14,7 @@ public class ShiftDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             String query = " DELETE FROM shift WHERE ShiftID = ?";
 
             // create the mysql delete preparedstatement
@@ -34,7 +34,7 @@ public class ShiftDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             String query = " INSERT INTO shift (Start_Time, End_Time, OvertimeHours, Username, ShiftID)"
                     + " VALUES (?, ?, ?, ?, ?)";
             Statement highestValueStmt = con.createStatement();
@@ -71,7 +71,7 @@ public class ShiftDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM shift");
 
@@ -108,7 +108,7 @@ public class ShiftDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             PreparedStatement stmt = con.prepareStatement("SELECT * FROM shift WHERE Username LIKE ?");
             stmt.setString(1, filter);
             ResultSet rs = stmt.executeQuery();
@@ -153,7 +153,7 @@ public class ShiftDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             String querySalary = "SELECT * FROM employee WHERE username=?";
             PreparedStatement preparedStmtSalary = con.prepareStatement(querySalary);
             preparedStmtSalary.setString(1, username);
@@ -198,7 +198,7 @@ public class ShiftDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             String query = "SELECT ShiftID, Start_Time, End_Time, Day, Week, Year, OvertimeHours, e.Username \n" +
                     "FROM shift s \n" +
                     "JOIN employee e\n" +
@@ -243,7 +243,7 @@ public class ShiftDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             PreparedStatement stmt = con.prepareStatement("SELECT DISTINCT(e.name) \n" +
                     "FROM bar_mgmt.shift s " +
                     "INNER JOIN bar_mgmt.employee e " +

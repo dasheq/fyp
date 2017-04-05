@@ -13,7 +13,7 @@ public class EventDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             String query = " insert into event (ActName, ActType, Area, EndTime, Price, StartingTime, EventID)"
                     + " values (?, ?, ?, ?, ?, ?, ?)";
             Statement highestValueStmt = con.createStatement();
@@ -49,7 +49,7 @@ public class EventDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             String query = " DELETE from event WHERE EventID = ?";
 
             // create the mysql delete preparedstatement
@@ -72,7 +72,7 @@ public class EventDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM event");
 
@@ -110,7 +110,7 @@ public class EventDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             PreparedStatement stmt = con.prepareStatement("SELECT * FROM event WHERE actname LIKE ? OR event.ActType LIKE ? or event.Area LIKE ?");
             stmt.setString(1, filter);
             stmt.setString(2, filter);

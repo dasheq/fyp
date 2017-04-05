@@ -198,8 +198,16 @@ public class DataController {
         return productDAO.getAllProducts();
     }
 
-    public void updateProductQuantity(Product toBeUpdated) {
-        productDAO.updateProductQuantity(toBeUpdated);
+    public ArrayList<ProductButton> getAllProductsBtn() {
+        return productDAO.getAllProductsBtn();
+    }
+
+    public void addProduct(Product product) {
+        productDAO.addProduct(product);
+    }
+
+    public void updateProductQuantityButton(ProductButton toBeUpdated) {
+        productDAO.updateProductQuantityButton(toBeUpdated);
     }
 
     public void deleteProduct(Product toBeDeleted) {

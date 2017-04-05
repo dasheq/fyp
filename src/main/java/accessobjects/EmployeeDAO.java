@@ -21,7 +21,7 @@ public class EmployeeDAO {
        try {
            Class.forName("com.mysql.cj.jdbc.Driver");
            Connection con = DriverManager.getConnection(
-                   "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                   "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
            String query = " insert into employee (name, Address, ContractType, DoB, Username, Position, Phone, SalaryPh, Password, AccessLevel)"
                    + " values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -51,7 +51,7 @@ public class EmployeeDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             String query = " DELETE from employee WHERE Username = ?";
 
             // create the mysql delete preparedstatement
@@ -73,7 +73,7 @@ public class EmployeeDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             String query = "SELECT * FROM employee WHERE username=? AND Password=?";
             PreparedStatement preparedStmt = con.prepareStatement(query);
             preparedStmt.setString(1, username);
@@ -105,7 +105,7 @@ public class EmployeeDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM employee");
 
@@ -145,7 +145,7 @@ public class EmployeeDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             PreparedStatement stmt = con.prepareStatement("SELECT * FROM employee WHERE name LIKE ? or Username LIKE ?" +
                     "OR Address LIKE ? or Position LIKE ?");
             stmt.setString(1, filter);

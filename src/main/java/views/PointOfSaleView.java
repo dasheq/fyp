@@ -1,7 +1,5 @@
 package views;
 
-import accessobjects.ProductDAO;
-import accessobjects.TransactionDAO;
 import com.vaadin.data.util.BeanItemContainer;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -10,7 +8,7 @@ import com.vaadin.server.VaadinService;
 import com.vaadin.ui.*;
 import com.vaadin.ui.themes.ValoTheme;
 import controllers.DataController;
-import entities.Product;
+import entities.ProductButton;
 import entities.Transaction;
 import misc.MyUI;
 
@@ -27,8 +25,8 @@ public class PointOfSaleView extends CssLayout implements View{
     DataController dataController = new DataController();
 
     //ProductDAO productDAO = new ProductDAO();
-    ArrayList<Product> products = dataController.getAllProducts();
-    ArrayList<Product> saleProducts = new ArrayList<>();
+    ArrayList<ProductButton> products = dataController.getAllProductsBtn();
+    ArrayList<ProductButton> saleProducts = new ArrayList<>();
     String screenWidth = "100%";
     float totalPrice = 0;
     Label totalPriceLabel = new Label("Total Price: " + totalPrice);
@@ -55,7 +53,7 @@ public class PointOfSaleView extends CssLayout implements View{
                 showSaleComponents();
             }
 
-            updateSaleList((Product) event.getButton());
+            updateSaleList((ProductButton) event.getButton());
         };
 
 
@@ -88,7 +86,7 @@ public class PointOfSaleView extends CssLayout implements View{
             float changeAmount = Float.valueOf(subTotal.getValue()) - totalPrice;
             change.setValue(change.getValue() + ": " +String.valueOf(changeAmount));
             for(int i = 0; i < saleProducts.size(); i++){
-                dataController.updateProductQuantity(saleProducts.get(i));
+                dataController.updateProductQuantityButton(saleProducts.get(i));
             }
             Notification.show(String.valueOf(new java.sql.Timestamp(System.currentTimeMillis())) + " " +change.getValue() + ": " + change.getValue());
             //TransactionDAO transactionDAO = new TransactionDAO();
@@ -107,7 +105,7 @@ public class PointOfSaleView extends CssLayout implements View{
         });
     }
 
-    public void updateSaleList(Product product) {
+    public void updateSaleList(ProductButton product) {
         CheckBox saleItem = new CheckBox(product.getName() + " " + product.getPrice());
         saleItem.setValue(true);
         totalPrice += product.getPrice();

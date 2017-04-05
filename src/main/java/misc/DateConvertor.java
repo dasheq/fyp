@@ -29,6 +29,7 @@ public class DateConvertor {
             case 2:
                             /* 31 extra days for January */
                 extraDays = 31;
+                week = ((extraDays + day) /7) + 1;
                 break;
             case 3:
                             /* 31 + 28 extra days for Jan + Feb */

@@ -9,7 +9,6 @@ entities\PieChartDataTransaction.class
 misc\DateConvertor.class
 accessobjects\TransactionDAO.class
 views\MainView.class
-views\MainView$1.class
 controllers\DataController.class
 views\PointOfSaleView.class
 views\InsertView.class

@@ -13,10 +13,7 @@ import java.sql.Date;
 public class TablesCheckBox extends CheckBox implements Serializable{
     private int tableID;
     private int noOfSeats;
-
-
     private boolean isReserved;
-
     private String area;
 
     public TablesCheckBox(String caption) {

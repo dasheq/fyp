@@ -17,7 +17,7 @@ public class InvoiceDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM invoice");
 
@@ -47,7 +47,7 @@ public class InvoiceDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             String query = " DELETE from Invoice WHERE RefNumber = ?";
 
             // create the mysql delete preparedstatement
@@ -67,7 +67,7 @@ public class InvoiceDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             String query = " insert into invoice (SupplierID, TotalValue, RefNumber, Date)"
                     + " values (?, ?, ?, ?)";
             Statement highestValueStmt = con.createStatement();
@@ -102,7 +102,7 @@ public class InvoiceDAO {
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "");
+                    "jdbc:mysql://localhost:3306/bar_mgmt?serverTimezone=GMT", "root", "password");
             PreparedStatement stmt = con.prepareStatement("SELECT * FROM invoice WHERE invoice.RefNumber LIKE ? OR TotalValue LIKE ?");
             stmt.setString(1, filter);
             stmt.setString(2, filter);

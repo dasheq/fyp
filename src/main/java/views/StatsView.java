@@ -1,20 +1,17 @@
 package views;
 
-import accessobjects.TransactionDAO;
 import at.downdrown.vaadinaddons.highchartsapi.exceptions.HighChartsException;
 import at.downdrown.vaadinaddons.highchartsapi.exceptions.NoChartTypeException;
-import at.downdrown.vaadinaddons.highchartsapi.model.Axis;
 import at.downdrown.vaadinaddons.highchartsapi.model.ChartConfiguration;
 import at.downdrown.vaadinaddons.highchartsapi.model.ChartType;
 import at.downdrown.vaadinaddons.highchartsapi.model.data.PieChartData;
 import at.downdrown.vaadinaddons.highchartsapi.model.series.PieChartSeries;
 import com.vaadin.data.util.BeanItemContainer;
-import com.vaadin.server.VaadinService;
 import com.vaadin.shared.ui.colorpicker.Color;
 import com.vaadin.ui.*;
 import at.downdrown.vaadinaddons.highchartsapi.*;
 import controllers.DataController;
-import entities.PieChartDataTransaction;
+import misc.PieChartDataTransaction;
 import entities.Transaction;
 
 import java.util.ArrayList;

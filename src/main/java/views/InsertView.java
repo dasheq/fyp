@@ -90,10 +90,15 @@ public class InsertView extends VerticalLayout {
     private TextField invoiceTotalValue = new TextField("Total Value");
     private TextField invoiceSupplierID = new TextField("Supplier ID");
 
-
     //Variables for Insert Table Window
     private TextField tableNoOfSeats = new TextField("Number of Seats");
     private TextField tableArea = new TextField("Area");
+
+    //Variables for Insert Product Window
+    private TextField productName = new TextField("Name");
+    private TextField productPrice = new TextField("Price");
+    private NativeSelect productType = new NativeSelect("Type");
+    private TextField productQuantity = new TextField("Quantity");
 
 
     public InsertView(int tableNo) {
@@ -109,34 +114,57 @@ public class InsertView extends VerticalLayout {
                 case 1:
                     java.sql.Date testDate = new java.sql.Date(0);
                     Employee employee = new Employee();
-                    employee.setName(employeeName.getValue());
-                    employee.setAddress(employeeAddress.getValue());
-                    employee.setContractType(employeeContractType.getValue().toString());
-                    employee.setDob(new java.sql.Date( employeeDoB.getValue().getTime()));
-                    employee.setPhone(Integer.valueOf(employeePhone.getValue()));
-                    employee.setPosition(employeePosition.getValue());
-                    employee.setSalaryPh(Float.valueOf(employeeSalaryPh.getValue()));
-                    employee.setUsername(employeeUsername.getValue());
-                    employee.setPassword(employeePassword.getValue());
+                    try {
+                        employee.setName(employeeName.getValue());
+                        employee.setAddress(employeeAddress.getValue());
+                        employee.setContractType(employeeContractType.getValue().toString());
+                        employee.setDob(new java.sql.Date(employeeDoB.getValue().getTime()));
+                        employee.setPhone(Integer.valueOf(employeePhone.getValue()));
+                        employee.setPosition(employeePosition.getValue());
+                        employee.setSalaryPh(Float.valueOf(employeeSalaryPh.getValue()));
+                        employee.setUsername(employeeUsername.getValue());
+                        employee.setPassword(employeePassword.getValue());
+                        if(employeeAccessLevel.getValue().toString().equals("Manager"))
+                            employee.setAccessLevel(1);
+                        else
+                            employee.setAccessLevel(0);
 
-                    if(employeeAccessLevel.getValue().toString().equals("Manager"))
-                        employee.setAccessLevel(1);
-                    else
-                        employee.setAccessLevel(0);
+                    }
+                    catch (NullPointerException npe) {
+                        Notification.show("Fill in Required Fields!");
+                        break;
+                    }
+                    catch (NumberFormatException nfe) {
+                        Notification.show("Input Error. Check Your Input Fields!");
+                        break;
+                    }
 
                     dataController.addEmployee(employee);
                     clearFields(table);
                     Notification.show("Added " + employee.getName());
+
                     break;
+
+
                 case 2:
                     entities.Event event = new entities.Event();
-                    event.setActName(eventActName.getValue());
-                    event.setActType(eventActType.getValue());
-                    event.setDate(new java.sql.Date(eventDate.getValue().getTime()));
-                    event.setArea(eventArea.getValue());
-                    event.setEndTime(Float.valueOf(eventEndingTime.getValue()));
-                    event.setPrice(Float.valueOf(eventPrice.getValue()));
-                    event.setStartingTime(Float.valueOf(eventStartingTime.getValue()));
+                    try {
+                        event.setActName(eventActName.getValue());
+                        event.setActType(eventActType.getValue());
+                        event.setDate(new java.sql.Date(eventDate.getValue().getTime()));
+                        event.setArea(eventArea.getValue());
+                        event.setEndTime(Float.valueOf(eventEndingTime.getValue()));
+                        event.setPrice(Float.valueOf(eventPrice.getValue()));
+                        event.setStartingTime(Float.valueOf(eventStartingTime.getValue()));
+                    }
+                    catch (NullPointerException npe) {
+                        Notification.show("Fill in Required Fields!");
+                        break;
+                    }
+                    catch (NumberFormatException nfe) {
+                        Notification.show("Input Error. Check Your Input Fields!");
+                        break;
+                    }
                     dataController.addEvent(event);
                     clearFields(table);
                     break;
@@ -146,53 +174,114 @@ public class InsertView extends VerticalLayout {
                     break;
                 case 4:
                     entities.Shift shift = new entities.Shift();
-                    shift.setStartTime(Float.valueOf(shiftStartTime.getValue()));
-                    shift.setEndTime(Float.valueOf(shiftEndTime.getValue()));
-                    shift.setOvertimeHours(Integer.valueOf(shiftOvertimeHours.getValue()));
-                    shift.setUsername(shiftUsername.getValue());
+                    try {
+                        shift.setStartTime(Float.valueOf(shiftStartTime.getValue()));
+                        shift.setEndTime(Float.valueOf(shiftEndTime.getValue()));
+                        shift.setOvertimeHours(Integer.valueOf(shiftOvertimeHours.getValue()));
+                        shift.setUsername(shiftUsername.getValue());
 
-                    java.sql.Date date = new java.sql.Date(shiftDate.getValue().getTime());
-                    String dateString = date.toString();
-                    System.out.println(dateString);
-                    //Convert date to integers
-
-
-                    DateConvertor dateConvertor = new DateConvertor(dateString);
-                    int year = Integer.valueOf(shiftDate.getValue().toString().substring(0,4));
-                    int week = dateConvertor.getWeekFromDate();
-                    int day = dateConvertor.getDayFromDate();
+                        java.sql.Date date = new java.sql.Date(shiftDate.getValue().getTime());
+                        String dateString = date.toString();
+                        System.out.println(dateString);
+                        //Convert date to integers
 
 
-                    shift.setDay(day);
-                    shift.setWeek(week);
-                    shift.setYear(year);
+                        DateConvertor dateConvertor = new DateConvertor(dateString);
+                        int year = Integer.valueOf(shiftDate.getValue().toString().substring(0, 4));
+                        int week = dateConvertor.getWeekFromDate();
+                        int day = dateConvertor.getDayFromDate();
+
+
+                        shift.setDay(day);
+                        shift.setWeek(week);
+                        shift.setYear(year);
+                    }
+                    catch (NullPointerException npe) {
+                        Notification.show("Fill in Required Fields!");
+                        break;
+                    }
+                    catch (NumberFormatException nfe) {
+                        Notification.show("Input Error. Check Your Input Fields!");
+                        break;
+                    }
 
                     dataController.addShift(shift);
                     clearFields(table);
                     break;
                 case 5:
                     entities.Supplier supplier = new entities.Supplier();
-                    supplier.setName(supplierName.getValue());
-                    supplier.setAddress(supplierAddress.getValue());
-                    supplier.setContactNumber(Integer.valueOf(supplierContactNo.getValue()));
-                    supplier.setEmail(supplierEmail.getValue());
-                    supplier.setWebsite(supplierWebsite.getValue());
+                    try {
+                        supplier.setName(supplierName.getValue());
+                        supplier.setAddress(supplierAddress.getValue());
+                        supplier.setContactNumber(Integer.valueOf(supplierContactNo.getValue()));
+                        supplier.setEmail(supplierEmail.getValue());
+                        supplier.setWebsite(supplierWebsite.getValue());
+                    }
+                    catch (NullPointerException npe) {
+                        Notification.show("Fill in Required Fields!");
+                        break;
+                    }
+                    catch (NumberFormatException nfe) {
+                        Notification.show("Input Error. Check Your Input Fields!");
+                        break;
+                    }
+
                     dataController.addSupplier(supplier);
                     clearFields(table);
                     break;
                 case 6:
                     entities.Invoice invoice = new entities.Invoice();
-                    invoice.setDate(new java.sql.Date(invoiceDate.getValue().getTime()));
-                    invoice.setSupplierID(Integer.valueOf(invoiceSupplierID.getValue()));
-                    invoice.setTotalValue(Float.valueOf(invoiceTotalValue.getValue()));
+                    try {
+                        invoice.setDate(new java.sql.Date(invoiceDate.getValue().getTime()));
+                        invoice.setSupplierID(Integer.valueOf(invoiceSupplierID.getValue()));
+                        invoice.setTotalValue(Float.valueOf(invoiceTotalValue.getValue()));
+                    }
+                    catch (NullPointerException npe) {
+                        Notification.show("Fill in Required Fields!");
+                        break;
+                    }
+                    catch (NumberFormatException nfe) {
+                        Notification.show("Input Error. Check Your Input Fields!");
+                        break;
+                    }
+
                     dataController.addInvoice(invoice);
                     clearFields(table);
                     break;
                 case 7:
                     entities.Tables tables = new entities.Tables("");
-                    tables.setNoOfSeats(Integer.valueOf(tableNoOfSeats.getValue()));
-                    tables.setArea(tableArea.getValue());
+                    try {
+                        tables.setNoOfSeats(Integer.valueOf(tableNoOfSeats.getValue()));
+                        tables.setArea(tableArea.getValue());
+                    }
+                    catch (NullPointerException npe) {
+                        Notification.show("Fill in Required Fields!");
+                        break;
+                    }
+                    catch (NumberFormatException nfe) {
+                        Notification.show("Input Error. Check Your Input Fields!");
+                        break;
+                    }
                     dataController.addTable(tables);
+                    clearFields(table);
+                    break;
+                case 9:
+                    entities.Product product = new entities.Product();
+                    try {
+                        product.setName(productName.getValue());
+                        product.setPrice(Float.valueOf(productPrice.getValue()));
+                        product.setQuantity(Integer.valueOf(productQuantity.getValue()));
+                        product.setType(productType.getValue().toString());
+                    }
+                    catch (NullPointerException npe) {
+                        Notification.show("Fill in Required Fields!");
+                        break;
+                    }
+                    catch (NumberFormatException nfe) {
+                        Notification.show("Input Error. Check Your Input Fields!");
+                        break;
+                    }
+                    dataController.addProduct(product);
                     clearFields(table);
                     break;
             }
@@ -378,6 +467,30 @@ public class InsertView extends VerticalLayout {
                 insertButtons.addComponents(addButton, clearButton);
                 addComponents(insertButtons);
                 break;
+            case 9:
+                insertLabel.setValue("Add Product");
+                productName.setWidth(screenWidth);
+                productPrice.setWidth(screenWidth);
+                productQuantity.setWidth(screenWidth);
+                productType.setWidth(screenWidth);
+
+                productName.setRequired(true);
+                productPrice.setRequired(true);
+                productQuantity.setRequired(true);
+                productType.setRequired(true);
+
+                BeanItemContainer<String> productTypeContainer = new BeanItemContainer<>(String.class);
+                ArrayList<String> types = dataController.getTypes();
+                for(int i =0 ; i < dataController.getTypes().size(); i++) {
+                    productTypeContainer.addItem(types.get(i));
+                }
+
+                employeeAccessLevel.setContainerDataSource(productTypeContainer);
+                addComponents(insertLabel, productName, productPrice, productType, productQuantity);
+                insertButtons.addComponents(addButton, clearButton);
+                addComponents(insertButtons);
+                break;
+
         }
     }
 
@@ -426,6 +539,12 @@ public class InsertView extends VerticalLayout {
             case 7:
                 tableNoOfSeats.clear();
                 tableArea.clear();
+                break;
+            case 9:
+                productName.clear();
+                productType.clear();
+                productQuantity.clear();
+                productPrice.clear();
                 break;
         }
     }

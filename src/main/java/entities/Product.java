@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Created by damo k on 01/02/2017.
  */
-public class Product extends Button implements Serializable{
+public class Product implements Serializable{
     private int productID;
     private String name;
     private float price;
