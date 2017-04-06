@@ -20,16 +20,6 @@ import misc.MyUI;
 @DesignRoot
 public class MainView extends VerticalLayout implements View {
     DataController dataController = new DataController();
-    /*
-    EmployeeDAO employeeDAO = new EmployeeDAO();
-    EventDAO eventDAO = new EventDAO();
-    InvoiceDAO invoiceDAO = new InvoiceDAO();
-    ReservationsDAO reservationsDAO = new ReservationsDAO();
-    ShiftDAO shiftDAO = new ShiftDAO();
-    SupplierDAO supplierDAO = new SupplierDAO();
-    TablesDAO tablesDAO = new TablesDAO();
-    TransactionDAO transactionDAO = new TransactionDAO();
-    */
 
     int accessLevel;
 
@@ -43,12 +33,8 @@ public class MainView extends VerticalLayout implements View {
     InsertView insertWindow = null;
     WagesView wagesView = null;
     StatsView statsView = null;
-    TableMapView tableMapView = null;
-    CssLayout tablesMap = new CssLayout();
     VerticalLayout tableWindow = new VerticalLayout();
-    VerticalLayout shiftDivHolder = new VerticalLayout();
-    CssLayout shiftDiv1 = new CssLayout();
-    CssLayout shiftDiv2 = new CssLayout();
+
     Grid.MultiSelectionModel selection;
 
     @Override
@@ -57,8 +43,6 @@ public class MainView extends VerticalLayout implements View {
 
         accessLevel = Integer.valueOf(VaadinService.getCurrentRequest().getWrappedSession().getAttribute("access").toString());
 
-
-        //final CssLayout windows = new CssLayout();
         final CssLayout topHorizontalDiv = new CssLayout();
         final CssLayout filtering = new CssLayout();
 

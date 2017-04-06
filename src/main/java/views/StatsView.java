@@ -11,7 +11,7 @@ import com.vaadin.shared.ui.colorpicker.Color;
 import com.vaadin.ui.*;
 import at.downdrown.vaadinaddons.highchartsapi.*;
 import controllers.DataController;
-import misc.PieChartDataTransaction;
+import entities.PieChartDataTransaction;
 import entities.Transaction;
 
 import java.util.ArrayList;

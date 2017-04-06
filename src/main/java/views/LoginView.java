@@ -21,28 +21,26 @@ public class LoginView extends CssLayout implements View{
 
     CssLayout horizontalLayout = new CssLayout();
     VerticalLayout spacing = new VerticalLayout();
-    public static final String NAME = "LoginView";
+
     Label title = new Label("Bar ERP");
     TextField username = new TextField("Username");
     PasswordField password = new PasswordField("Password");
     Button loginButton = new Button("Login");
-    EmployeeDAO employeeDAO = new EmployeeDAO();
     Employee employeeDetails;
-    String user;
 
     public LoginView() {
     }
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
+        //Setup the layout of the view and its components
         setupLayout();
         setupComponents();
         title.setStyleName(ValoTheme.LABEL_HUGE);
-        username.setValue("dasheq");
-        password.setValue("password");
         loginButton.addClickListener((Button.ClickEvent e) -> {
+
+            //Login authentication and session attributes
                 employeeDetails = dataController.login(username.getValue(), password.getValue());
-            //  employeeDetails = employeeDAO.login(username.getValue(), password.getValue());
             if (employeeDetails != null) {
                 Notification.show("Welcome back " + username.getValue());
                 VaadinService.getCurrentRequest().getWrappedSession()

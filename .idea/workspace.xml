@@ -2,37 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7afa4fcc-383e-4286-9035-89bd9484212a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Start_WebApp.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/entities/ProductButton.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/test-1.0-SNAPSHOT/WEB-INF/classes/VAADIN/widgetsets/WEB-INF/deploy/AppWidgetset/rpcPolicyManifest/manifest.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/accessobjects/EmployeeDAO.class" afterPath="$PROJECT_DIR$/target/classes/accessobjects/EmployeeDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/accessobjects/EventDAO.class" afterPath="$PROJECT_DIR$/target/classes/accessobjects/EventDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/accessobjects/InvoiceDAO.class" afterPath="$PROJECT_DIR$/target/classes/accessobjects/InvoiceDAO.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/accessobjects/ProductDAO.class" afterPath="$PROJECT_DIR$/target/classes/accessobjects/ProductDAO.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-1.0-SNAPSHOT.war" afterPath="$PROJECT_DIR$/target/test-1.0-SNAPSHOT.war" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/accessobjects/ReservationsDAO.class" afterPath="$PROJECT_DIR$/target/classes/accessobjects/ReservationsDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/accessobjects/ShiftDAO.class" afterPath="$PROJECT_DIR$/target/classes/accessobjects/ShiftDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/accessobjects/SupplierDAO.class" afterPath="$PROJECT_DIR$/target/classes/accessobjects/SupplierDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/accessobjects/TablesDAO.class" afterPath="$PROJECT_DIR$/target/classes/accessobjects/TablesDAO.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/entities/Product.class" afterPath="$PROJECT_DIR$/target/classes/entities/Product.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/accessobjects/EmployeeDAO.java" afterPath="$PROJECT_DIR$/src/main/java/accessobjects/EmployeeDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/accessobjects/EventDAO.java" afterPath="$PROJECT_DIR$/src/main/java/accessobjects/EventDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/accessobjects/InvoiceDAO.java" afterPath="$PROJECT_DIR$/src/main/java/accessobjects/InvoiceDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/accessobjects/ProductDAO.java" afterPath="$PROJECT_DIR$/src/main/java/accessobjects/ProductDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/accessobjects/ReservationsDAO.java" afterPath="$PROJECT_DIR$/src/main/java/accessobjects/ReservationsDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/accessobjects/ShiftDAO.java" afterPath="$PROJECT_DIR$/src/main/java/accessobjects/ShiftDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/accessobjects/SupplierDAO.java" afterPath="$PROJECT_DIR$/src/main/java/accessobjects/SupplierDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/accessobjects/TablesDAO.java" afterPath="$PROJECT_DIR$/src/main/java/accessobjects/TablesDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/accessobjects/TransactionDAO.java" afterPath="$PROJECT_DIR$/src/main/java/accessobjects/TransactionDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/controllers/DataController.java" afterPath="$PROJECT_DIR$/src/main/java/controllers/DataController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entities/Product.java" afterPath="$PROJECT_DIR$/src/main/java/entities/Product.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/entities/TablesCheckBox.java" afterPath="$PROJECT_DIR$/src/main/java/entities/TablesCheckBox.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/misc/DateConvertor.java" afterPath="$PROJECT_DIR$/src/main/java/misc/DateConvertor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/misc/MyUI.java" afterPath="$PROJECT_DIR$/src/main/java/misc/MyUI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/views/InsertView.java" afterPath="$PROJECT_DIR$/src/main/java/views/InsertView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/views/LoginView.java" afterPath="$PROJECT_DIR$/src/main/java/views/LoginView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/views/MainView.java" afterPath="$PROJECT_DIR$/src/main/java/views/MainView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/views/PointOfSaleView.java" afterPath="$PROJECT_DIR$/src/main/java/views/PointOfSaleView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/views/StatsView.java" afterPath="$PROJECT_DIR$/src/main/java/views/StatsView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/views/WagesView.java" afterPath="$PROJECT_DIR$/src/main/java/views/WagesView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/entities/PieChartDataTransaction.java" afterPath="$PROJECT_DIR$/src/main/java/misc/PieChartDataTransaction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/misc/PieChartDataTransaction.java" afterPath="$PROJECT_DIR$/src/main/java/entities/PieChartDataTransaction.java" />
     </list>
     <ignored path="test.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -241,14 +230,96 @@
       <file leaf-file-name="DataController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controllers/DataController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="42" column="20" lean-forward="true" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
+            <state relative-caret-position="1173">
+              <caret line="113" column="27" lean-forward="false" selection-start-line="113" selection-start-column="27" selection-end-line="113" selection-end-column="27" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5349#5350#0" expanded="true" />
-                <element signature="e#5399#5400#0" expanded="true" />
-                <element signature="e#5458#5459#0" expanded="true" />
-                <element signature="e#5511#5512#0" expanded="true" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#691#692#0" expanded="false" />
+                <element signature="e#751#752#0" expanded="false" />
+                <element signature="e#801#802#0" expanded="false" />
+                <element signature="e#850#851#0" expanded="false" />
+                <element signature="e#906#907#0" expanded="false" />
+                <element signature="e#961#962#0" expanded="false" />
+                <element signature="e#1013#1014#0" expanded="false" />
+                <element signature="e#1065#1066#0" expanded="false" />
+                <element signature="e#1133#1134#0" expanded="false" />
+                <element signature="e#1185#1186#0" expanded="false" />
+                <element signature="e#1247#1248#0" expanded="false" />
+                <element signature="e#1287#1288#0" expanded="false" />
+                <element signature="e#1337#1338#0" expanded="false" />
+                <element signature="e#1386#1387#0" expanded="false" />
+                <element signature="e#1432#1433#0" expanded="false" />
+                <element signature="e#1478#1479#0" expanded="false" />
+                <element signature="e#1540#1541#0" expanded="false" />
+                <element signature="e#1595#1596#0" expanded="false" />
+                <element signature="e#1669#1670#0" expanded="false" />
+                <element signature="e#1719#1720#0" expanded="false" />
+                <element signature="e#1773#1774#0" expanded="false" />
+                <element signature="e#1826#1827#0" expanded="false" />
+                <element signature="e#1873#1874#0" expanded="false" />
+                <element signature="e#1919#1920#0" expanded="false" />
+                <element signature="e#1985#1986#0" expanded="false" />
+                <element signature="e#2044#2045#0" expanded="false" />
+                <element signature="e#2131#2132#0" expanded="false" />
+                <element signature="e#2190#2191#0" expanded="false" />
+                <element signature="e#2253#2254#0" expanded="false" />
+                <element signature="e#2315#2316#0" expanded="false" />
+                <element signature="e#2373#2374#0" expanded="false" />
+                <element signature="e#2430#2431#0" expanded="false" />
+                <element signature="e#2644#2645#0" expanded="false" />
+                <element signature="e#2693#2694#0" expanded="false" />
+                <element signature="e#2734#2735#0" expanded="false" />
+                <element signature="e#2774#2775#0" expanded="false" />
+                <element signature="e#2820#2821#0" expanded="false" />
+                <element signature="e#2866#2867#0" expanded="false" />
+                <element signature="e#2927#2928#0" expanded="false" />
+                <element signature="e#2981#2982#0" expanded="false" />
+                <element signature="e#3047#3048#0" expanded="false" />
+                <element signature="e#3111#3112#0" expanded="false" />
+                <element signature="e#3328#3329#0" expanded="false" />
+                <element signature="e#3381#3382#0" expanded="false" />
+                <element signature="e#3461#3462#0" expanded="false" />
+                <element signature="e#3516#3517#0" expanded="false" />
+                <element signature="e#3566#3567#0" expanded="false" />
+                <element signature="e#3615#3616#0" expanded="false" />
+                <element signature="e#3667#3668#0" expanded="false" />
+                <element signature="e#3719#3720#0" expanded="false" />
+                <element signature="e#3786#3787#0" expanded="false" />
+                <element signature="e#3846#3847#0" expanded="false" />
+                <element signature="e#3919#3920#0" expanded="false" />
+                <element signature="e#3969#3970#0" expanded="false" />
+                <element signature="e#4012#4013#0" expanded="false" />
+                <element signature="e#4055#4056#0" expanded="false" />
+                <element signature="e#4088#4089#0" expanded="false" />
+                <element signature="e#4135#4136#0" expanded="false" />
+                <element signature="e#4177#4178#0" expanded="false" />
+                <element signature="e#4218#4219#0" expanded="false" />
+                <element signature="e#4265#4266#0" expanded="false" />
+                <element signature="e#4312#4313#0" expanded="false" />
+                <element signature="e#4369#4370#0" expanded="false" />
+                <element signature="e#4418#4419#0" expanded="false" />
+                <element signature="e#4480#4481#0" expanded="false" />
+                <element signature="e#4535#4536#0" expanded="false" />
+                <element signature="e#4614#4615#0" expanded="false" />
+                <element signature="e#4665#4666#0" expanded="false" />
+                <element signature="e#4720#4721#0" expanded="false" />
+                <element signature="e#4774#4775#0" expanded="false" />
+                <element signature="e#4824#4825#0" expanded="false" />
+                <element signature="e#4879#4880#0" expanded="false" />
+                <element signature="e#4930#4931#0" expanded="false" />
+                <element signature="e#4981#4982#0" expanded="false" />
+                <element signature="e#5349#5350#0" expanded="false" />
+                <element signature="e#5399#5400#0" expanded="false" />
+                <element signature="e#5458#5459#0" expanded="false" />
+                <element signature="e#5511#5512#0" expanded="false" />
+                <element signature="e#5558#5559#0" expanded="false" />
+                <element signature="e#5604#5605#0" expanded="false" />
+                <element signature="e#5799#5800#0" expanded="false" />
+                <element signature="e#5852#5853#0" expanded="false" />
+                <element signature="e#5895#5896#0" expanded="false" />
+                <element signature="e#5939#5940#0" expanded="false" />
+                <element signature="e#6004#6005#0" expanded="false" />
+                <element signature="e#6062#6063#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -257,9 +328,10 @@
       <file leaf-file-name="ShiftDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/ShiftDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2108">
-              <caret line="245" column="77" lean-forward="false" selection-start-line="245" selection-start-column="77" selection-end-line="245" selection-end-column="77" />
+            <state relative-caret-position="2584">
+              <caret line="156" column="71" lean-forward="false" selection-start-line="156" selection-start-column="63" selection-end-line="156" selection-end-column="71" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <marker date="1491385012987" expanded="true" signature="493:528" ph="DELETE FROM " />
                 <marker date="1491385012987" expanded="true" signature="1159:1281" ph="INSERT INTO shift... " />
                 <marker date="1491385012987" expanded="true" signature="1406:1436" ph="SELECT max(S... shift" />
@@ -276,92 +348,90 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Reservations.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/entities/Reservations.java">
+      <file leaf-file-name="WagesView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/WagesView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TablesDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/TablesDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="174" column="25" lean-forward="false" selection-start-line="174" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
+            <state relative-caret-position="782">
+              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
               <folding>
-                <marker date="1491385013007" expanded="true" signature="496:532" ph="DELETE from " />
-                <marker date="1491385013007" expanded="true" signature="1290:1349" ph="SELECT disti... tables" />
-                <marker date="1491385013007" expanded="true" signature="1985:2024" ph="SELECT count... tables" />
-                <marker date="1491385013007" expanded="true" signature="2575:2662" ph="insert into tables... " />
-                <marker date="1491385013007" expanded="true" signature="2787:2818" ph="SELECT max(T... tables" />
-                <marker date="1491385013007" expanded="true" signature="3876:3914" ph="SELECT * FRO... tables" />
-                <marker date="1491385013007" expanded="true" signature="4914:4952" ph="SELECT * FRO... tables" />
-                <marker date="1491385013007" expanded="true" signature="6019:6069" ph="SELECT * FRO... tables" />
-                <marker date="1491385013007" expanded="true" signature="6019:6102" ph="SELECT * FRO... tables" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1526#1527#0" expanded="false" />
+                <element signature="e#1572#1573#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MyUI.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/misc/MyUI.java">
+      <file leaf-file-name="MainView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/MainView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="48" selection-end-column="1" />
+            <state relative-caret-position="2669">
+              <caret line="169" column="16" lean-forward="false" selection-start-line="169" selection-start-column="16" selection-end-line="169" selection-end-column="16" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DateConvertor.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/misc/DateConvertor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1224">
-              <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReservationsDAO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/ReservationsDAO.java">
+      <file leaf-file-name="Product.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/entities/Product.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="799">
-              <caret line="140" column="24" lean-forward="true" selection-start-line="140" selection-start-column="24" selection-end-line="140" selection-end-column="24" />
+              <caret line="73" column="4" lean-forward="false" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="4" />
               <folding>
-                <marker date="1491385012971" expanded="true" signature="620:646" ph="SELECT * FRO... reservations" />
-                <marker date="1491385012971" expanded="true" signature="1902:1950" ph="DELETE from " />
-                <marker date="1491385012971" expanded="true" signature="2605:2810" ph="insert into event... " />
-                <marker date="1491385012971" expanded="true" signature="2935:2966" ph="SELECT max(e... event" />
-                <marker date="1491385012971" expanded="true" signature="2935:2978" ph="SELECT max(r... reservations" />
-                <marker date="1491385012971" expanded="true" signature="4556:4600" ph="SELECT * FRO... product" />
-                <marker date="1491385012971" expanded="true" signature="4556:4655" ph="SELECT * FRO... reservations" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#447#448#0" expanded="false" />
+                <element signature="e#479#480#0" expanded="false" />
+                <element signature="e#526#527#0" expanded="false" />
+                <element signature="e#568#569#0" expanded="false" />
+                <element signature="e#599#600#0" expanded="false" />
+                <element signature="e#626#627#0" expanded="false" />
+                <element signature="e#666#667#0" expanded="false" />
+                <element signature="e#698#699#0" expanded="false" />
+                <element signature="e#729#730#0" expanded="false" />
+                <element signature="e#757#758#0" expanded="false" />
+                <element signature="e#798#799#0" expanded="false" />
+                <element signature="e#832#833#0" expanded="false" />
+                <element signature="e#864#865#0" expanded="false" />
+                <element signature="e#895#896#0" expanded="false" />
+                <element signature="e#940#941#0" expanded="false" />
+                <element signature="e#980#981#0" expanded="false" />
+                <element signature="e#1013#1014#0" expanded="false" />
+                <element signature="e#1045#1046#0" expanded="false" />
+                <element signature="e#1092#1093#0" expanded="false" />
+                <element signature="e#1134#1135#0" expanded="false" />
+                <element signature="e#1166#1167#0" expanded="false" />
+                <element signature="e#1193#1194#0" expanded="false" />
+                <element signature="e#1233#1234#0" expanded="false" />
+                <element signature="e#1265#1266#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Shift.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/entities/Shift.java">
+      <file leaf-file-name="RosterView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/RosterView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="1649">
+              <caret line="112" column="41" lean-forward="false" selection-start-line="112" selection-start-column="41" selection-end-line="112" selection-end-column="41" />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#1329#1330#0" expanded="false" />
+                <element signature="e#1375#1376#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Transaction.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/entities/Transaction.java">
+      <file leaf-file-name="PointOfSaleView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/PointOfSaleView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="2193">
+              <caret line="141" column="71" lean-forward="false" selection-start-line="141" selection-start-column="71" selection-end-line="141" selection-end-column="71" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -369,14 +439,16 @@
       <file leaf-file-name="TransactionDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/TransactionDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-731">
+            <state relative-caret-position="2006">
               <caret line="122" column="34" lean-forward="false" selection-start-line="122" selection-start-column="34" selection-end-line="122" selection-end-column="34" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <marker date="1491385013015" expanded="true" signature="500:629" ph="insert into sale... " />
                 <marker date="1491385013015" expanded="true" signature="754:789" ph="SELECT max(S... transaction" />
                 <marker date="1491385013015" expanded="true" signature="1894:1934" ph="DELETE from " />
                 <marker date="1491385013015" expanded="true" signature="2700:2741" ph="SELECT DISTI... transaction" />
                 <marker date="1491385013015" expanded="true" signature="3441:3466" ph="SELECT * FRO... transaction" />
+                <marker date="1491385013015" expanded="true" signature="3473:3498" ph="SELECT * FRO... transaction" />
                 <marker date="1491385013015" expanded="true" signature="4623:4654" ph="SELECT * FRO... transaction" />
                 <marker date="1491385013015" expanded="true" signature="4623:4655" ph="SELECT * FRO... transaction" />
                 <marker date="1491385013015" expanded="true" signature="4623:4660" ph="SELECT * FRO... transaction" />
@@ -387,6 +459,37 @@
                 <marker date="1491385013015" expanded="true" signature="4758:4808" ph="SELECT * FRO... transaction" />
                 <marker date="1491385013015" expanded="true" signature="4758:4810" ph="SELECT * FRO... transaction" />
                 <marker date="1491385013015" expanded="true" signature="6067:6159" ph="SELECT * FRO... transaction" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ProductDAO.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/ProductDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-238">
+              <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+              <folding>
+                <marker date="1491396288338" expanded="true" signature="631:652" ph="SELECT * FRO... product" />
+                <marker date="1491396288338" expanded="true" signature="1754:1775" ph="SELECT * FRO... product" />
+                <marker date="1491396288338" expanded="true" signature="2743:2865" ph="insert into product... " />
+                <marker date="1491396288338" expanded="true" signature="2990:3024" ph="SELECT max(P... product" />
+                <marker date="1491396288338" expanded="true" signature="4149:4262" ph="UPDATE produ... " />
+                <marker date="1491396288338" expanded="true" signature="4917:4956" ph="DELETE from " />
+                <marker date="1491396288338" expanded="true" signature="5722:5755" ph="SELECT DISTI... product" />
+                <marker date="1491396288338" expanded="true" signature="6461:6531" ph="SELECT * FRO... product" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TableMapView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/views/TableMapView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3791">
+              <caret line="241" column="56" lean-forward="false" selection-start-line="241" selection-start-column="56" selection-end-line="241" selection-end-column="56" />
+              <folding>
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -444,7 +547,6 @@
         <option value="$PROJECT_DIR$/src/main/java/entities/Employee.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/misc/HighChart.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entities/PieChartDataTransaction.java" />
         <option value="$PROJECT_DIR$/src/main/java/accessobjects/ShiftDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/entities/Tables.java" />
         <option value="$PROJECT_DIR$/src/main/java/accessobjects/EventDAO.java" />
@@ -455,24 +557,25 @@
         <option value="$PROJECT_DIR$/src/main/java/accessobjects/TransactionDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/misc/DataController.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/EmployeeController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/views/LoginView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/views/RosterView.java" />
         <option value="$PROJECT_DIR$/src/main/java/views/StatsView.java" />
         <option value="$PROJECT_DIR$/src/main/java/views/TableMapView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/views/WagesView.java" />
         <option value="$PROJECT_DIR$/src/main/java/views/InsertView.java" />
-        <option value="$PROJECT_DIR$/src/main/java/views/MainView.java" />
         <option value="&lt;02b8dc63-5115-4f1f-b8e4-d1514ed5d5eb&gt;/fyp/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/accessobjects/EmployeeDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/entities/Product.java" />
         <option value="$PROJECT_DIR$/src/main/java/entities/ProductButton.java" />
-        <option value="$PROJECT_DIR$/src/main/java/views/PointOfSaleView.java" />
         <option value="$PROJECT_DIR$/src/main/java/accessobjects/ProductDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/entities/TablesCheckBox.java" />
         <option value="$PROJECT_DIR$/src/main/java/misc/PieChartDataTransaction.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/DataController.java" />
         <option value="$PROJECT_DIR$/src/main/java/misc/MyUI.java" />
         <option value="$PROJECT_DIR$/src/main/java/misc/DateConvertor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entities/PieChartDataTransaction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/LoginView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/MainView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entities/Product.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/WagesView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/RosterView.java" />
+        <option value="$PROJECT_DIR$/src/main/java/views/PointOfSaleView.java" />
       </list>
     </option>
   </component>
@@ -887,8 +990,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -910,10 +1013,10 @@
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\College\Year4\FYP\test\test" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\College\Year4\FYP\test\test" />
     </key>
   </component>
@@ -1476,7 +1579,9 @@
       <workItem from="1491234343173" duration="2581000" />
       <workItem from="1491305873364" duration="16253000" />
       <workItem from="1491383061845" duration="1993000" />
-      <workItem from="1491392180847" duration="9107000" />
+      <workItem from="1491392180847" duration="17938000" />
+      <workItem from="1491436385951" duration="3011000" />
+      <workItem from="1491466687968" duration="25000" />
     </task>
     <task id="LOCAL-00001" summary="Add Emp/Event and Delete Emp">
       <created>1487012586649</created>
@@ -1569,11 +1674,18 @@
       <option name="project" value="LOCAL" />
       <updated>1491309323752</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Last minute fixes">
+      <created>1491403660733</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1491403660733</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="366902000" />
+    <option name="totallyTimeSpent" value="378769000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1608,13 +1720,13 @@
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33931485" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24632953" sideWeight="0.4954683" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.49697885" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28658536" sideWeight="0.46952596" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2957317" sideWeight="0.46952596" order="8" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32930514" sideWeight="0.5111821" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection Results" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.49265906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Thumbnails" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5611746" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1680,7 +1792,8 @@
     <MESSAGE value="Almost finished &#10;Left: -Roster including all employees for a given week&#10;-Sales Statistics for products&#10;Optional: Revenue reports for above" />
     <MESSAGE value="Controllers" />
     <MESSAGE value="Data Controller Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Data Controller Added" />
+    <MESSAGE value="Last minute fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Last minute fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1716,14 +1829,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/172be0c/12854066-22c2-458b-a966-c5e8c472d101/bar_mgmt.reservations">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
           <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1778,29 +1891,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-48">
           <caret line="114" column="36" lean-forward="false" selection-start-line="114" selection-start-column="36" selection-end-line="114" selection-end-column="36" />
-          <folding>
-            <marker date="1491385012997" expanded="true" signature="473:514" ph="DELETE from " />
-            <marker date="1491385012997" expanded="true" signature="1158:1288" ph="insert into supplier... " />
-            <marker date="1491385012997" expanded="true" signature="1413:1449" ph="SELECT max(S... supplier" />
-            <marker date="1491385012997" expanded="true" signature="2774:2796" ph="SELECT * FRO... supplier" />
-            <marker date="1491385012997" expanded="true" signature="3945:4061" ph="SELECT * FRO... supplier" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/views/LoginView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/views/RosterView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1754">
-          <caret line="122" column="31" lean-forward="false" selection-start-line="122" selection-start-column="31" selection-end-line="122" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1809,26 +1899,6 @@
         <state relative-caret-position="696">
           <caret line="173" column="38" lean-forward="false" selection-start-line="173" selection-start-column="38" selection-end-line="173" selection-end-column="38" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/views/TableMapView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3791">
-          <caret line="241" column="56" lean-forward="false" selection-start-line="241" selection-start-column="56" selection-end-line="241" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/views/WagesView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="89" column="40" lean-forward="false" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1526#1527#0" expanded="false" />
-            <element signature="e#1572#1573#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1870,7 +1940,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1878,14 +1947,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/views/MainView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="194" column="13" lean-forward="false" selection-start-line="194" selection-start-column="13" selection-end-line="194" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1906,26 +1967,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/views/PointOfSaleView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-425">
-          <caret line="88" column="45" lean-forward="false" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/entities/TablesCheckBox.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="23" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/misc/PieChartDataTransaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="38" lean-forward="true" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -1967,14 +2012,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-490">
           <caret line="75" column="51" lean-forward="true" selection-start-line="75" selection-start-column="51" selection-end-line="75" selection-end-column="51" />
-          <folding>
-            <marker date="1491385012925" expanded="true" signature="452:587" ph="insert into event... " />
-            <marker date="1491385012925" expanded="true" signature="712:742" ph="SELECT max(e... event" />
-            <marker date="1491385012925" expanded="true" signature="1979:2014" ph="DELETE from " />
-            <marker date="1491385012925" expanded="true" signature="2774:2793" ph="SELECT * FRO... event" />
-            <marker date="1491385012925" expanded="true" signature="2798:2817" ph="SELECT * FRO... event" />
-            <marker date="1491385012925" expanded="true" signature="3989:4074" ph="SELECT * FRO... event" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1990,38 +2027,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-365">
           <caret line="70" column="32" lean-forward="false" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
-          <folding>
-            <marker date="1491385012943" expanded="true" signature="601:622" ph="SELECT * FRO... invoice" />
-            <marker date="1491385012943" expanded="true" signature="1488:1527" ph="DELETE from " />
-            <marker date="1491385012943" expanded="true" signature="2175:2281" ph="insert into invoice... " />
-            <marker date="1491385012943" expanded="true" signature="2406:2440" ph="SELECT max(R... invoice" />
-            <marker date="1491385012943" expanded="true" signature="3593:3666" ph="SELECT * FRO... invoice" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/entities/Product.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="9" column="45" lean-forward="true" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/ProductDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1017">
-          <caret line="112" column="0" lean-forward="true" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
-          <folding>
-            <marker date="1491396288338" expanded="true" signature="631:652" ph="SELECT * FRO... product" />
-            <marker date="1491396288338" expanded="true" signature="1754:1775" ph="SELECT * FRO... product" />
-            <marker date="1491396288338" expanded="true" signature="2743:2865" ph="insert into product... " />
-            <marker date="1491396288338" expanded="true" signature="2990:3024" ph="SELECT max(P... product" />
-            <marker date="1491396288338" expanded="true" signature="4149:4262" ph="UPDATE produ... " />
-            <marker date="1491396288338" expanded="true" signature="4917:4956" ph="DELETE from " />
-            <marker date="1491396288338" expanded="true" signature="5722:5755" ph="SELECT DISTI... product" />
-            <marker date="1491396288338" expanded="true" signature="6461:6531" ph="SELECT * FRO... product" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2045,17 +2050,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="174" column="25" lean-forward="false" selection-start-line="174" selection-start-column="0" selection-end-line="175" selection-end-column="0" />
-          <folding>
-            <marker date="1491385013007" expanded="true" signature="496:532" ph="DELETE from " />
-            <marker date="1491385013007" expanded="true" signature="1290:1349" ph="SELECT disti... tables" />
-            <marker date="1491385013007" expanded="true" signature="1985:2024" ph="SELECT count... tables" />
-            <marker date="1491385013007" expanded="true" signature="2575:2662" ph="insert into tables... " />
-            <marker date="1491385013007" expanded="true" signature="2787:2818" ph="SELECT max(T... tables" />
-            <marker date="1491385013007" expanded="true" signature="3876:3914" ph="SELECT * FRO... tables" />
-            <marker date="1491385013007" expanded="true" signature="4914:4952" ph="SELECT * FRO... tables" />
-            <marker date="1491385013007" expanded="true" signature="6019:6069" ph="SELECT * FRO... tables" />
-            <marker date="1491385013007" expanded="true" signature="6019:6102" ph="SELECT * FRO... tables" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2091,35 +2085,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/TransactionDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/misc/MyUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-731">
-          <caret line="122" column="34" lean-forward="false" selection-start-line="122" selection-start-column="34" selection-end-line="122" selection-end-column="34" />
+        <state relative-caret-position="34">
+          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="48" selection-end-column="1" />
           <folding>
-            <marker date="1491385013015" expanded="true" signature="500:629" ph="insert into sale... " />
-            <marker date="1491385013015" expanded="true" signature="754:789" ph="SELECT max(S... transaction" />
-            <marker date="1491385013015" expanded="true" signature="1894:1934" ph="DELETE from " />
-            <marker date="1491385013015" expanded="true" signature="2700:2741" ph="SELECT DISTI... transaction" />
-            <marker date="1491385013015" expanded="true" signature="3441:3466" ph="SELECT * FRO... transaction" />
-            <marker date="1491385013015" expanded="true" signature="4623:4654" ph="SELECT * FRO... transaction" />
-            <marker date="1491385013015" expanded="true" signature="4623:4655" ph="SELECT * FRO... transaction" />
-            <marker date="1491385013015" expanded="true" signature="4623:4660" ph="SELECT * FRO... transaction" />
-            <marker date="1491385013015" expanded="true" signature="4623:4670" ph="SELECT * FRO... transaction" />
-            <marker date="1491385013015" expanded="true" signature="4623:4672" ph="SELECT * FRO... transaction" />
-            <marker date="1491385013015" expanded="true" signature="4623:4674" ph="SELECT * FRO... transaction" />
-            <marker date="1491385013015" expanded="true" signature="4623:4676" ph="SELECT * FRO... transaction" />
-            <marker date="1491385013015" expanded="true" signature="4758:4808" ph="SELECT * FRO... transaction" />
-            <marker date="1491385013015" expanded="true" signature="4758:4810" ph="SELECT * FRO... transaction" />
-            <marker date="1491385013015" expanded="true" signature="6067:6159" ph="SELECT * FRO... transaction" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/misc/DateConvertor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="84" column="0" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entities/PieChartDataTransaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="e#320#321#0" expanded="false" />
+            <element signature="e#353#354#0" expanded="false" />
+            <element signature="e#404#405#0" expanded="false" />
+            <element signature="e#448#449#0" expanded="false" />
+            <element signature="e#482#483#0" expanded="false" />
+            <element signature="e#513#514#0" expanded="false" />
+            <element signature="e#561#562#0" expanded="false" />
+            <element signature="e#601#602#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/LoginView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="41" column="57" lean-forward="false" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/MainView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2669">
+          <caret line="169" column="16" lean-forward="false" selection-start-line="169" selection-start-column="16" selection-end-line="169" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entities/Product.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="73" column="4" lean-forward="false" selection-start-line="73" selection-start-column="4" selection-end-line="73" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#447#448#0" expanded="false" />
+            <element signature="e#479#480#0" expanded="false" />
+            <element signature="e#526#527#0" expanded="false" />
+            <element signature="e#568#569#0" expanded="false" />
+            <element signature="e#599#600#0" expanded="false" />
+            <element signature="e#626#627#0" expanded="false" />
+            <element signature="e#666#667#0" expanded="false" />
+            <element signature="e#698#699#0" expanded="false" />
+            <element signature="e#729#730#0" expanded="false" />
+            <element signature="e#757#758#0" expanded="false" />
+            <element signature="e#798#799#0" expanded="false" />
+            <element signature="e#832#833#0" expanded="false" />
+            <element signature="e#864#865#0" expanded="false" />
+            <element signature="e#895#896#0" expanded="false" />
+            <element signature="e#940#941#0" expanded="false" />
+            <element signature="e#980#981#0" expanded="false" />
+            <element signature="e#1013#1014#0" expanded="false" />
+            <element signature="e#1045#1046#0" expanded="false" />
+            <element signature="e#1092#1093#0" expanded="false" />
+            <element signature="e#1134#1135#0" expanded="false" />
+            <element signature="e#1166#1167#0" expanded="false" />
+            <element signature="e#1193#1194#0" expanded="false" />
+            <element signature="e#1233#1234#0" expanded="false" />
+            <element signature="e#1265#1266#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/ShiftDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2108">
-          <caret line="245" column="77" lean-forward="false" selection-start-line="245" selection-start-column="77" selection-end-line="245" selection-end-column="77" />
+        <state relative-caret-position="2584">
+          <caret line="156" column="71" lean-forward="false" selection-start-line="156" selection-start-column="63" selection-end-line="156" selection-end-column="71" />
           <folding>
+            <element signature="imports" expanded="false" />
             <marker date="1491385012987" expanded="true" signature="493:528" ph="DELETE FROM " />
             <marker date="1491385012987" expanded="true" signature="1159:1281" ph="INSERT INTO shift... " />
             <marker date="1491385012987" expanded="true" signature="1406:1436" ph="SELECT max(S... shift" />
@@ -2137,33 +2197,184 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controllers/DataController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="42" column="20" lean-forward="true" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
+        <state relative-caret-position="1173">
+          <caret line="113" column="27" lean-forward="false" selection-start-line="113" selection-start-column="27" selection-end-line="113" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5349#5350#0" expanded="true" />
-            <element signature="e#5399#5400#0" expanded="true" />
-            <element signature="e#5458#5459#0" expanded="true" />
-            <element signature="e#5511#5512#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#691#692#0" expanded="false" />
+            <element signature="e#751#752#0" expanded="false" />
+            <element signature="e#801#802#0" expanded="false" />
+            <element signature="e#850#851#0" expanded="false" />
+            <element signature="e#906#907#0" expanded="false" />
+            <element signature="e#961#962#0" expanded="false" />
+            <element signature="e#1013#1014#0" expanded="false" />
+            <element signature="e#1065#1066#0" expanded="false" />
+            <element signature="e#1133#1134#0" expanded="false" />
+            <element signature="e#1185#1186#0" expanded="false" />
+            <element signature="e#1247#1248#0" expanded="false" />
+            <element signature="e#1287#1288#0" expanded="false" />
+            <element signature="e#1337#1338#0" expanded="false" />
+            <element signature="e#1386#1387#0" expanded="false" />
+            <element signature="e#1432#1433#0" expanded="false" />
+            <element signature="e#1478#1479#0" expanded="false" />
+            <element signature="e#1540#1541#0" expanded="false" />
+            <element signature="e#1595#1596#0" expanded="false" />
+            <element signature="e#1669#1670#0" expanded="false" />
+            <element signature="e#1719#1720#0" expanded="false" />
+            <element signature="e#1773#1774#0" expanded="false" />
+            <element signature="e#1826#1827#0" expanded="false" />
+            <element signature="e#1873#1874#0" expanded="false" />
+            <element signature="e#1919#1920#0" expanded="false" />
+            <element signature="e#1985#1986#0" expanded="false" />
+            <element signature="e#2044#2045#0" expanded="false" />
+            <element signature="e#2131#2132#0" expanded="false" />
+            <element signature="e#2190#2191#0" expanded="false" />
+            <element signature="e#2253#2254#0" expanded="false" />
+            <element signature="e#2315#2316#0" expanded="false" />
+            <element signature="e#2373#2374#0" expanded="false" />
+            <element signature="e#2430#2431#0" expanded="false" />
+            <element signature="e#2644#2645#0" expanded="false" />
+            <element signature="e#2693#2694#0" expanded="false" />
+            <element signature="e#2734#2735#0" expanded="false" />
+            <element signature="e#2774#2775#0" expanded="false" />
+            <element signature="e#2820#2821#0" expanded="false" />
+            <element signature="e#2866#2867#0" expanded="false" />
+            <element signature="e#2927#2928#0" expanded="false" />
+            <element signature="e#2981#2982#0" expanded="false" />
+            <element signature="e#3047#3048#0" expanded="false" />
+            <element signature="e#3111#3112#0" expanded="false" />
+            <element signature="e#3328#3329#0" expanded="false" />
+            <element signature="e#3381#3382#0" expanded="false" />
+            <element signature="e#3461#3462#0" expanded="false" />
+            <element signature="e#3516#3517#0" expanded="false" />
+            <element signature="e#3566#3567#0" expanded="false" />
+            <element signature="e#3615#3616#0" expanded="false" />
+            <element signature="e#3667#3668#0" expanded="false" />
+            <element signature="e#3719#3720#0" expanded="false" />
+            <element signature="e#3786#3787#0" expanded="false" />
+            <element signature="e#3846#3847#0" expanded="false" />
+            <element signature="e#3919#3920#0" expanded="false" />
+            <element signature="e#3969#3970#0" expanded="false" />
+            <element signature="e#4012#4013#0" expanded="false" />
+            <element signature="e#4055#4056#0" expanded="false" />
+            <element signature="e#4088#4089#0" expanded="false" />
+            <element signature="e#4135#4136#0" expanded="false" />
+            <element signature="e#4177#4178#0" expanded="false" />
+            <element signature="e#4218#4219#0" expanded="false" />
+            <element signature="e#4265#4266#0" expanded="false" />
+            <element signature="e#4312#4313#0" expanded="false" />
+            <element signature="e#4369#4370#0" expanded="false" />
+            <element signature="e#4418#4419#0" expanded="false" />
+            <element signature="e#4480#4481#0" expanded="false" />
+            <element signature="e#4535#4536#0" expanded="false" />
+            <element signature="e#4614#4615#0" expanded="false" />
+            <element signature="e#4665#4666#0" expanded="false" />
+            <element signature="e#4720#4721#0" expanded="false" />
+            <element signature="e#4774#4775#0" expanded="false" />
+            <element signature="e#4824#4825#0" expanded="false" />
+            <element signature="e#4879#4880#0" expanded="false" />
+            <element signature="e#4930#4931#0" expanded="false" />
+            <element signature="e#4981#4982#0" expanded="false" />
+            <element signature="e#5349#5350#0" expanded="false" />
+            <element signature="e#5399#5400#0" expanded="false" />
+            <element signature="e#5458#5459#0" expanded="false" />
+            <element signature="e#5511#5512#0" expanded="false" />
+            <element signature="e#5558#5559#0" expanded="false" />
+            <element signature="e#5604#5605#0" expanded="false" />
+            <element signature="e#5799#5800#0" expanded="false" />
+            <element signature="e#5852#5853#0" expanded="false" />
+            <element signature="e#5895#5896#0" expanded="false" />
+            <element signature="e#5939#5940#0" expanded="false" />
+            <element signature="e#6004#6005#0" expanded="false" />
+            <element signature="e#6062#6063#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/misc/MyUI.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/WagesView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="48" selection-end-column="1" />
+        <state relative-caret-position="782">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1526#1527#0" expanded="false" />
+            <element signature="e#1572#1573#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/misc/DateConvertor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/RosterView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="84" column="0" lean-forward="true" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="1649">
+          <caret line="112" column="41" lean-forward="false" selection-start-line="112" selection-start-column="41" selection-end-line="112" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1329#1330#0" expanded="false" />
+            <element signature="e#1375#1376#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/TableMapView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3791">
+          <caret line="241" column="56" lean-forward="false" selection-start-line="241" selection-start-column="56" selection-end-line="241" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/views/PointOfSaleView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2193">
+          <caret line="141" column="71" lean-forward="false" selection-start-line="141" selection-start-column="71" selection-end-line="141" selection-end-column="71" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/TransactionDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2006">
+          <caret line="122" column="34" lean-forward="false" selection-start-line="122" selection-start-column="34" selection-end-line="122" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <marker date="1491385013015" expanded="true" signature="500:629" ph="insert into sale... " />
+            <marker date="1491385013015" expanded="true" signature="754:789" ph="SELECT max(S... transaction" />
+            <marker date="1491385013015" expanded="true" signature="1894:1934" ph="DELETE from " />
+            <marker date="1491385013015" expanded="true" signature="2700:2741" ph="SELECT DISTI... transaction" />
+            <marker date="1491385013015" expanded="true" signature="3441:3466" ph="SELECT * FRO... transaction" />
+            <marker date="1491385013015" expanded="true" signature="3473:3498" ph="SELECT * FRO... transaction" />
+            <marker date="1491385013015" expanded="true" signature="4623:4654" ph="SELECT * FRO... transaction" />
+            <marker date="1491385013015" expanded="true" signature="4623:4655" ph="SELECT * FRO... transaction" />
+            <marker date="1491385013015" expanded="true" signature="4623:4660" ph="SELECT * FRO... transaction" />
+            <marker date="1491385013015" expanded="true" signature="4623:4670" ph="SELECT * FRO... transaction" />
+            <marker date="1491385013015" expanded="true" signature="4623:4672" ph="SELECT * FRO... transaction" />
+            <marker date="1491385013015" expanded="true" signature="4623:4674" ph="SELECT * FRO... transaction" />
+            <marker date="1491385013015" expanded="true" signature="4623:4676" ph="SELECT * FRO... transaction" />
+            <marker date="1491385013015" expanded="true" signature="4758:4808" ph="SELECT * FRO... transaction" />
+            <marker date="1491385013015" expanded="true" signature="4758:4810" ph="SELECT * FRO... transaction" />
+            <marker date="1491385013015" expanded="true" signature="6067:6159" ph="SELECT * FRO... transaction" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/accessobjects/ProductDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-238">
+          <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+          <folding>
+            <marker date="1491396288338" expanded="true" signature="631:652" ph="SELECT * FRO... product" />
+            <marker date="1491396288338" expanded="true" signature="1754:1775" ph="SELECT * FRO... product" />
+            <marker date="1491396288338" expanded="true" signature="2743:2865" ph="insert into product... " />
+            <marker date="1491396288338" expanded="true" signature="2990:3024" ph="SELECT max(P... product" />
+            <marker date="1491396288338" expanded="true" signature="4149:4262" ph="UPDATE produ... " />
+            <marker date="1491396288338" expanded="true" signature="4917:4956" ph="DELETE from " />
+            <marker date="1491396288338" expanded="true" signature="5722:5755" ph="SELECT DISTI... product" />
+            <marker date="1491396288338" expanded="true" signature="6461:6531" ph="SELECT * FRO... product" />
+          </folding>
         </state>
       </provider>
     </entry>

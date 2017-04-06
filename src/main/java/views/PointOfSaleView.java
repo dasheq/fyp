@@ -20,11 +20,11 @@ import java.util.ArrayList;
 public class PointOfSaleView extends CssLayout implements View{
     final VerticalLayout mainView = new VerticalLayout();
     final VerticalLayout sideView = new VerticalLayout();
+    final VerticalLayout productListView = new VerticalLayout();
     final CssLayout navLayout = new CssLayout();
 
     DataController dataController = new DataController();
 
-    //ProductDAO productDAO = new ProductDAO();
     ArrayList<ProductButton> products = dataController.getAllProductsBtn();
     ArrayList<ProductButton> saleProducts = new ArrayList<>();
     String screenWidth = "100%";
@@ -38,7 +38,6 @@ public class PointOfSaleView extends CssLayout implements View{
     Button logout = new Button("Logout");
     boolean showSaleComponents = false;
 
-    Button showProductsList = new Button("Show products list");
 
     ArrayList<String> productTypes= dataController.getTypes();
 
@@ -64,7 +63,7 @@ public class PointOfSaleView extends CssLayout implements View{
     }
 
     public void showSaleComponents() {
-        sideView.addComponents(paymentMethod, subTotal, change, completeSaleButton, showProductsList);
+        sideView.addComponents(paymentMethod, subTotal, change, completeSaleButton);
 
         BeanItemContainer<String> paymentMethodContainer = new BeanItemContainer<>(String.class);
         paymentMethodContainer.addItem("Cash");
@@ -98,11 +97,7 @@ public class PointOfSaleView extends CssLayout implements View{
             dataController.addSale(transaction);
         });
 
-        showProductsList.addClickListener(e -> {
-            for(int i = 0; i < saleProducts.size(); i++) {
-                System.out.println(i + " " + saleProducts.get(i).getName());
-            }
-        });
+
     }
 
     public void updateSaleList(ProductButton product) {
@@ -128,7 +123,7 @@ public class PointOfSaleView extends CssLayout implements View{
             totalPriceLabel.setValue("Total Price: " + totalPrice);
 
         });
-        sideView.addComponent(saleItem);
+        productListView.addComponent(saleItem);
     }
 
 
@@ -144,7 +139,7 @@ public class PointOfSaleView extends CssLayout implements View{
 
         Label label2 = new Label("Transaction");
         label2.setStyleName(ValoTheme.LABEL_H2);
-        sideView.addComponents(label2, totalPriceLabel);
+        sideView.addComponents(label2, totalPriceLabel, productListView);
 
         for(int i = 0; i< productTypes.size(); i++) {
             Label productTypeLabel = new Label(productTypes.get(i));

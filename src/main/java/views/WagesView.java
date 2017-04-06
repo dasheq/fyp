@@ -59,6 +59,7 @@ public class WagesView extends VerticalLayout{
                 new BeanItemContainer<>(String.class);
         ArrayList<Employee> employees = dataController.getAllEmployees();
 
+
         for (Employee employee : employees) {
             containerEmployees.addItem(employee.getUsername());
         }

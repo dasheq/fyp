@@ -1,4 +1,4 @@
-package misc;
+package entities;
 
 /**
  * Created by damo k on 24/03/2017.
